@@ -73,7 +73,7 @@ if (__receiver__)  [__receiver__ func]; \
 
 #define SAFEPOST_EVENT(oKey, func) \
 { \
-q_dispatch_main_async_safe(^{ \
+cs_dispatch_main_async_safe(^{ \
 POST_EVENT(oKey, func); \
 }); \
 }

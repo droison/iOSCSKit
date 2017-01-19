@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6821E64A9599CBCFA422C5E8 /* libPods-CSKitDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9426CBE18EC6699235F41B /* libPods-CSKitDemo.a */; };
 		E42E06781E29204E0016F062 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E06771E29204E0016F062 /* main.m */; };
 		E42E067B1E29204E0016F062 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E067A1E29204E0016F062 /* AppDelegate.m */; };
 		E42E067E1E29204E0016F062 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E067D1E29204E0016F062 /* ViewController.m */; };
@@ -21,9 +22,16 @@
 		E42E06A51E2920E60016F062 /* CSRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E069B1E2920E60016F062 /* CSRouter.m */; };
 		E42E06A61E2920E60016F062 /* CServiceCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E069F1E2920E60016F062 /* CServiceCenter.m */; };
 		E42E06A91E2921920016F062 /* NSURL+CSParams.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E06A81E2921920016F062 /* NSURL+CSParams.m */; };
+		E44C5D981E30C594004C5099 /* CSDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D8F1E30C594004C5099 /* CSDownloader.m */; };
+		E44C5D991E30C594004C5099 /* CSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D911E30C594004C5099 /* CSDownloadManager.m */; };
+		E44C5D9A1E30C594004C5099 /* CSDownloadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D931E30C594004C5099 /* CSDownloadModel.m */; };
+		E44C5D9B1E30C594004C5099 /* CSDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D951E30C594004C5099 /* CSDownloadOperation.m */; };
+		E44C5D9C1E30C594004C5099 /* CSNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D971E30C594004C5099 /* CSNetworkReachabilityManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9182B3EE81D70D23483CB570 /* Pods-CSKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CSKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CSKitDemo/Pods-CSKitDemo.release.xcconfig"; sourceTree = "<group>"; };
+		C85C0FA1FCBB40DD3D710838 /* Pods-CSKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CSKitDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CSKitDemo/Pods-CSKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		E42E06731E29204E0016F062 /* CSKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E42E06771E29204E0016F062 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E42E06791E29204E0016F062 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -46,11 +54,23 @@
 		E42E06981E2920E60016F062 /* CSEventProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSEventProxy.m; sourceTree = "<group>"; };
 		E42E069A1E2920E60016F062 /* CSRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSRouter.h; sourceTree = "<group>"; };
 		E42E069B1E2920E60016F062 /* CSRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSRouter.m; sourceTree = "<group>"; };
-		E42E069D1E2920E60016F062 /* CSMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSMacro.h; sourceTree = "<group>"; };
 		E42E069E1E2920E60016F062 /* CServiceCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CServiceCenter.h; sourceTree = "<group>"; };
 		E42E069F1E2920E60016F062 /* CServiceCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CServiceCenter.m; sourceTree = "<group>"; };
 		E42E06A71E2921920016F062 /* NSURL+CSParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+CSParams.h"; sourceTree = "<group>"; };
 		E42E06A81E2921920016F062 /* NSURL+CSParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+CSParams.m"; sourceTree = "<group>"; };
+		E44C5D8B1E30BD9E004C5099 /* CSKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSKit.h; sourceTree = "<group>"; };
+		E44C5D8C1E30BFBD004C5099 /* CSKitMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSKitMacro.h; sourceTree = "<group>"; };
+		E44C5D8E1E30C594004C5099 /* CSDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSDownloader.h; sourceTree = "<group>"; };
+		E44C5D8F1E30C594004C5099 /* CSDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSDownloader.m; sourceTree = "<group>"; };
+		E44C5D901E30C594004C5099 /* CSDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSDownloadManager.h; sourceTree = "<group>"; };
+		E44C5D911E30C594004C5099 /* CSDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSDownloadManager.m; sourceTree = "<group>"; };
+		E44C5D921E30C594004C5099 /* CSDownloadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSDownloadModel.h; sourceTree = "<group>"; };
+		E44C5D931E30C594004C5099 /* CSDownloadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSDownloadModel.m; sourceTree = "<group>"; };
+		E44C5D941E30C594004C5099 /* CSDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSDownloadOperation.h; sourceTree = "<group>"; };
+		E44C5D951E30C594004C5099 /* CSDownloadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSDownloadOperation.m; sourceTree = "<group>"; };
+		E44C5D961E30C594004C5099 /* CSNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		E44C5D971E30C594004C5099 /* CSNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		FF9426CBE18EC6699235F41B /* libPods-CSKitDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CSKitDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,18 +78,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6821E64A9599CBCFA422C5E8 /* libPods-CSKitDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		275487F3E88B53EB66899E23 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C85C0FA1FCBB40DD3D710838 /* Pods-CSKitDemo.debug.xcconfig */,
+				9182B3EE81D70D23483CB570 /* Pods-CSKitDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A32AF8637CD8BAC154893C54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FF9426CBE18EC6699235F41B /* libPods-CSKitDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E42E066A1E29204E0016F062 = {
 			isa = PBXGroup;
 			children = (
 				E42E068D1E2920E60016F062 /* CSKit */,
 				E42E06751E29204E0016F062 /* CSKitDemo */,
 				E42E06741E29204E0016F062 /* Products */,
+				275487F3E88B53EB66899E23 /* Pods */,
+				A32AF8637CD8BAC154893C54 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,9 +148,12 @@
 		E42E068D1E2920E60016F062 /* CSKit */ = {
 			isa = PBXGroup;
 			children = (
+				E44C5D8D1E30C594004C5099 /* Download */,
 				E42E068E1E2920E60016F062 /* Bus */,
 				E42E06991E2920E60016F062 /* Router */,
 				E42E069C1E2920E60016F062 /* ServiceCenter */,
+				E44C5D8B1E30BD9E004C5099 /* CSKit.h */,
+				E44C5D8C1E30BFBD004C5099 /* CSKitMacro.h */,
 			);
 			name = CSKit;
 			path = ../CSKit;
@@ -147,11 +190,27 @@
 		E42E069C1E2920E60016F062 /* ServiceCenter */ = {
 			isa = PBXGroup;
 			children = (
-				E42E069D1E2920E60016F062 /* CSMacro.h */,
 				E42E069E1E2920E60016F062 /* CServiceCenter.h */,
 				E42E069F1E2920E60016F062 /* CServiceCenter.m */,
 			);
 			path = ServiceCenter;
+			sourceTree = "<group>";
+		};
+		E44C5D8D1E30C594004C5099 /* Download */ = {
+			isa = PBXGroup;
+			children = (
+				E44C5D8E1E30C594004C5099 /* CSDownloader.h */,
+				E44C5D8F1E30C594004C5099 /* CSDownloader.m */,
+				E44C5D901E30C594004C5099 /* CSDownloadManager.h */,
+				E44C5D911E30C594004C5099 /* CSDownloadManager.m */,
+				E44C5D921E30C594004C5099 /* CSDownloadModel.h */,
+				E44C5D931E30C594004C5099 /* CSDownloadModel.m */,
+				E44C5D941E30C594004C5099 /* CSDownloadOperation.h */,
+				E44C5D951E30C594004C5099 /* CSDownloadOperation.m */,
+				E44C5D961E30C594004C5099 /* CSNetworkReachabilityManager.h */,
+				E44C5D971E30C594004C5099 /* CSNetworkReachabilityManager.m */,
+			);
+			path = Download;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,9 +220,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E42E068A1E29204E0016F062 /* Build configuration list for PBXNativeTarget "CSKitDemo" */;
 			buildPhases = (
+				F0506E56C913380949EA2712 /* [CP] Check Pods Manifest.lock */,
 				E42E066F1E29204E0016F062 /* Sources */,
 				E42E06701E29204E0016F062 /* Frameworks */,
 				E42E06711E29204E0016F062 /* Resources */,
+				740296F62D6A4AB90C459023 /* [CP] Embed Pods Frameworks */,
+				EA8F87AB83BEA82DE546244E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -221,6 +283,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		740296F62D6A4AB90C459023 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CSKitDemo/Pods-CSKitDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA8F87AB83BEA82DE546244E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CSKitDemo/Pods-CSKitDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0506E56C913380949EA2712 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E42E066F1E29204E0016F062 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -231,12 +341,17 @@
 				E42E067E1E29204E0016F062 /* ViewController.m in Sources */,
 				E42E06A91E2921920016F062 /* NSURL+CSParams.m in Sources */,
 				E42E067B1E29204E0016F062 /* AppDelegate.m in Sources */,
+				E44C5D9C1E30C594004C5099 /* CSNetworkReachabilityManager.m in Sources */,
 				E42E06A61E2920E60016F062 /* CServiceCenter.m in Sources */,
+				E44C5D981E30C594004C5099 /* CSDownloader.m in Sources */,
 				E42E06A31E2920E60016F062 /* CSBusParserUtils.m in Sources */,
 				E42E06A21E2920E60016F062 /* CSBusMethodFinder.m in Sources */,
 				E42E06A41E2920E60016F062 /* CSEventProxy.m in Sources */,
 				E42E06A11E2920E60016F062 /* CSBusListener.m in Sources */,
+				E44C5D9A1E30C594004C5099 /* CSDownloadModel.m in Sources */,
+				E44C5D991E30C594004C5099 /* CSDownloadManager.m in Sources */,
 				E42E06781E29204E0016F062 /* main.m in Sources */,
+				E44C5D9B1E30C594004C5099 /* CSDownloadOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +469,7 @@
 		};
 		E42E068B1E29204E0016F062 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C85C0FA1FCBB40DD3D710838 /* Pods-CSKitDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 62CX57WQN3;
@@ -366,6 +482,7 @@
 		};
 		E42E068C1E29204E0016F062 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9182B3EE81D70D23483CB570 /* Pods-CSKitDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 62CX57WQN3;

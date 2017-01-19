@@ -54,7 +54,7 @@
 
     if ([_targetObj respondsToSelector:_method.selector]) {
         if (_method.thread == CSBusThreadMain) {
-            q_dispatch_main_sync_safe(^(){
+            cs_dispatch_main_sync_safe(^(){
                 if (_valid) {
                     [_targetObj performSelector:_method.selector withObject:obj];
                 }

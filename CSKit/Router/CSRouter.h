@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "CServiceCenter.h"
-#import "CSMacro.h"
+#import "CSKitMacro.h"
 
 @protocol QDeepLinkProtocol <NSObject>
 - (instancetype)initWithURLParams:(NSDictionary*)params;

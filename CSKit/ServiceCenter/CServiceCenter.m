@@ -69,7 +69,7 @@ static CServiceCenter* g_ServiceCenter;
 {
     // 由app管理本类的生命周期; 此处不实用dispatch_once的原因在于希望强制主线程初始化
     if (g_ServiceCenter == nil) { //初次判断，提高效率
-        q_dispatch_main_sync_safe(^{
+        cs_dispatch_main_sync_safe(^{
             if (g_ServiceCenter == nil) { // 二次判断，在相同线程，避免出问题
                 g_ServiceCenter = [[CServiceCenter alloc] init];
                 for (Class moduleClass in CSGetInitClasses()) {
@@ -89,7 +89,7 @@ static CServiceCenter* g_ServiceCenter;
     __block id obj = [_diCService objectForKey:[cls description]];
     if (obj == nil)
     {
-        q_dispatch_main_sync_safe(^{
+        cs_dispatch_main_sync_safe(^{
             obj = [[cls alloc] init];
             [_diCService setObject:obj forKey:[cls description]];
             
@@ -109,7 +109,7 @@ static CServiceCenter* g_ServiceCenter;
 
 -(void) removeService:(Class) cls
 {
-    q_dispatch_main_async_safe(^{
+    cs_dispatch_main_async_safe(^{
         CService<CService>* obj = [_diCService objectForKey:[cls description]];
         if (obj == nil)
         {
@@ -127,7 +127,7 @@ static CServiceCenter* g_ServiceCenter;
 
 -(void) callEnterForeground
 {
-    q_dispatch_main_async_safe(^{
+    cs_dispatch_main_async_safe(^{
         NSArray *aryCopy = [_diCService allValues];
         for(id obj in aryCopy)
         {
@@ -141,7 +141,7 @@ static CServiceCenter* g_ServiceCenter;
 
 -(void) callEnterBackground
 {
-    q_dispatch_main_async_safe(^{
+    cs_dispatch_main_async_safe(^{
         NSArray *aryCopy = [_diCService allValues];
         for(id obj in aryCopy)
         {
@@ -155,7 +155,7 @@ static CServiceCenter* g_ServiceCenter;
 
 -(void) callTerminate
 {
-    q_dispatch_main_async_safe(^{
+    cs_dispatch_main_async_safe(^{
         NSArray *aryCopy = [_diCService allValues];
         for(id obj in aryCopy)
         {
@@ -170,7 +170,7 @@ static CServiceCenter* g_ServiceCenter;
 
 -(void) callServiceMemoryWarning
 {
-    q_dispatch_main_async_safe(^{
+    cs_dispatch_main_async_safe(^{
         NSArray *aryCopy = [_diCService allValues];
         for(id obj in aryCopy)
         {
@@ -184,7 +184,7 @@ static CServiceCenter* g_ServiceCenter;
 
 -(void) callReloadData
 {
-    q_dispatch_main_async_safe(^{
+    cs_dispatch_main_async_safe(^{
         NSArray *aryCopy = [_diCService allValues];
         for(id obj in aryCopy)
         {
@@ -198,7 +198,7 @@ static CServiceCenter* g_ServiceCenter;
 
 -(void) callClearData
 {
-    q_dispatch_main_async_safe(^{
+    cs_dispatch_main_async_safe(^{
         NSArray *aryCopy = [_diCService allValues];
         
         for(CService<CService>* obj in aryCopy)

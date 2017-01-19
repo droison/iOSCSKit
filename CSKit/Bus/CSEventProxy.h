@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CSMacro.h"
+#import "CSKitMacro.h"
 
 @class CSBusMethodFinder;
 

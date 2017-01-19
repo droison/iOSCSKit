@@ -44,7 +44,7 @@
     for (id obj in _receivers) {
         if ([obj respondsToSelector:anInvocation.selector]) {
             if ([self needMainThread:obj selector:anInvocation.selector]) {
-                q_dispatch_main_sync_safe(^{ //同步调用
+                cs_dispatch_main_sync_safe(^{ //同步调用
                     [anInvocation setTarget:obj];
                     [anInvocation invoke];
                 });
