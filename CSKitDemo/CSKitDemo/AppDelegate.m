@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "CSKitMacro.h"
 
 @interface AppDelegate ()
 

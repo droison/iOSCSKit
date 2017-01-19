@@ -292,7 +292,6 @@ didFinishDownloadingToURL:(NSURL *)location {
         
         if (!CSEmptyString(hashCode) && ![hashCode isEqualToString:[CSDownloader SHA256HashCodeWithURL:model.URL]]) {
             model.hashCodeVerifyFail = YES;
-            CSLogE(@"HashCode Verify Error. url = %@", model.URL);
             return;
         }
         
@@ -300,7 +299,6 @@ didFinishDownloadingToURL:(NSURL *)location {
         NSFileManager *manager = [NSFileManager defaultManager];
         [manager moveItemAtURL:location toURL:toURL error:nil];
     }
-    CSLogD(@"path = %@", model.localPath);
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
@@ -393,7 +391,6 @@ expectedTotalBytes:(int64_t)expectedTotalBytes {
     hash = [hash stringByReplacingOccurrencesOfString:@"<" withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@">" withString:@""];
     
-    CSLogD(@"SHA256HashCode : %@", hash);
     return hash;
 }
 
