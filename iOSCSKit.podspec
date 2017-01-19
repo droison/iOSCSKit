@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'iOSCSKit'
-  s.version      = '0.0.2'
+  s.version      = '0.0.3'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.summary      = '包含总线管理、router、单例管理、网络下载的小工具箱'
   s.homepage     = 'https://github.com/droison/iOSCSKit'
@@ -11,6 +11,5 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
   s.dependency 'AFNetworking', '~> 3.1.0'
   
-  s.public_header_files = 'CSKit/CSKit.h'
-  s.source_files = 'CSKit/CSKit.h', 'CSKit/CSKitMacro.h', 'CSKit/Download/*.{h,m}', 'CSKit/Bus/*.{h,m}', 'CSKit/ServiceCenter/*.{h,m}' , 'CSKit/Router/*.{h,m}'
+  s.source_files = 'CSKit/*.h', 'CSKit/Download/*.{h,m}', 'CSKit/Bus/*.{h,m}', 'CSKit/ServiceCenter/*.{h,m}' , 'CSKit/Router/*.{h,m}'
 end
