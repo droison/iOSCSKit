@@ -23,16 +23,15 @@
 @end
 
 @implementation CSEventProxy {
-    NSMutableSet* _receivers;
+    NSHashTable* _receivers;;
     CSBusMethodFinder* _methodFinder;
     BOOL _valid;
 }
 
 - (instancetype ) initWithReceivers:(NSSet *)receivers methodFinder:(CSBusMethodFinder*) methodFinder{
-    if ([receivers isKindOfClass:[NSMutableSet class]]) {
-        _receivers = (NSMutableSet*)receivers;
-    } else {
-        _receivers = [NSMutableSet setWithSet:receivers];
+    _receivers = [NSHashTable weakObjectsHashTable];
+    for (id receiver in receivers) {
+        [_receivers addObject:receiver];
     }
     _methodFinder = methodFinder;
     _valid = YES;
