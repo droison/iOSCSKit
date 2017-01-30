@@ -1,9 +1,9 @@
 //
 //  CServiceCenter.h
-//  droison
+//  CSKit
 //
 //  Created by song on 14/11/12.
-//  Copyright (c) 2014年 droison. All rights reserved.
+//  Copyright (c) 2017年 Personal. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -1,9 +1,9 @@
 //
 //  CSDownloadManager.h
-//  QDaily
+//  CSKit
 //
-//  Created by 淞 柴 on 16/5/30.
-//  Copyright © 2016年 Qdaily. All rights reserved.
+//  Created by song on 16/5/30.
+//  Copyright © 2017年 Personal. All rights reserved.
 //
 
 #import "CServiceCenter.h"
@@ -26,10 +26,6 @@ typedef NS_OPTIONS(NSUInteger,  CSDownloadMgrOptions) {
      *  默认文件下载仅wifi条件才行
      */
     CSDownloadMgrAnyNetwork = 1 << 4,
-    /**
-     *  默认不验证hashcode，标记后，会自动验证http://xxx.qdaily.com/name-hashCode.ext这样的文件
-     */
-    CSDownloadMgrVerifyHashCode = 1 << 5,
 };
 
 /**
@@ -41,7 +37,7 @@ typedef NS_OPTIONS(NSUInteger,  CSDownloadMgrOptions) {
  *  download method with progress
  *
  *  @param url             文件的URL
- *  @param destinationPath 目标存储路径,传递绝对路径,默认是 ../Library/com.kuruiaosi.qdaily/downloadCache
+ *  @param destinationPath 目标存储路径,传递绝对路径,默认是 ../Library/bundleName/downloadCache
  *  @param options         网络下载的设定
  *  @param hashCode        64位的sha1验证
  *  @param progress        下载进度的百分比

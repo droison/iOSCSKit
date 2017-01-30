@@ -1,9 +1,9 @@
 //
 //  CSBus.h
-//  droison
+//  CSKit
 //
 //  Created by song on 16/9/19.
-//  Copyright © 2016年 droison. All rights reserved.
+//  Copyright © 2017年 Personal. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,7 +11,8 @@
 
 typedef Protocol * CSEventKey;
 
-@interface CSBus : CService<CService>
+
+@protocol CSBusProtocol <NSObject>
 
 - (BOOL)registerObserver:(NSObject*)obj protocol:(CSEventKey)oKey ;
 - (BOOL)unRegisterObserver:(NSObject*)obj protocol:(CSEventKey)oKey ;
@@ -25,6 +26,12 @@ typedef Protocol * CSEventKey;
 //在当前线程调用，如果想在主线程处理，请使用 'BUS_LISTENER_MAIN_METHOD' 宏包上
 - (void)addRegisterListener:(NSObject *)observer;
 - (void)removeRegisterListener:(NSObject *)observer;
+
+@end
+
+
+@interface CSBus : CService<CService, CSBusProtocol>
+
 @end
 
 #define DEFAULT_BUS GET_SERVICE(CSBus)

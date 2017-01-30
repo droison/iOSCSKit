@@ -1,9 +1,9 @@
 //
 //  CSEventProxy.m
-//  droison
+//  CSKit
 //
 //  Created by song on 16/9/19.
-//  Copyright © 2016年 droison. All rights reserved.
+//  Copyright © 2017年 Personal. All rights reserved.
 //
 
 #import "CSEventProxy.h"

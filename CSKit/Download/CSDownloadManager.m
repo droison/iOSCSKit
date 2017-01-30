@@ -1,9 +1,9 @@
 //
 //  CSDownloadManager.m
-//  QDaily
+//  CSKit
 //
-//  Created by 淞 柴 on 16/5/30.
-//  Copyright © 2016年 Qdaily. All rights reserved.
+//  Created by song on 16/5/30.
+//  Copyright © 2017年 Personal. All rights reserved.
 //
 
 #import "CSDownloadManager.h"
@@ -30,7 +30,7 @@ static NSString *const CSURLDownloadFolderName = @"download";
 #pragma mark - life cycle
 - (void)onServiceInit {
     //initialize code here
-    self.ioQueue = dispatch_queue_create("com.qdaily.downloader.queue", DISPATCH_QUEUE_SERIAL);
+    self.ioQueue = dispatch_queue_create("xyz.chaisong.downloader.queue", DISPATCH_QUEUE_SERIAL);
     
     dispatch_sync(_ioQueue, ^{
         _fileManager = [NSFileManager defaultManager];

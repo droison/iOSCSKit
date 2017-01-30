@@ -1,9 +1,9 @@
 //
 //  CSBusListener.h
-//  droison
+//  CSKit
 //
 //  Created by song on 2016/9/28.
-//  Copyright © 2016年 droison. All rights reserved.
+//  Copyright © 2017年 Personal. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

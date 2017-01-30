@@ -1,9 +1,9 @@
 //
 //  CSDownloadModel.h
-//  QDaily
+//  CSKit
 //
-//  Created by 淞 柴 on 16/5/30.
-//  Copyright © 2016年 Qdaily. All rights reserved.
+//  Created by song on 16/5/30.
+//  Copyright © 2017年 Personal. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

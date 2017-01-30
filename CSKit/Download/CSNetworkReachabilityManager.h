@@ -1,9 +1,9 @@
 //
 //  CSNetworkReachabilityManager.h.h
-//  QDaily
+//  CSKit
 //
 //  Created by song on 16/8/4.
-//  Copyright © 2016年 Qdaily. All rights reserved.
+//  Copyright © 2017年 Personal. All rights reserved.
 //
 
 #import "CServiceCenter.h"

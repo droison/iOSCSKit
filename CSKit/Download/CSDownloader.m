@@ -1,9 +1,9 @@
 //
 //  CSDownloader.m
-//  QDaily
+//  CSKit
 //
-//  Created by 淞 柴 on 16/5/30.
-//  Copyright © 2016年 Qdaily. All rights reserved.
+//  Created by song on 16/5/30.
+//  Copyright © 2017年 Personal. All rights reserved.
 //
 
 #import "CSDownloader.h"
@@ -15,8 +15,8 @@
 typedef void(^CSDownloaderCreateBlock)(CSDownloadModel* model, BOOL added);
 
 #define MaxConcurrentCount 3
-#define QFileDownloadSessionIdentifier @"com.qdaily.fileDownload.sessionIdentifier"
-#define QFileDownloadBarrierQueue "com.qdaily.fileDownload.barrierQueue"
+#define QFileDownloadSessionIdentifier @"xyz.chaisong.fileDownload.sessionIdentifier"
+#define QFileDownloadBarrierQueue "xyz.chaisong.fileDownload.barrierQueue"
 
 @interface CSDownloader () <NSURLSessionDownloadDelegate, CSNetWorkChangeExt> {
     NSMutableDictionary *_executings;
@@ -382,9 +382,9 @@ expectedTotalBytes:(int64_t)expectedTotalBytes {
     if (dataIn == nil) {
         return nil;
     }
-    
+    uint32_t length = (uint32_t) dataIn.length;
     uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
-    CC_SHA256(dataIn.bytes, dataIn.length, digest);
+    CC_SHA256(dataIn.bytes, length, digest);
     NSData *out=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
     NSString *hash=[out description];
     hash = [hash stringByReplacingOccurrencesOfString:@" " withString:@""];
