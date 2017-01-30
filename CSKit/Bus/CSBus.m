@@ -11,8 +11,6 @@
 #import <objc/runtime.h>
 #import "CSBusMethodFinder.h"
 
-#warning todo 多线程调用的数据同步，selector定制的多线程
-
 @implementation CSBus {
     NSMutableDictionary<NSString*, CSEventProxy*>* _eventProxyByProtocol;
     
