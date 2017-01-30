@@ -85,7 +85,7 @@ static NSString *const CSURLDownloadFolderName = @"download";
                 options:(CSDownloadMgrOptions)options
                progress:(CSDownloaderProgressBlock)progress
                complete:(CSDownloaderCompletedBlock)completeBlock {
-#warning todo 缓存的更优处理
+//TODO 缓存的更优处理
     
     //首先根据url去本地读取,本地没有进入下一步
     NSString *filePath = nil;

@@ -9,7 +9,6 @@
 #import "CSEventProxy.h"
 #import "CSBusMethodFinder.h"
 
-#warning todo 多线程调用的数据同步，selector定制的多线程
 @interface CSEventDefaultReceiver : NSObject
 - (id)__magicSelector:(id)a b:(id)b c:(id)c d:(id)d e:(id)e f:(id)f g:(id)g h:(id)h i:(id)i j:(id)j k:(id)k l:(id)l m:(id)m;
 @end

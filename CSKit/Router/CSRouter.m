@@ -122,7 +122,7 @@ void RouterRegister(Class class, NSString* params, ...)
         NSString* host = url.host;
         NSString* routeName = url.firstPath;
         
-        BOOL result;
+        BOOL result = NO;
         if ([self->_schemes containsObject:scheme] && [self->_hosts containsObject:host]) {
             result = [self push:routeName params:[url parameters] navigationController:viewController];
         }
