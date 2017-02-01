@@ -90,7 +90,7 @@ NSString *QParseType(const char **input)
                 // Dictionaries have both a key *and* value type, but the key type has
                 // to be a string for JSON, so we only care about the value type
                 if (![subtype isEqualToString:@"NSString"]) {
-                    NSLog(@"CSBusParserUtils -- %@ is not a valid key type for a JSON dictionary", subtype);
+                    CSLog(@"CSBusParserUtils -- %@ is not a valid key type for a JSON dictionary", subtype);
                 }
                 CSkipWhitespace(input);
                 CSReadChar(input, ',');

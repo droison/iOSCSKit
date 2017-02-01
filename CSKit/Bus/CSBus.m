@@ -27,13 +27,13 @@
 
 - (BOOL)registerObserver:(NSObject*)obj protocol:(CSEventKey)oKey {
     if (obj == nil || oKey == nil) {
-        NSLog(@"CSBus -- register observer[%@] for key[%@]", obj, oKey);
+        CSLog(@"CSBus -- register observer[%@] for key[%@]", obj, oKey);
         assert(0);
         return NO;
     }
     
     if (![obj conformsToProtocol:oKey]) {
-        NSLog(@"CSBus -- conformsToProtocol(%@, %@) is no", obj, oKey);
+        CSLog(@"CSBus -- conformsToProtocol(%@, %@) is no", obj, oKey);
         assert(0);
         return NO;
     }
@@ -59,13 +59,13 @@
 
 - (BOOL)unRegisterObserver:(NSObject*)obj protocol:(CSEventKey)oKey{
     if (obj == nil || oKey == nil) {
-        NSLog(@"CSBus -- register observer[%@] for key[%@]", obj, oKey);
+        CSLog(@"CSBus -- register observer[%@] for key[%@]", obj, oKey);
         assert(0);
         return NO;
     }
     
     if (![obj conformsToProtocol:oKey]) {
-        NSLog(@"CSBus -- conformsToProtocol(%@, %@) is no", obj, oKey);
+        CSLog(@"CSBus -- conformsToProtocol(%@, %@) is no", obj, oKey);
         assert(0);
         return NO;
     }
@@ -85,7 +85,7 @@
 
 - (BOOL)unRegisterObserver:(NSObject *)observer{
     if (observer == nil) {
-        NSLog(@"CSBus -- unRegisterObserver observer[%@] is nil", observer);
+        CSLog(@"CSBus -- unRegisterObserver observer[%@] is nil", observer);
         assert(0);
         return NO;
     }
@@ -133,14 +133,14 @@
         if (exist) {
             [currentProducers removeObject:producer];
         } else {
-            NSLog(@"CSBus -- error: producer[%@] is not exist", producer);
+            CSLog(@"CSBus -- error: producer[%@] is not exist", producer);
         }
     }];
 }
 
 - (id)getReceiver:(CSEventKey)oKey{
     if (oKey == nil) {
-        NSLog(@"CSBus -- getReceiver for key[%@] is nil", oKey);
+        CSLog(@"CSBus -- getReceiver for key[%@] is nil", oKey);
         assert(0);
         return nil;
     }

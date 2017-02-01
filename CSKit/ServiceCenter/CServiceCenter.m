@@ -49,7 +49,7 @@ void CSRegisterInit(Class moduleClass)
 {
     if(self = [super init])
     {
-        NSLog(@"CServiceCenter -- Create service center");
+        CSLog(@"CServiceCenter -- Create service center");
         _diCService = [[NSMutableDictionary alloc] init];
     }
     return self;
@@ -59,7 +59,7 @@ void CSRegisterInit(Class moduleClass)
 {
     if(_diCService != nil)
     {
-        NSLog(@"CServiceCenter -- dealloc service center");
+        CSLog(@"CServiceCenter -- dealloc service center");
         _diCService = nil;
     }
 }
@@ -93,7 +93,7 @@ static CServiceCenter* g_ServiceCenter;
             obj = [[cls alloc] init];
             [_diCService setObject:obj forKey:[cls description]];
             
-            NSLog(@"CServiceCenter -- Create service object: %@", obj);
+            CSLog(@"CServiceCenter -- Create service object: %@", obj);
             
             // call init
             if ([obj respondsToSelector:@selector(onServiceInit)])

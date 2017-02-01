@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'iOSCSKit'
-  s.version      = '0.0.4'
+  s.version      = '0.0.5'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.summary      = '包含总线管理、router、单例管理、网络下载的小工具箱'
   s.homepage     = 'https://github.com/droison/iOSCSKit'

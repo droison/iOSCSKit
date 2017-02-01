@@ -6,6 +6,14 @@
 //  Copyright © 2017年 Personal. All rights reserved.
 //
 
+#define CSDebug YES
+
+#ifdef CSDebug
+#define CSLog(format, ...) NSLog((@"[CSLog]:%d %s " format), __LINE__,__PRETTY_FUNCTION__, ##__VA_ARGS__);
+#else
+#define CSLog(format, ...)
+#endif
+
 #define CSEmptyString(str) ([str isKindOfClass:[NSNull class]] || str == nil || str.length == 0)
 #if defined(__cplusplus)
 #define CS_EXTERN extern "C" __attribute__((visibility("default")))

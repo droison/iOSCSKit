@@ -22,6 +22,7 @@
 		E42E06A51E2920E60016F062 /* CSRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E069B1E2920E60016F062 /* CSRouter.m */; };
 		E42E06A61E2920E60016F062 /* CServiceCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E069F1E2920E60016F062 /* CServiceCenter.m */; };
 		E42E06A91E2921920016F062 /* NSURL+CSParams.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E06A81E2921920016F062 /* NSURL+CSParams.m */; };
+		E4383FE61E42A3D800BADA14 /* CSDiskCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4383FE51E42A3D800BADA14 /* CSDiskCacheManager.m */; };
 		E44C5D981E30C594004C5099 /* CSDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D8F1E30C594004C5099 /* CSDownloader.m */; };
 		E44C5D991E30C594004C5099 /* CSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D911E30C594004C5099 /* CSDownloadManager.m */; };
 		E44C5D9A1E30C594004C5099 /* CSDownloadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D931E30C594004C5099 /* CSDownloadModel.m */; };
@@ -58,6 +59,8 @@
 		E42E069F1E2920E60016F062 /* CServiceCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CServiceCenter.m; sourceTree = "<group>"; };
 		E42E06A71E2921920016F062 /* NSURL+CSParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+CSParams.h"; sourceTree = "<group>"; };
 		E42E06A81E2921920016F062 /* NSURL+CSParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+CSParams.m"; sourceTree = "<group>"; };
+		E4383FE41E42A3D800BADA14 /* CSDiskCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSDiskCacheManager.h; sourceTree = "<group>"; };
+		E4383FE51E42A3D800BADA14 /* CSDiskCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSDiskCacheManager.m; sourceTree = "<group>"; };
 		E44C5D8B1E30BD9E004C5099 /* CSKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSKit.h; sourceTree = "<group>"; };
 		E44C5D8C1E30BFBD004C5099 /* CSKitMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSKitMacro.h; sourceTree = "<group>"; };
 		E44C5D8E1E30C594004C5099 /* CSDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSDownloader.h; sourceTree = "<group>"; };
@@ -199,6 +202,8 @@
 		E44C5D8D1E30C594004C5099 /* Download */ = {
 			isa = PBXGroup;
 			children = (
+				E4383FE41E42A3D800BADA14 /* CSDiskCacheManager.h */,
+				E4383FE51E42A3D800BADA14 /* CSDiskCacheManager.m */,
 				E44C5D8E1E30C594004C5099 /* CSDownloader.h */,
 				E44C5D8F1E30C594004C5099 /* CSDownloader.m */,
 				E44C5D901E30C594004C5099 /* CSDownloadManager.h */,
@@ -344,6 +349,7 @@
 				E44C5D9C1E30C594004C5099 /* CSNetworkReachabilityManager.m in Sources */,
 				E42E06A61E2920E60016F062 /* CServiceCenter.m in Sources */,
 				E44C5D981E30C594004C5099 /* CSDownloader.m in Sources */,
+				E4383FE61E42A3D800BADA14 /* CSDiskCacheManager.m in Sources */,
 				E42E06A31E2920E60016F062 /* CSBusParserUtils.m in Sources */,
 				E42E06A21E2920E60016F062 /* CSBusMethodFinder.m in Sources */,
 				E42E06A41E2920E60016F062 /* CSEventProxy.m in Sources */,
