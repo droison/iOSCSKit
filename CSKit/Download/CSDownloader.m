@@ -16,8 +16,8 @@
 typedef void(^CSDownloaderCreateBlock)(CSDownloadModel* model, BOOL added);
 
 #define MaxConcurrentCount 3
-#define QFileDownloadSessionIdentifier @"xyz.chaisong.fileDownload.sessionIdentifier"
-#define QFileDownloadBarrierQueue "xyz.chaisong.fileDownload.barrierQueue"
+static NSString * const kCSDownloadSessionIdentifier = @"xyz.chaisong.fileDownload.sessionIdentifier";
+static NSString * const kCSDownloaderLockName = @"xyz.chaisong.downloader.lock";
 
 @interface CSDownloader () <NSURLSessionDownloadDelegate, CSNetWorkChangeExt> {
     NSMutableDictionary *_executings;
@@ -25,8 +25,9 @@ typedef void(^CSDownloaderCreateBlock)(CSDownloadModel* model, BOOL added);
     NSMutableArray *_waitingURLs;
 }
 
-@property (strong, nonatomic) dispatch_queue_t barrierQueue; //调度队列
 @property (nonatomic, strong) NSURLSession *session;
+@property (readwrite, nonatomic, strong) NSOperationQueue *operationQueue;
+@property (readwrite, nonatomic, strong) NSRecursiveLock *lock;
 
 @end
 
@@ -35,12 +36,16 @@ typedef void(^CSDownloaderCreateBlock)(CSDownloadModel* model, BOOL added);
 
 - (instancetype)init {
     if (self = [super init]) {
-        _barrierQueue = dispatch_queue_create(QFileDownloadBarrierQueue, DISPATCH_QUEUE_CONCURRENT);;
+        self.lock = [[NSRecursiveLock alloc] init];
+        self.lock.name = kCSDownloaderLockName;
         
-        NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:QFileDownloadSessionIdentifier];
+        self.operationQueue = [[NSOperationQueue alloc] init];
+        self.operationQueue.maxConcurrentOperationCount = MaxConcurrentCount;
+
+        NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:kCSDownloadSessionIdentifier];
         self.session = [NSURLSession sessionWithConfiguration:sessionConfiguration
                                                      delegate:self
-                                                delegateQueue:nil];
+                                                delegateQueue:self.operationQueue];
         _waitings = [NSMutableDictionary dictionary];
         _executings = [NSMutableDictionary dictionaryWithCapacity:MaxConcurrentCount];
         _waitingURLs = [NSMutableArray array];
@@ -78,6 +83,7 @@ typedef void(^CSDownloaderCreateBlock)(CSDownloadModel* model, BOOL added);
 }
 
 - (void)setSuspended:(BOOL)suspended {
+    [self.lock lock];
     NSMutableArray* array = [NSMutableArray arrayWithCapacity:MaxConcurrentCount];
     [_executings enumerateKeysAndObjectsUsingBlock:^(NSURL*  _Nonnull key, CSDownloadModel*  _Nonnull model, BOOL * _Nonnull stop) {
         if (model.operation) {
@@ -90,22 +96,21 @@ typedef void(^CSDownloaderCreateBlock)(CSDownloadModel* model, BOOL added);
         }
     }];
     if (array.count > 0) {
-        dispatch_barrier_sync(self.barrierQueue, ^{
-            for (CSDownloadModel* model in array) { //把暂停的request放回去
-                [_executings removeObjectForKey:model.URL];
-                _waitings[model.URL] = model;
-                [_waitingURLs addObject:model.URL];
-            }
-        });
+        for (CSDownloadModel* model in array) { //把暂停的request放回去
+            [_executings removeObjectForKey:model.URL];
+            _waitings[model.URL] = model;
+            [_waitingURLs addObject:model.URL];
+        }
     }
     if (!suspended) { //重新启动 需要去启动下载
-        dispatch_barrier_async(self.barrierQueue, ^{
-            [self flushWaitingQueue];
-        });
+        [self flushWaitingQueue];
     }
+    [self.lock unlock];
 }
 
 - (void)suspendOnlyWiFiRequest {
+    
+    [self.lock lock];
     NSMutableArray* array = [NSMutableArray arrayWithCapacity:MaxConcurrentCount];
     [_executings enumerateKeysAndObjectsUsingBlock:^(NSURL*  _Nonnull key, CSDownloadModel*  _Nonnull model, BOOL * _Nonnull stop) {
         if (model.operation && !model.requestOnAnyNetWork) {
@@ -114,41 +119,41 @@ typedef void(^CSDownloaderCreateBlock)(CSDownloadModel* model, BOOL added);
         }
     }];
     if (array.count > 0) {
-        dispatch_barrier_sync(self.barrierQueue, ^{
-            for (CSDownloadModel* model in array) { //把暂停的request放回去
-                [_executings removeObjectForKey:model.URL];
-                _waitings[model.URL] = model;
-                [_waitingURLs addObject:model.URL];
-            }
-            [self flushWaitingQueue];//有删除才有必要新增
-        });
+        for (CSDownloadModel* model in array) { //把暂停的request放回去
+            [_executings removeObjectForKey:model.URL];
+            _waitings[model.URL] = model;
+            [_waitingURLs addObject:model.URL];
+        }
+        [self flushWaitingQueue];//有删除才有必要新增
     }
+    
+    [self.lock unlock];
 }
 
 
 - (void)cancelAllDownloads {
+    [self.lock lock];
     [_executings enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, CSDownloadModel*  _Nonnull model, BOOL * _Nonnull stop) {
         if (model.operation) {
             [model.operation.downloadTask cancel];
         }
     }];
-    dispatch_barrier_sync(self.barrierQueue, ^{
-        [_waitingURLs removeAllObjects];
-        [_waitings removeAllObjects];
-        [_executings removeAllObjects];
-    });
+    [_waitingURLs removeAllObjects];
+    [_waitings removeAllObjects];
+    [_executings removeAllObjects];
+    [self.lock unlock];
 }
 
 - (void)cancelDownload:(NSURL*) URL {
-    dispatch_barrier_sync(self.barrierQueue, ^{
-        CSDownloadModel* model = _executings[URL];
-        if (!model) {
-            model = _waitings[URL];
-        }
-        if (model) {
-            [model.operation cancel];
-        }
-    });
+    [self.lock lock];
+    CSDownloadModel* model = _executings[URL];
+    if (!model) {
+        model = _waitings[URL];
+    }
+    if (model) {
+        [model.operation cancel];
+    }
+    [self.lock unlock];
 }
 
 - (void)addProgressCallback:(CSDownloaderProgressBlock)progressBlock completedBlock:(CSDownloaderCompletedBlock)completedBlock forURL:(NSURL *)url createCallback:(CSDownloaderCreateBlock)createCallback {
@@ -160,35 +165,36 @@ typedef void(^CSDownloaderCreateBlock)(CSDownloadModel* model, BOOL added);
         return;
     }
     
-    dispatch_barrier_sync(self.barrierQueue, ^{
-        BOOL first = NO;
-        
-        CSDownloadModel* model = _executings[url];
-        if (model) {
-            if (progressBlock) {
-                [model.progressBlocks addObject:progressBlock];
-            }
-            if (completedBlock) {
-                [model.completeBlocks addObject:completedBlock];
-            }
-        } else {
-            model = _waitings[url];
-            if (!model) {
-                model = [[CSDownloadModel alloc] init];
-                model.URL = url;
-                _waitings[url] = model;
-                [_waitingURLs addObject:url];
-                first = YES;
-            }
-            if (progressBlock) {
-                [model.progressBlocks addObject:progressBlock];
-            }
-            if (completedBlock) {
-                [model.completeBlocks addObject:completedBlock];
-            }
+    [self.lock lock];
+    BOOL first = NO;
+    
+    CSDownloadModel* model = _executings[url];
+    if (model) {
+        if (progressBlock) {
+            [model.progressBlocks addObject:progressBlock];
         }
-        createCallback(model, first);
-    });
+        if (completedBlock) {
+            [model.completeBlocks addObject:completedBlock];
+        }
+    } else {
+        model = _waitings[url];
+        if (!model) {
+            model = [[CSDownloadModel alloc] init];
+            model.URL = url;
+            _waitings[url] = model;
+            [_waitingURLs addObject:url];
+            first = YES;
+        }
+        if (progressBlock) {
+            [model.progressBlocks addObject:progressBlock];
+        }
+        if (completedBlock) {
+            [model.completeBlocks addObject:completedBlock];
+        }
+    }
+    [self.lock unlock];
+    
+    createCallback(model, first);
 }
 
 - (void) flushWaitingQueue {
@@ -285,7 +291,10 @@ typedef void(^CSDownloaderCreateBlock)(CSDownloadModel* model, BOOL added);
       downloadTask:(NSURLSessionDownloadTask *)downloadTask
 didFinishDownloadingToURL:(NSURL *)location {
     //本地的文件路径，使用fileURLWithPath:来创建
+    [self.lock lock];
     CSDownloadModel* model = _executings[downloadTask.originalRequest.URL];
+    [self.lock unlock];
+    
     if (model && !model.localPath) {
         NSString* hashCode = model.sha256HashCode;
         
@@ -299,14 +308,15 @@ didFinishDownloadingToURL:(NSURL *)location {
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-    __block CSDownloadModel *model;
-    dispatch_barrier_sync(self.barrierQueue, ^{
-        model = [_executings[task.originalRequest.URL] copy];
-        if (task.state == NSURLSessionTaskStateCanceling || task.state == NSURLSessionTaskStateCompleted) {
-            [_executings removeObjectForKey:task.originalRequest.URL];
-        }
-        [self flushWaitingQueue];
-    });
+    
+    [self.lock lock];
+    CSDownloadModel *model = [_executings[task.originalRequest.URL] copy];
+    if (task.state == NSURLSessionTaskStateCanceling || task.state == NSURLSessionTaskStateCompleted) {
+        [_executings removeObjectForKey:task.originalRequest.URL];
+    }
+    [self flushWaitingQueue];
+    [self.lock unlock];
+    
     if (model) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSString* localPath = model.localPath;
@@ -333,10 +343,10 @@ didFinishDownloadingToURL:(NSURL *)location {
  totalBytesWritten:(int64_t)totalBytesWritten
 totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
     
-    __block CSDownloadModel *model;
-    dispatch_sync(self.barrierQueue, ^{
-        model = [_executings[downloadTask.originalRequest.URL] copy];
-    });
+    [self.lock lock];
+    CSDownloadModel *model = [_executings[downloadTask.originalRequest.URL] copy];
+    [self.lock unlock];
+    
     if (model) {
         dispatch_async(dispatch_get_main_queue(), ^{
             for (CSDownloaderProgressBlock progressBlock in model.progressBlocks) {
@@ -350,10 +360,10 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
       downloadTask:(NSURLSessionDownloadTask *)downloadTask
  didResumeAtOffset:(int64_t)fileOffset
 expectedTotalBytes:(int64_t)expectedTotalBytes {
-    __block CSDownloadModel *model;
-    dispatch_sync(self.barrierQueue, ^{
-        model = [_executings[downloadTask.originalRequest.URL] copy];
-    });
+    [self.lock lock];
+    CSDownloadModel *model = [_executings[downloadTask.originalRequest.URL] copy];
+    [self.lock unlock];
+    
     if (model) {
         dispatch_async(dispatch_get_main_queue(), ^{
             for (CSDownloaderProgressBlock progressBlock in model.progressBlocks) {
@@ -363,6 +373,7 @@ expectedTotalBytes:(int64_t)expectedTotalBytes {
     }
 }
 
+#pragma mark - Util
 //所有的下载完成都走这里
 + (NSString*)SHA256HashCodeWithURL:(NSURL*)URL {
     NSData* dataIn = [NSData dataWithContentsOfURL:URL];

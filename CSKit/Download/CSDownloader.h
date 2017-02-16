@@ -31,9 +31,9 @@ typedef NS_OPTIONS(NSUInteger, CSDownloaderOptions) {
  *  @return CSDownloadOperation
  */
 - (CSDownloadOperation*) downloadWithURL:(NSURL *)url
-                                    options:(CSDownloaderOptions)options
-                                   progress:(CSDownloaderProgressBlock)progress
-                                   complete:(CSDownloaderCompletedBlock)completeBlock;
+                                 options:(CSDownloaderOptions)options
+                                progress:(CSDownloaderProgressBlock)progress
+                                complete:(CSDownloaderCompletedBlock)completeBlock;
 
 /**
  * Sets the download queue suspension state
@@ -45,7 +45,7 @@ typedef NS_OPTIONS(NSUInteger, CSDownloaderOptions) {
  */
 - (void)cancelAllDownloads;
 
-- (void)cancelDownload : (NSURL*) URL;
+- (void)cancelDownload:(NSURL*) URL;
 
 + (NSString*)SHA256HashCodeWithFilePath:(NSString*)filePath;
 @end

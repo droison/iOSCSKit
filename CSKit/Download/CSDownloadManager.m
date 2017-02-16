@@ -111,7 +111,6 @@
         completeBlock = nil; //回调置空
     }
     
-    __weak typeof(self) weakSelf = self;
     //网络状况,由downloader自己去处理
     CSDownloadOperation* operation = [_downloader downloadWithURL:url options:(options & CSDownloadMgrAnyNetwork)? CSDownloaderAnyNetwork: 0 progress:progress complete:completeBlock];
     
