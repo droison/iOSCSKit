@@ -7,7 +7,7 @@
 //
 
 #import "CSDownloadCache.h"
-#import <CSYYCache/YYDiskFileCache.h>
+#import "CSYYCache/YYDiskFileCache.h"
 #import <CommonCrypto/CommonDigest.h>
 
 @implementation CSDownloadCache {

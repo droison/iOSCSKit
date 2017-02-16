@@ -10,6 +10,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.ios.deployment_target = '8.0'
   s.dependency 'AFNetworking', '~> 3.1.0'
-  s.dependency 'CSYYCache'
+  s.dependency 'CSYYCache', '~> 11.0.1'
   s.source_files = 'CSKit/*.h', 'CSKit/Download/*.{h,m}', 'CSKit/Bus/*.{h,m}', 'CSKit/ServiceCenter/*.{h,m}' , 'CSKit/Router/*.{h,m}'
 end
