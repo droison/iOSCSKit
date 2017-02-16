@@ -8,24 +8,21 @@
 
 #import "CServiceCenter.h"
 #import "CSDownloader.h"
+#import "CSDownloadCache.h"
 
 typedef NS_OPTIONS(NSUInteger,  CSDownloadMgrOptions) {
     /**
-     * 缓存保持，默认会有一个缓存清理机制，如果启用了缓存保持，该文件的清理和删除归掉用方自己管理。 ---缓存保持则destinationPath不能为空
-     */
-    CSDownloadMgrCachePersist = 1 << 1,
-    /**
      *  不读缓存，默认读缓存
      */
-    CSDownloadMgrRefreshCached = 1 << 2,
+    CSDownloadMgrRefreshCached = 1 << 1,
     /**
      *  只读缓存，无缓存继续下载，但不回调
      */
-    CSDownloadMgrOnlyUseCache = 1 << 3,
+    CSDownloadMgrOnlyUseCache = 1 << 2,
     /**
      *  默认文件下载仅wifi条件才行
      */
-    CSDownloadMgrAnyNetwork = 1 << 4,
+    CSDownloadMgrAnyNetwork = 1 << 3,
 };
 
 /**
@@ -33,11 +30,12 @@ typedef NS_OPTIONS(NSUInteger,  CSDownloadMgrOptions) {
  */
 @interface CSDownloadManager : CService<CService>
 
+@property(nonatomic, strong)id<CSDownloadCacheProtocol> downloadFileCache;
 /**
  *  download method with progress
  *
  *  @param url             文件的URL
- *  @param destinationPath 目标存储路径,传递绝对路径,默认是 ../Library/bundleName/downloadCache
+ *  @param destinationPath 目标存储路径，传递绝对路径，默认采用YYCache进行缓存，仅存文件不存内存，默认大小200m，1000个文件，可以在CSDownloadCache设置
  *  @param options         网络下载的设定
  *  @param hashCode        64位的sha1验证
  *  @param progress        下载进度的百分比
@@ -55,15 +53,6 @@ typedef NS_OPTIONS(NSUInteger,  CSDownloadMgrOptions) {
                 options:(CSDownloadMgrOptions)options
                progress:(CSDownloaderProgressBlock)progress
                complete:(CSDownloaderCompletedBlock)completeBlock;
-
-
-
-- (BOOL)localExistsForURL:(NSURL *)URL;
-- (void)localFileForURL:(NSURL *)URL complete:(void(^) (BOOL exsit, NSURL* localPathURL)) completeBlock;
-
-- (void)clearAllFile;
-- (void)clearAllFileWithCompletion:(void(^)())completeBlock;
-- (void)removeFileWithURL:(NSURL *)url;
 
 //下面都是封装方法
 - (void)downloadWithURL:(NSURL *)url

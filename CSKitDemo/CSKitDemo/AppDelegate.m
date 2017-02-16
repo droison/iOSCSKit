@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CSKitMacro.h"
+#import "CSNetworkReachabilityManager.h"
 
 @interface AppDelegate ()
 
@@ -17,7 +18,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    GET_SERVICE(CSNetworkReachabilityManager);
     return YES;
 }
 

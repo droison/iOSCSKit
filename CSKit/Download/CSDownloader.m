@@ -11,6 +11,7 @@
 #import "CSNetworkReachabilityManager.h"
 #import "CSBus.h"
 #import <CommonCrypto/CommonDigest.h>
+#import "CSDownloadCache.h"
 
 typedef void(^CSDownloaderCreateBlock)(CSDownloadModel* model, BOOL added);
 
@@ -57,7 +58,6 @@ typedef void(^CSDownloaderCreateBlock)(CSDownloadModel* model, BOOL added);
 
 //启动下载时候会遍历所有已经运行的和未运行的请求，只要相同的url有1个是CSDownloaderAnyNetwork，则所有的都是无视网络环境
 - (CSDownloadOperation* ) downloadWithURL:(NSURL *)url
-                             destinationPath:(NSString *)destinationPath
                                      options:(CSDownloaderOptions)options
                                     progress:(CSDownloaderProgressBlock)progressBlock
                                     complete:(CSDownloaderCompletedBlock)completedBlock {
@@ -69,7 +69,6 @@ typedef void(^CSDownloaderCreateBlock)(CSDownloadModel* model, BOOL added);
             model.requestOnAnyNetWork = YES; //有一个请求无视网络，那就无视网络环境
         }
         if (added) {
-            model.localPath = destinationPath;
             model.operation = [[CSDownloadOperation alloc] initWithModel:model session:wself.session];
         }
         [wself flushWaitingQueue];
@@ -287,17 +286,15 @@ typedef void(^CSDownloaderCreateBlock)(CSDownloadModel* model, BOOL added);
 didFinishDownloadingToURL:(NSURL *)location {
     //本地的文件路径，使用fileURLWithPath:来创建
     CSDownloadModel* model = _executings[downloadTask.originalRequest.URL];
-    if (model && model.localPath) {
+    if (model && !model.localPath) {
         NSString* hashCode = model.sha256HashCode;
         
         if (!CSEmptyString(hashCode) && ![hashCode isEqualToString:[CSDownloader SHA256HashCodeWithURL:model.URL]]) {
             model.hashCodeVerifyFail = YES;
             return;
         }
-        
-        NSURL *toURL = [NSURL fileURLWithPath:model.localPath];
-        NSFileManager *manager = [NSFileManager defaultManager];
-        [manager moveItemAtURL:location toURL:toURL error:nil];
+        [[CSDownloadCache defaultCache] addFile:location.path forURL:model.URL];
+        model.localPath = [[CSDownloadCache defaultCache] filePathForURL:model.URL];
     }
 }
 
