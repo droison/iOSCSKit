@@ -39,7 +39,8 @@
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation {
     // 获取 selector 的名字（如前面的 loginWithId:password:）
-    for (id obj in _receivers) {
+    NSHashTable* currentReceiver = [_receivers copy];
+    for (id obj in currentReceiver) {
         if ([obj respondsToSelector:anInvocation.selector]) {
             if ([self needMainThread:obj selector:anInvocation.selector]) {
                 cs_dispatch_main_sync_safe(^{ //同步调用
