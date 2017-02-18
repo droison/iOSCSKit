@@ -9,6 +9,7 @@
 #import "CSRouter.h"
 #import <objc/runtime.h>
 #import "NSURL+CSParams.h"
+#import "NSString+CSURLParams.h"
 
 @interface Router : NSObject
 @property(nonatomic, strong) Class viewControllerClass;
@@ -27,6 +28,7 @@ NSMutableDictionary<NSString*, Router*> *GetRouterMap(void)
 void RouterRegister(Class class, NSString* params, ...);
 void RouterRegister(Class class, NSString* params, ...)
 {
+    NSCAssert([NSThread currentThread] == [NSThread mainThread], @"必须在主线程初始化");
     if (class == nil || !class_conformsToProtocol(class, @protocol(QDeepLinkProtocol))) {
         return;
     }
@@ -106,11 +108,11 @@ void RouterRegister(Class class, NSString* params, ...)
 }
 
 - (BOOL) pushURLStr:(NSString*)url navigationController:(UINavigationController*) viewController {
-    return [self pushURL:[NSURL URLWithString:url] navigationController:viewController];
+    return [self pushURL:[url cs_toURL] navigationController:viewController];
 }
 
 - (BOOL) presentURLStr:(NSString*)url viewcontroller:(UIViewController*) viewController {
-    return [self presentURL:[NSURL URLWithString:url] viewcontroller:viewController];
+    return [self presentURL:[url cs_toURL] viewcontroller:viewController];
 }
 
 - (BOOL) pushURL:(NSURL*)url navigationController:(UINavigationController*) viewController {
@@ -120,11 +122,11 @@ void RouterRegister(Class class, NSString* params, ...)
     if (url) {
         NSString* scheme = url.scheme;
         NSString* host = url.host;
-        NSString* routeName = url.firstPath;
+        NSString* routeName = url.cs_firstPath;
         
         BOOL result = NO;
         if ([self->_schemes containsObject:scheme] && [self->_hosts containsObject:host]) {
-            result = [self push:routeName params:[url parameters] navigationController:viewController];
+            result = [self push:routeName params:url.cs_parameters navigationController:viewController];
         }
         if (!result && _routeFailBlock) {
             _routeFailBlock(url, viewController, NO);
@@ -141,11 +143,11 @@ void RouterRegister(Class class, NSString* params, ...)
     if (url) {
         NSString* scheme = url.scheme;
         NSString* host = url.host;
-        NSString* routeName = url.firstPath;
+        NSString* routeName = url.cs_firstPath;
         
         BOOL result;
         if ([self->_schemes containsObject:scheme] && [self->_hosts containsObject:host]) {
-            result = [self present:routeName params:[url parameters] viewcontroller:viewController];
+            result = [self present:routeName params:url.cs_parameters viewcontroller:viewController];
         }
         if (!result && _routeFailBlock) {
             _routeFailBlock(url, viewController, YES);
@@ -188,9 +190,9 @@ void RouterRegister(Class class, NSString* params, ...)
     if (url) {
         NSString* scheme = url.scheme;
         NSString* host = url.host;
-        NSString* routeName = url.firstPath;
+        NSString* routeName = url.cs_firstPath;
         if ([self->_schemes containsObject:scheme] && [self->_hosts containsObject:host]) {
-            return [self matchViewController:routeName params:[url parameters]];
+            return [self matchViewController:routeName params:url.cs_parameters];
         }
     }
     return nil;

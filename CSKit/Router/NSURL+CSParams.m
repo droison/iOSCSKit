@@ -107,8 +107,15 @@ NSArray * QHQueryStringPairsFromKeyAndValue(NSString *key, id value) {
 
 @implementation NSURL (CSParams)
 + (NSURL*) URLWithString:(NSString*) url queryParameters:(NSDictionary*) params {
-    NSString* queryString = [NSURL queryStringFromParameters:params];
-    return [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", url, queryString]];
+    NSURL* result;
+    if (params == nil || params.count == 0) {
+        result = [NSURL URLWithString:url];
+    } else {
+        NSString* queryString = [NSURL queryStringFromParameters:params];
+        result = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", url, queryString]];
+    }
+    result.cs_parameters = params;
+    return result;
 }
 
 + (NSString*) queryStringFromParameters:(NSDictionary*) params {
@@ -144,19 +151,14 @@ NSArray * QHQueryStringPairsFromKeyAndValue(NSString *key, id value) {
         }
     }
     
-    self.parameters = parameters;
+    self.cs_parameters = parameters;
 }
 
-- (id)objectForKeyedSubscript:(id)key {
-    return self.parameters[key];
+- (NSString *)cs_parameterForKey:(NSString *)key {
+    return self.cs_parameters[key];
 }
 
-
-- (NSString *)parameterForKey:(NSString *)key {
-    return self.parameters[key];
-}
-
-- (NSString*)firstPath{
+- (NSString*)cs_firstPath{
     NSArray* paths = [self.path componentsSeparatedByString:@"/"];
     if (paths.count > 1) {
         return paths[1];
@@ -164,7 +166,7 @@ NSArray * QHQueryStringPairsFromKeyAndValue(NSString *key, id value) {
     return [paths firstObject];
 }
 
-- (NSDictionary *)parameters {
+- (NSDictionary *)cs_parameters {
     
     NSDictionary *result = objc_getAssociatedObject(self, &kURLParametersDictionaryKey);
     
@@ -175,9 +177,7 @@ NSArray * QHQueryStringPairsFromKeyAndValue(NSString *key, id value) {
     return objc_getAssociatedObject(self, &kURLParametersDictionaryKey);
 }
 
-- (void)setParameters:(NSDictionary *)parameters {
-    
+- (void)setCs_parameters:(NSDictionary *)parameters {
     objc_setAssociatedObject(self, &kURLParametersDictionaryKey, parameters, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    
 }
 @end

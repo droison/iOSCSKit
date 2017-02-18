@@ -9,13 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface NSURL (CSParams)
+@property (nonatomic, strong) NSDictionary *cs_parameters;
 + (NSURL*) URLWithString:(NSString*) url queryParameters:(NSDictionary*) params;
 
 + (NSString*) queryStringFromParameters:(NSDictionary*) params;
 
-- (NSString *)parameterForKey:(NSString *)key;
+- (NSString *)cs_parameterForKey:(NSString *)key;
 
-- (NSDictionary *)parameters;
-
-- (NSString *)firstPath;
+- (NSString *)cs_firstPath;
 @end

@@ -28,6 +28,7 @@
 		E44C5D9A1E30C594004C5099 /* CSDownloadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D931E30C594004C5099 /* CSDownloadModel.m */; };
 		E44C5D9B1E30C594004C5099 /* CSDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D951E30C594004C5099 /* CSDownloadOperation.m */; };
 		E44C5D9C1E30C594004C5099 /* CSNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D971E30C594004C5099 /* CSNetworkReachabilityManager.m */; };
+		E4A6CAF61E581E15002514A4 /* NSString+CSURLParams.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A6CAF51E581E15002514A4 /* NSString+CSURLParams.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,8 @@
 		E44C5D951E30C594004C5099 /* CSDownloadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSDownloadOperation.m; sourceTree = "<group>"; };
 		E44C5D961E30C594004C5099 /* CSNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSNetworkReachabilityManager.h; sourceTree = "<group>"; };
 		E44C5D971E30C594004C5099 /* CSNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		E4A6CAF41E581E15002514A4 /* NSString+CSURLParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CSURLParams.h"; sourceTree = "<group>"; };
+		E4A6CAF51E581E15002514A4 /* NSString+CSURLParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CSURLParams.m"; sourceTree = "<group>"; };
 		FF9426CBE18EC6699235F41B /* libPods-CSKitDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CSKitDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -186,6 +189,8 @@
 				E42E069B1E2920E60016F062 /* CSRouter.m */,
 				E42E06A71E2921920016F062 /* NSURL+CSParams.h */,
 				E42E06A81E2921920016F062 /* NSURL+CSParams.m */,
+				E4A6CAF41E581E15002514A4 /* NSString+CSURLParams.h */,
+				E4A6CAF51E581E15002514A4 /* NSString+CSURLParams.m */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 				E44C5D991E30C594004C5099 /* CSDownloadManager.m in Sources */,
 				E42E06781E29204E0016F062 /* main.m in Sources */,
 				E44C5D9B1E30C594004C5099 /* CSDownloadOperation.m in Sources */,
+				E4A6CAF61E581E15002514A4 /* NSString+CSURLParams.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
