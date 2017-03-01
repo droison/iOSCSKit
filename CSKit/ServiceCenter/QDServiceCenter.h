@@ -1,5 +1,5 @@
 //
-//  CServiceCenter.h
+//  QDServiceCenter.h
 //  CSKit
 //
 //  Created by song on 14/11/12.
@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "CSKitMacro.h"
 
-@interface CService : NSObject {
+@interface QDService : NSObject {
     BOOL m_isServiceRemoved;
     BOOL m_isServiceUnPersistent;		// 注销或者退出时, 是否还需要清掉，默认不清掉
 }
 
-#define CS_REGISTER() \
-CS_EXTERN void CSRegisterInit(Class); \
+#define QDService_REGISTER() \
+QD_EXTERN void CSRegisterInit(Class); \
 + (void)load { CSRegisterInit(self); }
 
 @property (assign) BOOL m_isServiceRemoved;
@@ -24,7 +24,7 @@ CS_EXTERN void CSRegisterInit(Class); \
 @end
 
 /// MMService协议
-@protocol CService<NSObject>
+@protocol QDService<NSObject>
 
 @optional
 
@@ -55,10 +55,10 @@ CS_EXTERN void CSRegisterInit(Class); \
 @end
 
 // 持久对象中心。 用来存放为全局服务的对象。
-@interface CServiceCenter : NSObject
+@interface QDServiceCenter : NSObject
 
  // 由app管理本类的生命周期;
-+(CServiceCenter *) defaultCenter;
++(QDServiceCenter *) defaultCenter;
 
 // 获取服务对象。
 // 如果对象不存在， 会自动创建。 但只能创建继承于MMService基类的对象.
@@ -80,6 +80,6 @@ CS_EXTERN void CSRegisterInit(Class); \
 
 @end
 
-#define GET_SERVICE(obj) ((obj*)[[CServiceCenter defaultCenter] getService:[obj class]])
+#define GET_SERVICE(obj) ((obj*)[[QDServiceCenter defaultCenter] getService:[obj class]])
 
-#define REMOVE_SERVICE(obj) [[CServiceCenter defaultCenter] removeService:[obj class]]
+#define REMOVE_SERVICE(obj) [[QDServiceCenter defaultCenter] removeService:[obj class]]

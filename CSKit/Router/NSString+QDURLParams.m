@@ -1,19 +1,19 @@
 //
-//  NSString+CSURLParams.m
+//  NSString+QDURLParams.m
 //  CSKitDemo
 //
 //  Created by song on 2017/2/18.
 //  Copyright © 2017年 Personal. All rights reserved.
 //
 
-#import "NSString+CSURLParams.h"
+#import "NSString+QDURLParams.h"
 #import <objc/runtime.h>
-#import "NSURL+CSParams.h"
+#import "NSURL+QDParams.h"
 
 static void *kNSStringURLParametersDictionaryKey;
 static void *kNSStringURLUrlKey;
 
-@implementation NSString (CSURLParams)
+@implementation NSString (QDURLParams)
 
 - (void)scanParameters {
     
@@ -23,7 +23,7 @@ static void *kNSStringURLUrlKey;
     NSString* url;
     [scanner scanUpToString:@"?" intoString: &url];
     if (url) {
-        self.cs_url = url;
+        self.qd_url = url;
     }
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -40,18 +40,18 @@ static void *kNSStringURLUrlKey;
         }
     }
     
-    self.cs_parameters = parameters;
+    self.qd_parameters = parameters;
 }
 
--(NSURL *)cs_toURL {
-    return [NSURL URLWithString:self.cs_url queryParameters:self.cs_parameters];
+-(NSURL *)qd_toURL {
+    return [NSURL URLWithString:self.qd_url queryParameters:self.qd_parameters];
 }
 
-- (NSString *)cs_parameterForKey:(NSString *)key {
-    return self.cs_parameters[key];
+- (NSString *)qd_parameterForKey:(NSString *)key {
+    return self.qd_parameters[key];
 }
 
--(NSString *)cs_url {
+-(NSString *)qd_url {
     NSString *result = objc_getAssociatedObject(self, &kNSStringURLUrlKey);
     
     if (!result) {
@@ -61,11 +61,11 @@ static void *kNSStringURLUrlKey;
     return objc_getAssociatedObject(self, &kNSStringURLUrlKey);
 }
 
-- (void) setCs_url:(NSString*) url {
+- (void) setQd_url:(NSString*) url {
     objc_setAssociatedObject(self, &kNSStringURLUrlKey, url, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSDictionary *)cs_parameters {
+- (NSDictionary *)qd_parameters {
     
     NSDictionary *result = objc_getAssociatedObject(self, &kNSStringURLParametersDictionaryKey);
     
@@ -76,7 +76,7 @@ static void *kNSStringURLUrlKey;
     return objc_getAssociatedObject(self, &kNSStringURLParametersDictionaryKey);
 }
 
-- (void)setCs_parameters:(NSDictionary *)parameters {
+- (void)setQd_parameters:(NSDictionary *)parameters {
     
     objc_setAssociatedObject(self, &kNSStringURLParametersDictionaryKey, parameters, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     

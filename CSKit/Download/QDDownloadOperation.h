@@ -1,5 +1,5 @@
 //
-//  CSDownloadOperation.h
+//  QDDownloadOperation.h
 //  CSKit
 //
 //  Created by song on 16/5/30.
@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@class CSDownloadModel;
+@class QDDownloadModel;
 
-@interface CSDownloadOperation : NSObject
+@interface QDDownloadOperation : NSObject
 
-- (instancetype)initWithModel:(CSDownloadModel *)model session:(NSURLSession *)session;
+- (instancetype)initWithModel:(QDDownloadModel *)model session:(NSURLSession *)session;
 
-@property (nonatomic, weak) CSDownloadModel *model;
+@property (nonatomic, weak) QDDownloadModel *model;
 @property (nonatomic, strong, readonly) NSURLSessionDownloadTask *downloadTask;
 @property (nonatomic, assign, readonly) BOOL isCancel;
 

@@ -1,14 +1,14 @@
 //
-//  CSDownloadCache.h
+//  QDDownloadCache.h
 //  CSKitDemo
 //
 //  Created by song on 2017/2/15.
 //  Copyright © 2017年 Personal. All rights reserved.
 //
 
-#import "CServiceCenter.h"
+#import "QDServiceCenter.h"
 
-@protocol CSDownloadCacheProtocol <NSObject>
+@protocol QDDownloadCacheProtocol <NSObject>
 @property NSUInteger maxFileCount;
 @property NSUInteger maxFileSize;
 
@@ -24,8 +24,8 @@
 
 @end
 
-@interface CSDownloadCache : CService<CService, CSDownloadCacheProtocol>
+@interface QDDownloadCache : QDService<QDService, QDDownloadCacheProtocol>
 
-+ (CSDownloadCache*) defaultCache;
++ (QDDownloadCache*) defaultCache;
 
 @end

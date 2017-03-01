@@ -1,5 +1,5 @@
 //
-//  CSRouter.h
+//  QDRouter.h
 //  CSKit
 //
 //  Created by song on 17/1/5.
@@ -8,21 +8,21 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "CServiceCenter.h"
+#import "QDServiceCenter.h"
 #import "CSKitMacro.h"
 
 @protocol QDeepLinkProtocol <NSObject>
 - (instancetype)initWithURLParams:(NSDictionary*)params;
 @end
 
-typedef BOOL(^CSRouterFail)(NSURL *url, UIViewController* viewController, BOOL isPresent);
+typedef BOOL(^QDRouterFail)(NSURL *url, UIViewController* viewController, BOOL isPresent);
 
-@interface CSRouter : CService<CService>
+@interface QDRouter : QDService<QDService>
 
-- (CSRouter*) addScheme:(NSString*) scheme, ...;
-- (CSRouter*) addHost:(NSString*) scheme, ...;
-- (CSRouter*) setDefaultNavigation:(UINavigationController*) naviController;
-- (CSRouter*) setRouteFailBlock:(CSRouterFail) fail;
+- (QDRouter*) addScheme:(NSString*) scheme, ...;
+- (QDRouter*) addHost:(NSString*) scheme, ...;
+- (QDRouter*) setDefaultNavigation:(UINavigationController*) naviController;
+- (QDRouter*) setRouteFailBlock:(QDRouterFail) fail;
 
 - (BOOL) pushURLStr:(NSString*)url navigationController:(UINavigationController*) viewController;
 - (BOOL) presentURLStr:(NSString*)url viewcontroller:(UIViewController*) viewController;
@@ -41,5 +41,5 @@ typedef BOOL(^CSRouterFail)(NSURL *url, UIViewController* viewController, BOOL i
 @end
 
 #define ROUTER_REGISTER(...) \
-CS_EXTERN void RouterRegister(Class, NSString*, ...); \
+QD_EXTERN void RouterRegister(Class, NSString*, ...); \
 + (void)load { RouterRegister(self, ##__VA_ARGS__, nil); }

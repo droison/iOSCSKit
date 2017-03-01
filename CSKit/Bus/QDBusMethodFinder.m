@@ -1,27 +1,27 @@
 //
-//  CSBusMethodFinder.m
+//  QDBusMethodFinder.m
 //  CSKit
 //
 //  Created by song on 2016/9/28.
 //  Copyright © 2017年 Personal. All rights reserved.
 //
 
-#import "CSBusMethodFinder.h"
+#import "QDBusMethodFinder.h"
 #import <objc/runtime.h>
-#import "CSBusParserUtils.h"
+#import "QDBusParserUtils.h"
 
-NSString * const CSBusPostCurrentThreadMethodPrefixString = @"__busthread_export__";
+NSString * const QDBusPostCurrentThreadMethodPrefixString = @"__busthread_export__";
 
-NSString * const CSBusListenerThreadMethodPrefixString = @"__bus_listener_thread_export__";
+NSString * const QDBusListenerThreadMethodPrefixString = @"__bus_listener_thread_export__";
 
-NSString * const CSBusKeyPostCurrentThread = @"CSBusKeyPostCurrentThread";
-NSString * const CSBusKeyListenerCurrentThread = @"CSBusKeyListenerCurrentThread";
-NSString * const CSBusKeyListenerMainThread = @"CSBusKeyListenerMainThread";
+NSString * const QDBusKeyPostCurrentThread = @"QDBusKeyPostCurrentThread";
+NSString * const QDBusKeyListenerCurrentThread = @"QDBusKeyListenerCurrentThread";
+NSString * const QDBusKeyListenerMainThread = @"QDBusKeyListenerMainThread";
 
 
-@implementation CSBusMethodFinder {
+@implementation QDBusMethodFinder {
     NSMapTable<Class, NSDictionary<NSString*, NSSet<NSString*>*>*>* _methodCache;
-    NSMapTable<Class, NSDictionary<NSString*, CSBusMethod*>*>* _listenerMethodCache; //class -- (arguments --- CSBusMethod)
+    NSMapTable<Class, NSDictionary<NSString*, QDBusMethod*>*>* _listenerMethodCache; //class -- (arguments --- QDBusMethod)
 }
 
 - (instancetype) init {
@@ -40,18 +40,18 @@ NSString * const CSBusKeyListenerMainThread = @"CSBusKeyListenerMainThread";
         [self loadMethod:targetClass];
     }
     targetClassMethd = [_methodCache objectForKey:targetClass];
-    return [targetClassMethd objectForKey:CSBusKeyPostCurrentThread];
+    return [targetClassMethd objectForKey:QDBusKeyPostCurrentThread];
 }
 
-- (NSDictionary<NSString*, CSBusListener*>*)getBusListener:(id) obj {
-    NSDictionary<NSString*, CSBusMethod*>* currentClassListenerMethod = [_listenerMethodCache objectForKey:[obj class]];
+- (NSDictionary<NSString*, QDBusListener*>*)getBusListener:(id) obj {
+    NSDictionary<NSString*, QDBusMethod*>* currentClassListenerMethod = [_listenerMethodCache objectForKey:[obj class]];
     if (currentClassListenerMethod == nil) {
         [self loadMethod:[obj class]];
     }
     currentClassListenerMethod = [_listenerMethodCache objectForKey:[obj class]];
-    NSMutableDictionary<NSString*, CSBusListener*>* result = [NSMutableDictionary dictionaryWithCapacity:currentClassListenerMethod.count];
-    [currentClassListenerMethod enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, CSBusMethod * _Nonnull method, BOOL * _Nonnull stop) {
-        [result setObject:[[CSBusListener alloc] initWithTarget:obj method:method] forKey:key];
+    NSMutableDictionary<NSString*, QDBusListener*>* result = [NSMutableDictionary dictionaryWithCapacity:currentClassListenerMethod.count];
+    [currentClassListenerMethod enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, QDBusMethod * _Nonnull method, BOOL * _Nonnull stop) {
+        [result setObject:[[QDBusListener alloc] initWithTarget:obj method:method] forKey:key];
     }];
     return result;
 }
@@ -62,10 +62,10 @@ NSString * const CSBusKeyListenerMainThread = @"CSBusKeyListenerMainThread";
     NSMutableDictionary<NSString*, NSSet<NSString*>*>* curClassMethd = [NSMutableDictionary new];
     //default mainThreadMethod 所以不处理
     NSMutableSet<NSString*>* postThreadMethod = [NSMutableSet new];
-    [curClassMethd setObject:postThreadMethod forKey:CSBusKeyPostCurrentThread];
+    [curClassMethd setObject:postThreadMethod forKey:QDBusKeyPostCurrentThread];
     
     //listener
-    NSMutableDictionary<NSString*, CSBusMethod*>* listenerClassMethod = [NSMutableDictionary new];
+    NSMutableDictionary<NSString*, QDBusMethod*>* listenerClassMethod = [NSMutableDictionary new];
     
 
     unsigned int methodCount;
@@ -78,21 +78,21 @@ NSString * const CSBusKeyListenerMainThread = @"CSBusKeyListenerMainThread";
         for (unsigned int i = 0; i < methodCount; i++) {
             Method method = methods[i];
             SEL selector = method_getName(method);
-            if ([NSStringFromSelector(selector) hasPrefix:CSBusPostCurrentThreadMethodPrefixString]) {
+            if ([NSStringFromSelector(selector) hasPrefix:QDBusPostCurrentThreadMethodPrefixString]) {
                 NSArray* array = [cls performSelector:selector];
                 NSArray<NSString *> *arguments;
                 SEL realSelector  = CSParseMethodSignature(array[1], &arguments);
                 [postThreadMethod addObject:NSStringFromSelector(realSelector)];
-            } else if ([NSStringFromSelector(selector) hasPrefix:CSBusListenerThreadMethodPrefixString]) {
+            } else if ([NSStringFromSelector(selector) hasPrefix:QDBusListenerThreadMethodPrefixString]) {
                 NSArray* array = [cls performSelector:selector];
                 NSArray<NSString *> *arguments;
                 SEL realSelector  = CSParseMethodSignature(array[1], &arguments);
                 if (arguments && arguments.count == 1) { //有且只有1个入参才可以，相同类型入参有且只有一个方法能接受参数
-                    CSBusThread thread = CSBusThreadCurrent;
+                    QDBusThread thread = QDBusThreadCurrent;
                     if ([array[0] isEqualToString:@"main"]) {
-                        thread = CSBusThreadMain;
+                        thread = QDBusThreadMain;
                     }
-                    CSBusMethod* busMethod = [[CSBusMethod alloc] initWithClass:targetClass sel:realSelector type:arguments[0] thread:thread];
+                    QDBusMethod* busMethod = [[QDBusMethod alloc] initWithClass:targetClass sel:realSelector type:arguments[0] thread:thread];
                     [listenerClassMethod setObject:busMethod forKey:arguments[0]];
                 }
             }

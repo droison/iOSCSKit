@@ -1,5 +1,5 @@
 //
-//  CSBus.h
+//  QDBus.h
 //  CSKit
 //
 //  Created by song on 16/9/19.
@@ -7,20 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CServiceCenter.h"
+#import "QDServiceCenter.h"
 
-typedef Protocol * CSEventKey;
+typedef Protocol * QDEventKey;
 
 
-@protocol CSBusProtocol <NSObject>
+@protocol QDBusProtocol <NSObject>
 
-- (BOOL)registerObserver:(NSObject*)obj protocol:(CSEventKey)oKey ;
-- (BOOL)unRegisterObserver:(NSObject*)obj protocol:(CSEventKey)oKey ;
+- (BOOL)registerObserver:(NSObject*)obj protocol:(QDEventKey)oKey ;
+- (BOOL)unRegisterObserver:(NSObject*)obj protocol:(QDEventKey)oKey ;
 
 - (BOOL)unRegisterObserver:(NSObject*)obj;
 
 //默认所有请求都发送到主线程，如果想改为当前post线程，请该方法用 宏 'BUS_POSTTHREAD_METHOD'包上
-- (id) getReceiver:(CSEventKey)oKey;
+- (id) getReceiver:(QDEventKey)oKey;
 
 //请所有Listenter方法都使用 'BUS_LISTENER_METHOD'宏包上
 //在当前线程调用，如果想在主线程处理，请使用 'BUS_LISTENER_MAIN_METHOD' 宏包上
@@ -30,11 +30,11 @@ typedef Protocol * CSEventKey;
 @end
 
 
-@interface CSBus : CService<CService, CSBusProtocol>
+@interface QDBus : QDService<QDService, QDBusProtocol>
 
 @end
 
-#define DEFAULT_BUS GET_SERVICE(CSBus)
+#define DEFAULT_BUS GET_SERVICE(QDBus)
 
 #define BUS_CONCAT2(A, B) A ## B
 #define BUS_CONCAT(A, B) BUS_CONCAT2(A, B)
@@ -80,7 +80,7 @@ if (__receiver__)  [__receiver__ func]; \
 
 #define SAFEPOST_EVENT(oKey, func) \
 { \
-cs_dispatch_main_async_safe(^{ \
+qd_dispatch_main_async_safe(^{ \
 POST_EVENT(oKey, func); \
 }); \
 }

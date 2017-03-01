@@ -1,5 +1,5 @@
 //
-//  CSEventProxy.h
+//  QDEventProxy.h
 //  CSKit
 //
 //  Created by song on 16/9/19.
@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "CSKitMacro.h"
 
-@class CSBusMethodFinder;
+@class QDBusMethodFinder;
 
-@interface CSEventProxy : NSProxy
-- (instancetype)initWithReceivers:(NSSet *)_receivers methodFinder:(CSBusMethodFinder*) methodFinder;
+@interface QDEventProxy : NSProxy
+- (instancetype)initWithReceivers:(NSSet *)_receivers methodFinder:(QDBusMethodFinder*) methodFinder;
 
 - (BOOL)addReceiver:(id)receicer;
 - (BOOL)removeReceiver:(id)receicer;

@@ -1,12 +1,12 @@
 //
-//  NSURL+CSParams.m
+//  NSURL+QDParams.m
 //  CSKit
 //
 //  Created by song on 2017/1/13.
 //  Copyright © 2017年 Personal. All rights reserved.
 //
 
-#import "NSURL+CSParams.h"
+#import "NSURL+QDParams.h"
 #import <objc/runtime.h>
 
 static void *kURLParametersDictionaryKey;
@@ -105,7 +105,7 @@ NSArray * QHQueryStringPairsFromKeyAndValue(NSString *key, id value) {
     return mutableQueryStringComponents;
 }
 
-@implementation NSURL (CSParams)
+@implementation NSURL (QDParams)
 + (NSURL*) URLWithString:(NSString*) url queryParameters:(NSDictionary*) params {
     NSURL* result;
     if (params == nil || params.count == 0) {
@@ -114,7 +114,7 @@ NSArray * QHQueryStringPairsFromKeyAndValue(NSString *key, id value) {
         NSString* queryString = [NSURL queryStringFromParameters:params];
         result = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", url, queryString]];
     }
-    result.cs_parameters = params;
+    result.qd_parameters = params;
     return result;
 }
 
@@ -151,14 +151,14 @@ NSArray * QHQueryStringPairsFromKeyAndValue(NSString *key, id value) {
         }
     }
     
-    self.cs_parameters = parameters;
+    self.qd_parameters = parameters;
 }
 
-- (NSString *)cs_parameterForKey:(NSString *)key {
-    return self.cs_parameters[key];
+- (NSString *)qd_parameterForKey:(NSString *)key {
+    return self.qd_parameters[key];
 }
 
-- (NSString*)cs_firstPath{
+- (NSString*)qd_firstPath{
     NSArray* paths = [self.path componentsSeparatedByString:@"/"];
     if (paths.count > 1) {
         return paths[1];
@@ -166,7 +166,7 @@ NSArray * QHQueryStringPairsFromKeyAndValue(NSString *key, id value) {
     return [paths firstObject];
 }
 
-- (NSDictionary *)cs_parameters {
+- (NSDictionary *)qd_parameters {
     
     NSDictionary *result = objc_getAssociatedObject(self, &kURLParametersDictionaryKey);
     
@@ -177,7 +177,7 @@ NSArray * QHQueryStringPairsFromKeyAndValue(NSString *key, id value) {
     return objc_getAssociatedObject(self, &kURLParametersDictionaryKey);
 }
 
-- (void)setCs_parameters:(NSDictionary *)parameters {
+- (void)setQd_parameters:(NSDictionary *)parameters {
     objc_setAssociatedObject(self, &kURLParametersDictionaryKey, parameters, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 @end

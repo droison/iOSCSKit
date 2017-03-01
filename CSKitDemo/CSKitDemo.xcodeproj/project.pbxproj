@@ -14,21 +14,21 @@
 		E42E06811E29204E0016F062 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E42E067F1E29204E0016F062 /* Main.storyboard */; };
 		E42E06831E29204E0016F062 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E42E06821E29204E0016F062 /* Assets.xcassets */; };
 		E42E06861E29204E0016F062 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E42E06841E29204E0016F062 /* LaunchScreen.storyboard */; };
-		E42E06A01E2920E60016F062 /* CSBus.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E06901E2920E60016F062 /* CSBus.m */; };
-		E42E06A11E2920E60016F062 /* CSBusListener.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E06921E2920E60016F062 /* CSBusListener.m */; };
-		E42E06A21E2920E60016F062 /* CSBusMethodFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E06941E2920E60016F062 /* CSBusMethodFinder.m */; };
-		E42E06A31E2920E60016F062 /* CSBusParserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E06961E2920E60016F062 /* CSBusParserUtils.m */; };
-		E42E06A41E2920E60016F062 /* CSEventProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E06981E2920E60016F062 /* CSEventProxy.m */; };
-		E42E06A51E2920E60016F062 /* CSRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E069B1E2920E60016F062 /* CSRouter.m */; };
-		E42E06A61E2920E60016F062 /* CServiceCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E069F1E2920E60016F062 /* CServiceCenter.m */; };
-		E42E06A91E2921920016F062 /* NSURL+CSParams.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E06A81E2921920016F062 /* NSURL+CSParams.m */; };
-		E446A2331E54535E00A18A43 /* CSDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E446A2321E54535E00A18A43 /* CSDownloadCache.m */; };
-		E44C5D981E30C594004C5099 /* CSDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D8F1E30C594004C5099 /* CSDownloader.m */; };
-		E44C5D991E30C594004C5099 /* CSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D911E30C594004C5099 /* CSDownloadManager.m */; };
-		E44C5D9A1E30C594004C5099 /* CSDownloadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D931E30C594004C5099 /* CSDownloadModel.m */; };
-		E44C5D9B1E30C594004C5099 /* CSDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D951E30C594004C5099 /* CSDownloadOperation.m */; };
-		E44C5D9C1E30C594004C5099 /* CSNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D971E30C594004C5099 /* CSNetworkReachabilityManager.m */; };
-		E4A6CAF61E581E15002514A4 /* NSString+CSURLParams.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A6CAF51E581E15002514A4 /* NSString+CSURLParams.m */; };
+		E42E06A01E2920E60016F062 /* QDBus.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E06901E2920E60016F062 /* QDBus.m */; };
+		E42E06A11E2920E60016F062 /* QDBusListener.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E06921E2920E60016F062 /* QDBusListener.m */; };
+		E42E06A21E2920E60016F062 /* QDBusMethodFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E06941E2920E60016F062 /* QDBusMethodFinder.m */; };
+		E42E06A31E2920E60016F062 /* QDBusParserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E06961E2920E60016F062 /* QDBusParserUtils.m */; };
+		E42E06A41E2920E60016F062 /* QDEventProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E06981E2920E60016F062 /* QDEventProxy.m */; };
+		E42E06A51E2920E60016F062 /* QDRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E069B1E2920E60016F062 /* QDRouter.m */; };
+		E42E06A61E2920E60016F062 /* QDServiceCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E069F1E2920E60016F062 /* QDServiceCenter.m */; };
+		E42E06A91E2921920016F062 /* NSURL+QDParams.m in Sources */ = {isa = PBXBuildFile; fileRef = E42E06A81E2921920016F062 /* NSURL+QDParams.m */; };
+		E446A2331E54535E00A18A43 /* QDDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E446A2321E54535E00A18A43 /* QDDownloadCache.m */; };
+		E44C5D981E30C594004C5099 /* QDDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D8F1E30C594004C5099 /* QDDownloader.m */; };
+		E44C5D991E30C594004C5099 /* QDDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D911E30C594004C5099 /* QDDownloadManager.m */; };
+		E44C5D9A1E30C594004C5099 /* QDDownloadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D931E30C594004C5099 /* QDDownloadModel.m */; };
+		E44C5D9B1E30C594004C5099 /* QDDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D951E30C594004C5099 /* QDDownloadOperation.m */; };
+		E44C5D9C1E30C594004C5099 /* QDNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E44C5D971E30C594004C5099 /* QDNetworkReachabilityManager.m */; };
+		E4A6CAF61E581E15002514A4 /* NSString+QDURLParams.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A6CAF51E581E15002514A4 /* NSString+QDURLParams.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,38 +44,38 @@
 		E42E06821E29204E0016F062 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E42E06851E29204E0016F062 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E42E06871E29204E0016F062 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E42E068F1E2920E60016F062 /* CSBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSBus.h; sourceTree = "<group>"; };
-		E42E06901E2920E60016F062 /* CSBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSBus.m; sourceTree = "<group>"; };
-		E42E06911E2920E60016F062 /* CSBusListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSBusListener.h; sourceTree = "<group>"; };
-		E42E06921E2920E60016F062 /* CSBusListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSBusListener.m; sourceTree = "<group>"; };
-		E42E06931E2920E60016F062 /* CSBusMethodFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSBusMethodFinder.h; sourceTree = "<group>"; };
-		E42E06941E2920E60016F062 /* CSBusMethodFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSBusMethodFinder.m; sourceTree = "<group>"; };
-		E42E06951E2920E60016F062 /* CSBusParserUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSBusParserUtils.h; sourceTree = "<group>"; };
-		E42E06961E2920E60016F062 /* CSBusParserUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSBusParserUtils.m; sourceTree = "<group>"; };
-		E42E06971E2920E60016F062 /* CSEventProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSEventProxy.h; sourceTree = "<group>"; };
-		E42E06981E2920E60016F062 /* CSEventProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSEventProxy.m; sourceTree = "<group>"; };
-		E42E069A1E2920E60016F062 /* CSRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSRouter.h; sourceTree = "<group>"; };
-		E42E069B1E2920E60016F062 /* CSRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSRouter.m; sourceTree = "<group>"; };
-		E42E069E1E2920E60016F062 /* CServiceCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CServiceCenter.h; sourceTree = "<group>"; };
-		E42E069F1E2920E60016F062 /* CServiceCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CServiceCenter.m; sourceTree = "<group>"; };
-		E42E06A71E2921920016F062 /* NSURL+CSParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+CSParams.h"; sourceTree = "<group>"; };
-		E42E06A81E2921920016F062 /* NSURL+CSParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+CSParams.m"; sourceTree = "<group>"; };
-		E446A2311E54535E00A18A43 /* CSDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSDownloadCache.h; sourceTree = "<group>"; };
-		E446A2321E54535E00A18A43 /* CSDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSDownloadCache.m; sourceTree = "<group>"; };
+		E42E068F1E2920E60016F062 /* QDBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDBus.h; sourceTree = "<group>"; };
+		E42E06901E2920E60016F062 /* QDBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDBus.m; sourceTree = "<group>"; };
+		E42E06911E2920E60016F062 /* QDBusListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDBusListener.h; sourceTree = "<group>"; };
+		E42E06921E2920E60016F062 /* QDBusListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDBusListener.m; sourceTree = "<group>"; };
+		E42E06931E2920E60016F062 /* QDBusMethodFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDBusMethodFinder.h; sourceTree = "<group>"; };
+		E42E06941E2920E60016F062 /* QDBusMethodFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDBusMethodFinder.m; sourceTree = "<group>"; };
+		E42E06951E2920E60016F062 /* QDBusParserUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDBusParserUtils.h; sourceTree = "<group>"; };
+		E42E06961E2920E60016F062 /* QDBusParserUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDBusParserUtils.m; sourceTree = "<group>"; };
+		E42E06971E2920E60016F062 /* QDEventProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDEventProxy.h; sourceTree = "<group>"; };
+		E42E06981E2920E60016F062 /* QDEventProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDEventProxy.m; sourceTree = "<group>"; };
+		E42E069A1E2920E60016F062 /* QDRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDRouter.h; sourceTree = "<group>"; };
+		E42E069B1E2920E60016F062 /* QDRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDRouter.m; sourceTree = "<group>"; };
+		E42E069E1E2920E60016F062 /* QDServiceCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDServiceCenter.h; sourceTree = "<group>"; };
+		E42E069F1E2920E60016F062 /* QDServiceCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDServiceCenter.m; sourceTree = "<group>"; };
+		E42E06A71E2921920016F062 /* NSURL+QDParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+QDParams.h"; sourceTree = "<group>"; };
+		E42E06A81E2921920016F062 /* NSURL+QDParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+QDParams.m"; sourceTree = "<group>"; };
+		E446A2311E54535E00A18A43 /* QDDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDDownloadCache.h; sourceTree = "<group>"; };
+		E446A2321E54535E00A18A43 /* QDDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDDownloadCache.m; sourceTree = "<group>"; };
 		E44C5D8B1E30BD9E004C5099 /* CSKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSKit.h; sourceTree = "<group>"; };
 		E44C5D8C1E30BFBD004C5099 /* CSKitMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSKitMacro.h; sourceTree = "<group>"; };
-		E44C5D8E1E30C594004C5099 /* CSDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSDownloader.h; sourceTree = "<group>"; };
-		E44C5D8F1E30C594004C5099 /* CSDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSDownloader.m; sourceTree = "<group>"; };
-		E44C5D901E30C594004C5099 /* CSDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSDownloadManager.h; sourceTree = "<group>"; };
-		E44C5D911E30C594004C5099 /* CSDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSDownloadManager.m; sourceTree = "<group>"; };
-		E44C5D921E30C594004C5099 /* CSDownloadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSDownloadModel.h; sourceTree = "<group>"; };
-		E44C5D931E30C594004C5099 /* CSDownloadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSDownloadModel.m; sourceTree = "<group>"; };
-		E44C5D941E30C594004C5099 /* CSDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSDownloadOperation.h; sourceTree = "<group>"; };
-		E44C5D951E30C594004C5099 /* CSDownloadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSDownloadOperation.m; sourceTree = "<group>"; };
-		E44C5D961E30C594004C5099 /* CSNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSNetworkReachabilityManager.h; sourceTree = "<group>"; };
-		E44C5D971E30C594004C5099 /* CSNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSNetworkReachabilityManager.m; sourceTree = "<group>"; };
-		E4A6CAF41E581E15002514A4 /* NSString+CSURLParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CSURLParams.h"; sourceTree = "<group>"; };
-		E4A6CAF51E581E15002514A4 /* NSString+CSURLParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CSURLParams.m"; sourceTree = "<group>"; };
+		E44C5D8E1E30C594004C5099 /* QDDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDDownloader.h; sourceTree = "<group>"; };
+		E44C5D8F1E30C594004C5099 /* QDDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDDownloader.m; sourceTree = "<group>"; };
+		E44C5D901E30C594004C5099 /* QDDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDDownloadManager.h; sourceTree = "<group>"; };
+		E44C5D911E30C594004C5099 /* QDDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDDownloadManager.m; sourceTree = "<group>"; };
+		E44C5D921E30C594004C5099 /* QDDownloadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDDownloadModel.h; sourceTree = "<group>"; };
+		E44C5D931E30C594004C5099 /* QDDownloadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDDownloadModel.m; sourceTree = "<group>"; };
+		E44C5D941E30C594004C5099 /* QDDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDDownloadOperation.h; sourceTree = "<group>"; };
+		E44C5D951E30C594004C5099 /* QDDownloadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDDownloadOperation.m; sourceTree = "<group>"; };
+		E44C5D961E30C594004C5099 /* QDNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		E44C5D971E30C594004C5099 /* QDNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		E4A6CAF41E581E15002514A4 /* NSString+QDURLParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QDURLParams.h"; sourceTree = "<group>"; };
+		E4A6CAF51E581E15002514A4 /* NSString+QDURLParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QDURLParams.m"; sourceTree = "<group>"; };
 		FF9426CBE18EC6699235F41B /* libPods-CSKitDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CSKitDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -168,16 +168,16 @@
 		E42E068E1E2920E60016F062 /* Bus */ = {
 			isa = PBXGroup;
 			children = (
-				E42E068F1E2920E60016F062 /* CSBus.h */,
-				E42E06901E2920E60016F062 /* CSBus.m */,
-				E42E06911E2920E60016F062 /* CSBusListener.h */,
-				E42E06921E2920E60016F062 /* CSBusListener.m */,
-				E42E06931E2920E60016F062 /* CSBusMethodFinder.h */,
-				E42E06941E2920E60016F062 /* CSBusMethodFinder.m */,
-				E42E06951E2920E60016F062 /* CSBusParserUtils.h */,
-				E42E06961E2920E60016F062 /* CSBusParserUtils.m */,
-				E42E06971E2920E60016F062 /* CSEventProxy.h */,
-				E42E06981E2920E60016F062 /* CSEventProxy.m */,
+				E42E068F1E2920E60016F062 /* QDBus.h */,
+				E42E06901E2920E60016F062 /* QDBus.m */,
+				E42E06911E2920E60016F062 /* QDBusListener.h */,
+				E42E06921E2920E60016F062 /* QDBusListener.m */,
+				E42E06931E2920E60016F062 /* QDBusMethodFinder.h */,
+				E42E06941E2920E60016F062 /* QDBusMethodFinder.m */,
+				E42E06951E2920E60016F062 /* QDBusParserUtils.h */,
+				E42E06961E2920E60016F062 /* QDBusParserUtils.m */,
+				E42E06971E2920E60016F062 /* QDEventProxy.h */,
+				E42E06981E2920E60016F062 /* QDEventProxy.m */,
 			);
 			path = Bus;
 			sourceTree = "<group>";
@@ -185,12 +185,12 @@
 		E42E06991E2920E60016F062 /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				E42E069A1E2920E60016F062 /* CSRouter.h */,
-				E42E069B1E2920E60016F062 /* CSRouter.m */,
-				E42E06A71E2921920016F062 /* NSURL+CSParams.h */,
-				E42E06A81E2921920016F062 /* NSURL+CSParams.m */,
-				E4A6CAF41E581E15002514A4 /* NSString+CSURLParams.h */,
-				E4A6CAF51E581E15002514A4 /* NSString+CSURLParams.m */,
+				E42E069A1E2920E60016F062 /* QDRouter.h */,
+				E42E069B1E2920E60016F062 /* QDRouter.m */,
+				E42E06A71E2921920016F062 /* NSURL+QDParams.h */,
+				E42E06A81E2921920016F062 /* NSURL+QDParams.m */,
+				E4A6CAF41E581E15002514A4 /* NSString+QDURLParams.h */,
+				E4A6CAF51E581E15002514A4 /* NSString+QDURLParams.m */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -198,8 +198,8 @@
 		E42E069C1E2920E60016F062 /* ServiceCenter */ = {
 			isa = PBXGroup;
 			children = (
-				E42E069E1E2920E60016F062 /* CServiceCenter.h */,
-				E42E069F1E2920E60016F062 /* CServiceCenter.m */,
+				E42E069E1E2920E60016F062 /* QDServiceCenter.h */,
+				E42E069F1E2920E60016F062 /* QDServiceCenter.m */,
 			);
 			path = ServiceCenter;
 			sourceTree = "<group>";
@@ -207,18 +207,18 @@
 		E44C5D8D1E30C594004C5099 /* Download */ = {
 			isa = PBXGroup;
 			children = (
-				E44C5D8E1E30C594004C5099 /* CSDownloader.h */,
-				E44C5D8F1E30C594004C5099 /* CSDownloader.m */,
-				E44C5D901E30C594004C5099 /* CSDownloadManager.h */,
-				E44C5D911E30C594004C5099 /* CSDownloadManager.m */,
-				E44C5D921E30C594004C5099 /* CSDownloadModel.h */,
-				E44C5D931E30C594004C5099 /* CSDownloadModel.m */,
-				E44C5D941E30C594004C5099 /* CSDownloadOperation.h */,
-				E44C5D951E30C594004C5099 /* CSDownloadOperation.m */,
-				E44C5D961E30C594004C5099 /* CSNetworkReachabilityManager.h */,
-				E44C5D971E30C594004C5099 /* CSNetworkReachabilityManager.m */,
-				E446A2311E54535E00A18A43 /* CSDownloadCache.h */,
-				E446A2321E54535E00A18A43 /* CSDownloadCache.m */,
+				E44C5D8E1E30C594004C5099 /* QDDownloader.h */,
+				E44C5D8F1E30C594004C5099 /* QDDownloader.m */,
+				E44C5D901E30C594004C5099 /* QDDownloadManager.h */,
+				E44C5D911E30C594004C5099 /* QDDownloadManager.m */,
+				E44C5D921E30C594004C5099 /* QDDownloadModel.h */,
+				E44C5D931E30C594004C5099 /* QDDownloadModel.m */,
+				E44C5D941E30C594004C5099 /* QDDownloadOperation.h */,
+				E44C5D951E30C594004C5099 /* QDDownloadOperation.m */,
+				E44C5D961E30C594004C5099 /* QDNetworkReachabilityManager.h */,
+				E44C5D971E30C594004C5099 /* QDNetworkReachabilityManager.m */,
+				E446A2311E54535E00A18A43 /* QDDownloadCache.h */,
+				E446A2321E54535E00A18A43 /* QDDownloadCache.m */,
 			);
 			path = Download;
 			sourceTree = "<group>";
@@ -346,24 +346,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E42E06A01E2920E60016F062 /* CSBus.m in Sources */,
-				E42E06A51E2920E60016F062 /* CSRouter.m in Sources */,
+				E42E06A01E2920E60016F062 /* QDBus.m in Sources */,
+				E42E06A51E2920E60016F062 /* QDRouter.m in Sources */,
 				E42E067E1E29204E0016F062 /* ViewController.m in Sources */,
-				E42E06A91E2921920016F062 /* NSURL+CSParams.m in Sources */,
+				E42E06A91E2921920016F062 /* NSURL+QDParams.m in Sources */,
 				E42E067B1E29204E0016F062 /* AppDelegate.m in Sources */,
-				E44C5D9C1E30C594004C5099 /* CSNetworkReachabilityManager.m in Sources */,
-				E446A2331E54535E00A18A43 /* CSDownloadCache.m in Sources */,
-				E42E06A61E2920E60016F062 /* CServiceCenter.m in Sources */,
-				E44C5D981E30C594004C5099 /* CSDownloader.m in Sources */,
-				E42E06A31E2920E60016F062 /* CSBusParserUtils.m in Sources */,
-				E42E06A21E2920E60016F062 /* CSBusMethodFinder.m in Sources */,
-				E42E06A41E2920E60016F062 /* CSEventProxy.m in Sources */,
-				E42E06A11E2920E60016F062 /* CSBusListener.m in Sources */,
-				E44C5D9A1E30C594004C5099 /* CSDownloadModel.m in Sources */,
-				E44C5D991E30C594004C5099 /* CSDownloadManager.m in Sources */,
+				E44C5D9C1E30C594004C5099 /* QDNetworkReachabilityManager.m in Sources */,
+				E446A2331E54535E00A18A43 /* QDDownloadCache.m in Sources */,
+				E42E06A61E2920E60016F062 /* QDServiceCenter.m in Sources */,
+				E44C5D981E30C594004C5099 /* QDDownloader.m in Sources */,
+				E42E06A31E2920E60016F062 /* QDBusParserUtils.m in Sources */,
+				E42E06A21E2920E60016F062 /* QDBusMethodFinder.m in Sources */,
+				E42E06A41E2920E60016F062 /* QDEventProxy.m in Sources */,
+				E42E06A11E2920E60016F062 /* QDBusListener.m in Sources */,
+				E44C5D9A1E30C594004C5099 /* QDDownloadModel.m in Sources */,
+				E44C5D991E30C594004C5099 /* QDDownloadManager.m in Sources */,
 				E42E06781E29204E0016F062 /* main.m in Sources */,
-				E44C5D9B1E30C594004C5099 /* CSDownloadOperation.m in Sources */,
-				E4A6CAF61E581E15002514A4 /* NSString+CSURLParams.m in Sources */,
+				E44C5D9B1E30C594004C5099 /* QDDownloadOperation.m in Sources */,
+				E4A6CAF61E581E15002514A4 /* NSString+QDURLParams.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

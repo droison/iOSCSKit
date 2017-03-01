@@ -1,5 +1,5 @@
 //
-//  CSBusListener.h
+//  QDBusListener.h
 //  CSKit
 //
 //  Created by song on 2016/9/28.
@@ -10,24 +10,24 @@
 #import "CSKitMacro.h"
 
 typedef enum : NSInteger {
-    CSBusThreadMain = 0,
-    CSBusThreadCurrent
-} CSBusThread;
+    QDBusThreadMain = 0,
+    QDBusThreadCurrent
+} QDBusThread;
 
-@interface CSBusMethod : NSObject
+@interface QDBusMethod : NSObject
 @property(nonatomic, assign, readonly) Class cls;
 @property(nonatomic, assign, readonly) SEL selector;
 @property(nonatomic, copy, readonly) NSString* type;
-@property(nonatomic, assign, readonly) CSBusThread thread;
-- (instancetype)initWithClass:(Class)cls sel:(SEL)selector type:(NSString*)type thread:(CSBusThread)thread;
+@property(nonatomic, assign, readonly) QDBusThread thread;
+- (instancetype)initWithClass:(Class)cls sel:(SEL)selector type:(NSString*)type thread:(QDBusThread)thread;
 @end
 
-@interface CSBusListener : NSObject
+@interface QDBusListener : NSObject
 
 @property(nonatomic, strong, readonly) id targetObj;
-@property(nonatomic, strong, readonly) CSBusMethod* method;
+@property(nonatomic, strong, readonly) QDBusMethod* method;
 
-- (instancetype)initWithTarget:(id)target method:(CSBusMethod*)method;
+- (instancetype)initWithTarget:(id)target method:(QDBusMethod*)method;
 - (void)onRegisterListener:(id)obj;
 
 - (void)invalidate;

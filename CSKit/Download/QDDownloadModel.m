@@ -1,16 +1,16 @@
 //
-//  CSDownloadModel.m
+//  QDDownloadModel.m
 //  CSKit
 //
 //  Created by song on 16/5/30.
 //  Copyright © 2017年 Personal. All rights reserved.
 //
 
-#import "CSDownloadModel.h"
-@implementation CSDownloadModel
+#import "QDDownloadModel.h"
+@implementation QDDownloadModel
 
 - (id)copyWithZone:(NSZone *)zone{
-    CSDownloadModel *model = [[[self class] allocWithZone:zone] init];
+    QDDownloadModel *model = [[[self class] allocWithZone:zone] init];
     model.URL = self.URL;
     model.resumeData = self.resumeData;
     model.completeBlocks = self.completeBlocks;
@@ -23,14 +23,14 @@
     return model;
 }
 
-- (NSMutableArray<CSDownloaderCompletedBlock>*) completeBlocks {
+- (NSMutableArray<QDDownloaderCompletedBlock>*) completeBlocks {
     if (_completeBlocks == nil) {
         _completeBlocks = [NSMutableArray array];
     }
     return _completeBlocks;
 }
 
-- (NSMutableArray<CSDownloaderProgressBlock>*) progressBlocks {
+- (NSMutableArray<QDDownloaderProgressBlock>*) progressBlocks {
     if (_progressBlocks == nil) {
         _progressBlocks = [NSMutableArray array];
     }

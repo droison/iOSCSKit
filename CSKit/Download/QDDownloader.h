@@ -1,24 +1,24 @@
 //
-//  CSDownloader.h
+//  QDDownloader.h
 //  CSKit
 //
 //  Created by song on 16/5/30.
 //  Copyright © 2017年 Personal. All rights reserved.
 //
 
-#import "CSDownloadModel.h"
-#import "CServiceCenter.h"
+#import "QDDownloadModel.h"
+#import "QDServiceCenter.h"
 
-typedef NS_OPTIONS(NSUInteger, CSDownloaderOptions) {
+typedef NS_OPTIONS(NSUInteger, QDDownloaderOptions) {
     /**
      *  默认文件下载仅wifi条件才行
      */
-    CSDownloaderAnyNetwork = 1 << 0,
+    QDDownloaderAnyNetwork = 1 << 0,
 };
 
-@class CSDownloadOperation;
+@class QDDownloadOperation;
 
-@interface CSDownloader : CService<CService>
+@interface QDDownloader : QDService<QDService>
 
 /**
  *  下载启动类
@@ -28,12 +28,12 @@ typedef NS_OPTIONS(NSUInteger, CSDownloaderOptions) {
  *  @param progress 下载进度的回调
  *  @param completeBlock 下载结束的回调，成功或者失败
  *
- *  @return CSDownloadOperation
+ *  @return QDDownloadOperation
  */
-- (CSDownloadOperation*) downloadWithURL:(NSURL *)url
-                                 options:(CSDownloaderOptions)options
-                                progress:(CSDownloaderProgressBlock)progress
-                                complete:(CSDownloaderCompletedBlock)completeBlock;
+- (QDDownloadOperation*) downloadWithURL:(NSURL *)url
+                                 options:(QDDownloaderOptions)options
+                                progress:(QDDownloaderProgressBlock)progress
+                                complete:(QDDownloaderCompletedBlock)completeBlock;
 
 /**
  * Sets the download queue suspension state

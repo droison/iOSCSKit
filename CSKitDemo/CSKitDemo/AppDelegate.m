@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CSKitMacro.h"
-#import "CSNetworkReachabilityManager.h"
+#import "QDNetworkReachabilityManager.h"
 
 @interface AppDelegate ()
 
@@ -18,7 +18,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    GET_SERVICE(CSNetworkReachabilityManager);
+    GET_SERVICE(QDNetworkReachabilityManager);
     return YES;
 }
 

@@ -1,15 +1,15 @@
 //
-//  CSRouter.m
+//  QDRouter.m
 //  CSKit
 //
 //  Created by song on 17/1/5.
 //  Copyright © 2017年 Personal. All rights reserved.
 //
 
-#import "CSRouter.h"
+#import "QDRouter.h"
 #import <objc/runtime.h>
-#import "NSURL+CSParams.h"
-#import "NSString+CSURLParams.h"
+#import "NSURL+QDParams.h"
+#import "NSString+QDURLParams.h"
 
 @interface Router : NSObject
 @property(nonatomic, strong) Class viewControllerClass;
@@ -56,11 +56,11 @@ void RouterRegister(Class class, NSString* params, ...)
     [RouterMap setObject:router forKey:routerName];
 }
 
-@implementation CSRouter {
+@implementation QDRouter {
     NSMutableSet* _schemes;
     NSMutableSet* _hosts;
     __weak UINavigationController* _defaultNavigator;
-    CSRouterFail _routeFailBlock;
+    QDRouterFail _routeFailBlock;
 }
 
 -(void)onServiceInit {
@@ -68,7 +68,7 @@ void RouterRegister(Class class, NSString* params, ...)
     _hosts = [NSMutableSet new];
 }
 
--(CSRouter *)addScheme:(NSString *)scheme, ... {
+-(QDRouter *)addScheme:(NSString *)scheme, ... {
     if (scheme) {
         [_schemes addObject:scheme];
         va_list args;
@@ -82,7 +82,7 @@ void RouterRegister(Class class, NSString* params, ...)
     return self;
 }
 
--(CSRouter *)addHost:(NSString *)host, ... {
+-(QDRouter *)addHost:(NSString *)host, ... {
     if (host) {
         [_hosts addObject:host];
         va_list args;
@@ -97,22 +97,22 @@ void RouterRegister(Class class, NSString* params, ...)
 }
 
 
--(CSRouter *)setDefaultNavigation:(UINavigationController *)naviController {
+-(QDRouter *)setDefaultNavigation:(UINavigationController *)naviController {
     _defaultNavigator = naviController;
     return self;
 }
 
--(CSRouter *)setRouteFailBlock:(CSRouterFail)fail {
+-(QDRouter *)setRouteFailBlock:(QDRouterFail)fail {
     _routeFailBlock = fail;
     return self;
 }
 
 - (BOOL) pushURLStr:(NSString*)url navigationController:(UINavigationController*) viewController {
-    return [self pushURL:[url cs_toURL] navigationController:viewController];
+    return [self pushURL:[url qd_toURL] navigationController:viewController];
 }
 
 - (BOOL) presentURLStr:(NSString*)url viewcontroller:(UIViewController*) viewController {
-    return [self presentURL:[url cs_toURL] viewcontroller:viewController];
+    return [self presentURL:[url qd_toURL] viewcontroller:viewController];
 }
 
 - (BOOL) pushURL:(NSURL*)url navigationController:(UINavigationController*) viewController {
@@ -122,11 +122,11 @@ void RouterRegister(Class class, NSString* params, ...)
     if (url) {
         NSString* scheme = url.scheme;
         NSString* host = url.host;
-        NSString* routeName = url.cs_firstPath;
+        NSString* routeName = url.qd_firstPath;
         
         BOOL result = NO;
         if ([self->_schemes containsObject:scheme] && [self->_hosts containsObject:host]) {
-            result = [self push:routeName params:url.cs_parameters navigationController:viewController];
+            result = [self push:routeName params:url.qd_parameters navigationController:viewController];
         }
         if (!result && _routeFailBlock) {
             _routeFailBlock(url, viewController, NO);
@@ -143,11 +143,11 @@ void RouterRegister(Class class, NSString* params, ...)
     if (url) {
         NSString* scheme = url.scheme;
         NSString* host = url.host;
-        NSString* routeName = url.cs_firstPath;
+        NSString* routeName = url.qd_firstPath;
         
         BOOL result;
         if ([self->_schemes containsObject:scheme] && [self->_hosts containsObject:host]) {
-            result = [self present:routeName params:url.cs_parameters viewcontroller:viewController];
+            result = [self present:routeName params:url.qd_parameters viewcontroller:viewController];
         }
         if (!result && _routeFailBlock) {
             _routeFailBlock(url, viewController, YES);
@@ -190,9 +190,9 @@ void RouterRegister(Class class, NSString* params, ...)
     if (url) {
         NSString* scheme = url.scheme;
         NSString* host = url.host;
-        NSString* routeName = url.cs_firstPath;
+        NSString* routeName = url.qd_firstPath;
         if ([self->_schemes containsObject:scheme] && [self->_hosts containsObject:host]) {
-            return [self matchViewController:routeName params:url.cs_parameters];
+            return [self matchViewController:routeName params:url.qd_parameters];
         }
     }
     return nil;

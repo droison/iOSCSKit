@@ -7,22 +7,31 @@
 //
 
 #import "ViewController.h"
-#import "CSDownloadManager.h"
-#import "CSNetworkReachabilityManager.h"
-#import "CSBus.h"
-
+#import "QDDownloadManager.h"
+#import "QDNetworkReachabilityManager.h"
+#import "QDBus.h"
+#import "QDRouter.h"
 @interface ViewController ()<CSNetWorkChangeExt>
 
 @end
 
 @implementation ViewController
+ROUTER_REGISTER(@"sdadsa");
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    REGISTER_OBSERVER(CSNetWorkChangeExt, self);
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://app3.qdaily.com/app3/options/mob_create_praise?option_id=%20169272&genre=1"]] queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        NSDictionary *result= [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSLog(@"%@", result);
+        
+    }];
 }
 
-- (void)changeStatusFrom:(CSNetworkReachabilityStatus)from to:(CSNetworkReachabilityStatus)to {
+- (void)changeStatusFrom:(QDNetworkReachabilityStatus)from to:(QDNetworkReachabilityStatus)to {
+    NSString* string = @"qdaily://native/detail?key=chai%20song%E6%9F%B4%E6%B7%9E&value=1";
+    
+    
     NSArray* urlArray = @[@"http://app3.qdaily.com/assets/qdaily/injection/jsbridge-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js",
                           @"http://app3.qdaily.com/assets/app3/common-e97a9a5c289575d150cfd2c140388afc867a61855af66c5fda6543f87509b964.js",
                           @"http://app3.qdaily.com/assets/app3/articles/show-1484e7b1b37857f6c9d02c5a2e6a9a20c935263f1d22a5234113a93bfa64188c.js",
@@ -55,7 +64,7 @@
                           @"http://img.qdaily.com/article/article_show/20160606154933l3S12OvwfUGozAxr.jpg?imageMogr2/auto-orient/thumbnail/!640x380r/gravity/Center/crop/640x380/quality/85/format/jpg/ignore-error/1"];
     
     for (NSString* strUrl in urlArray) {
-        [GET_SERVICE(CSDownloadManager) downloadWithURL:[NSURL URLWithString:strUrl] options:(CSDownloadMgrAnyNetwork) progress:nil complete:^(NSString *localPath, NSError *error, BOOL finished) {
+        [GET_SERVICE(QDDownloadManager) downloadWithURL:[NSURL URLWithString:strUrl] options:(QDDownloadMgrAnyNetwork) progress:nil complete:^(NSString *localPath, NSError *error, BOOL finished) {
             if (finished && localPath) {
                 CSLog(@"文件下载成功，地址为：%@", localPath);
             } else {

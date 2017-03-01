@@ -1,19 +1,19 @@
 //
-//  CSEventProxy.m
+//  QDEventProxy.m
 //  CSKit
 //
 //  Created by song on 16/9/19.
 //  Copyright © 2017年 Personal. All rights reserved.
 //
 
-#import "CSEventProxy.h"
-#import "CSBusMethodFinder.h"
+#import "QDEventProxy.h"
+#import "QDBusMethodFinder.h"
 
-@interface CSEventDefaultReceiver : NSObject
+@interface QDEventDefaultReceiver : NSObject
 - (id)__magicSelector:(id)a b:(id)b c:(id)c d:(id)d e:(id)e f:(id)f g:(id)g h:(id)h i:(id)i j:(id)j k:(id)k l:(id)l m:(id)m;
 @end
 
-@implementation CSEventDefaultReceiver
+@implementation QDEventDefaultReceiver
 
 - (id)__magicSelector:(id)a b:(id)b c:(id)c d:(id)d e:(id)e f:(id)f g:(id)g h:(id)h i:(id)i j:(id)j k:(id)k l:(id)l m:(id)m {
     return nil;
@@ -21,13 +21,13 @@
 
 @end
 
-@implementation CSEventProxy {
+@implementation QDEventProxy {
     NSHashTable* _receivers;;
-    CSBusMethodFinder* _methodFinder;
+    QDBusMethodFinder* _methodFinder;
     BOOL _valid;
 }
 
-- (instancetype ) initWithReceivers:(NSSet *)receivers methodFinder:(CSBusMethodFinder*) methodFinder{
+- (instancetype ) initWithReceivers:(NSSet *)receivers methodFinder:(QDBusMethodFinder*) methodFinder{
     _receivers = [NSHashTable weakObjectsHashTable];
     for (id receiver in receivers) {
         [_receivers addObject:receiver];
@@ -43,7 +43,7 @@
     for (id obj in currentReceiver) {
         if ([obj respondsToSelector:anInvocation.selector]) {
             if ([self needMainThread:obj selector:anInvocation.selector]) {
-                cs_dispatch_main_sync_safe(^{ //同步调用
+                qd_dispatch_main_sync_safe(^{ //同步调用
                     [anInvocation setTarget:obj];
                     [anInvocation invoke];
                 });
@@ -63,7 +63,7 @@
     static dispatch_once_t once;
     static NSMethodSignature* ms = nil;
     dispatch_once(&once, ^{
-        ms = [[[CSEventDefaultReceiver alloc]init] methodSignatureForSelector:@selector(__magicSelector:b:c:d:e:f:g:h:i:j:k:l:m:)];
+        ms = [[[QDEventDefaultReceiver alloc]init] methodSignatureForSelector:@selector(__magicSelector:b:c:d:e:f:g:h:i:j:k:l:m:)];
     });
     return ms;
 }

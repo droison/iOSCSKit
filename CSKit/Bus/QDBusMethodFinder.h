@@ -1,5 +1,5 @@
 //
-//  CSBusMethodFinder.h
+//  QDBusMethodFinder.h
 //  CSKit
 //
 //  Created by song on 2016/9/28.
@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CSBusListener.h"
+#import "QDBusListener.h"
 
-@interface CSBusMethodFinder : NSObject
+@interface QDBusMethodFinder : NSObject
 - (NSSet<NSString*>*)getPostThread:(id) obj;
 
 //key为入参type 
-- (NSDictionary<NSString*, CSBusListener*>*)getBusListener:(id) obj;
+- (NSDictionary<NSString*, QDBusListener*>*)getBusListener:(id) obj;
 @end

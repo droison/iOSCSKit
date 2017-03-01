@@ -1,16 +1,16 @@
 //
-//  CSNetworkReachabilityManager.m
+//  QDNetworkReachabilityManager.m
 //  CSKit
 //
 //  Created by song on 16/8/4.
 //  Copyright © 2017年 Personal. All rights reserved.
 //
 
-#import "CSNetworkReachabilityManager.h"
+#import "QDNetworkReachabilityManager.h"
 #import <AFNetWorking/AFNetworkReachabilityManager.h>
-#import "CSBus.h"
+#import "QDBus.h"
 
-@implementation CSNetworkReachabilityManager {
+@implementation QDNetworkReachabilityManager {
     AFNetworkReachabilityManager *_reachabilityManager;
 
 }
@@ -30,20 +30,20 @@
 }
 
 - (void)networkReachabilityStatusChanged:(NSNotification *)notification {
-    CSNetworkReachabilityStatus last = _networkReachabilityStatus;
+    QDNetworkReachabilityStatus last = _networkReachabilityStatus;
     _networkReachabilityStatus = [[notification.userInfo objectForKey:AFNetworkingReachabilityNotificationStatusItem] integerValue];
     POST_EVENT(CSNetWorkChangeExt, changeStatusFrom:last to:_networkReachabilityStatus);
 }
 
 - (BOOL)isReachable {
-    return _networkReachabilityStatus != CSNetworkReachabilityStatusNotReachable;
+    return _networkReachabilityStatus != QDNetworkReachabilityStatusNotReachable;
 }
 
 - (BOOL)isReachableViaWiFi {
-    return _networkReachabilityStatus == CSNetworkReachabilityStatusReachableViaWiFi;
+    return _networkReachabilityStatus == QDNetworkReachabilityStatusReachableViaWiFi;
 }
 
 - (BOOL)isReachableViaWWAN {
-    return _networkReachabilityStatus == CSNetworkReachabilityStatusReachableViaWWAN;
+    return _networkReachabilityStatus == QDNetworkReachabilityStatusReachableViaWWAN;
 }
 @end

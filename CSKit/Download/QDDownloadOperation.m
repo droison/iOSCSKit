@@ -1,13 +1,13 @@
 //
-//  CSDownloadOperation.m
+//  QDDownloadOperation.m
 //  CSKit
 //
 //  Created by song on 16/5/30.
 //  Copyright © 2017年 Personal. All rights reserved.
 //
 
-#import "CSDownloadOperation.h"
-#import "CSDownloadModel.h"
+#import "QDDownloadOperation.h"
+#import "QDDownloadModel.h"
 #import <objc/runtime.h>
 
 #define kKVOBlock(KEYPATH, BLOCK) \
@@ -17,7 +17,7 @@ BLOCK(); \
 
 static NSTimeInterval kTimeoutInterval = 8.0;
 
-@interface CSDownloadOperation () {
+@interface QDDownloadOperation () {
     BOOL _cancel;
 }
 
@@ -26,9 +26,9 @@ static NSTimeInterval kTimeoutInterval = 8.0;
 
 @end
 
-@implementation CSDownloadOperation
+@implementation QDDownloadOperation
 
-- (instancetype)initWithModel:(CSDownloadModel *)model session:(NSURLSession *)session {
+- (instancetype)initWithModel:(QDDownloadModel *)model session:(NSURLSession *)session {
     if (self = [super init]) {
         self.model = model;
         self.session = session;

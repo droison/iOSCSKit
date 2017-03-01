@@ -1,12 +1,12 @@
 //
-//  CServiceCenter.m
+//  QDServiceCenter.m
 //  CSKit
 //
 //  Created by song on 14/11/12.
 //  Copyright (c) 2017年 Personal. All rights reserved.
 //
 
-#import "CServiceCenter.h"
+#import "QDServiceCenter.h"
 
 static NSMutableArray<Class> *CSInitClasses;
 NSArray<Class> *CSGetInitClasses(void);
@@ -31,7 +31,7 @@ void CSRegisterInit(Class moduleClass)
 }
 
 
-@implementation CService
+@implementation QDService
 @synthesize m_isServiceRemoved;
 @synthesize m_isServiceUnPersistent;
 
@@ -41,37 +41,37 @@ void CSRegisterInit(Class moduleClass)
 
 @end
 
-@implementation CServiceCenter {
-    NSMutableDictionary *_diCService;
+@implementation QDServiceCenter {
+    NSMutableDictionary *_diQDService;
 }
 
 - (instancetype) init
 {
     if(self = [super init])
     {
-        CSLog(@"CServiceCenter -- Create service center");
-        _diCService = [[NSMutableDictionary alloc] init];
+        CSLog(@"QDServiceCenter -- Create service center");
+        _diQDService = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 
 - (void) dealloc
 {
-    if(_diCService != nil)
+    if(_diQDService != nil)
     {
-        CSLog(@"CServiceCenter -- dealloc service center");
-        _diCService = nil;
+        CSLog(@"QDServiceCenter -- dealloc service center");
+        _diQDService = nil;
     }
 }
-static CServiceCenter* g_ServiceCenter;
+static QDServiceCenter* g_ServiceCenter;
 
-+(CServiceCenter *) defaultCenter
++(QDServiceCenter *) defaultCenter
 {
     // 由app管理本类的生命周期; 此处不实用dispatch_once的原因在于希望强制主线程初始化
     if (g_ServiceCenter == nil) { //初次判断，提高效率
-        cs_dispatch_main_sync_safe(^{
+        qd_dispatch_main_sync_safe(^{
             if (g_ServiceCenter == nil) { // 二次判断，在相同线程，避免出问题
-                g_ServiceCenter = [[CServiceCenter alloc] init];
+                g_ServiceCenter = [[QDServiceCenter alloc] init];
                 for (Class moduleClass in CSGetInitClasses()) {
                     [g_ServiceCenter getService:moduleClass];
                 }
@@ -83,17 +83,17 @@ static CServiceCenter* g_ServiceCenter;
 
 -(id) getService:(Class) cls
 {
-    NSAssert([cls conformsToProtocol:@protocol(CService)], @"%@ does not conform to the CService protocol", cls);
-    NSAssert([cls isSubclassOfClass:[CService class]], @"%@ is not a CService", cls);
+    NSAssert([cls conformsToProtocol:@protocol(QDService)], @"%@ does not conform to the QDService protocol", cls);
+    NSAssert([cls isSubclassOfClass:[QDService class]], @"%@ is not a QDService", cls);
 
-    __block id obj = [_diCService objectForKey:[cls description]];
+    __block id obj = [_diQDService objectForKey:[cls description]];
     if (obj == nil)
     {
-        cs_dispatch_main_sync_safe(^{
+        qd_dispatch_main_sync_safe(^{
             obj = [[cls alloc] init];
-            [_diCService setObject:obj forKey:[cls description]];
+            [_diQDService setObject:obj forKey:[cls description]];
             
-            CSLog(@"CServiceCenter -- Create service object: %@", obj);
+            CSLog(@"QDServiceCenter -- Create service object: %@", obj);
             
             // call init
             if ([obj respondsToSelector:@selector(onServiceInit)])
@@ -109,8 +109,8 @@ static CServiceCenter* g_ServiceCenter;
 
 -(void) removeService:(Class) cls
 {
-    cs_dispatch_main_async_safe(^{
-        CService<CService>* obj = [_diCService objectForKey:[cls description]];
+    qd_dispatch_main_async_safe(^{
+        QDService<QDService>* obj = [_diQDService objectForKey:[cls description]];
         if (obj == nil)
         {
             return ;
@@ -119,7 +119,7 @@ static CServiceCenter* g_ServiceCenter;
         {
             [obj onServiceTerminate];
         }
-        [_diCService removeObjectForKey:[cls description]];
+        [_diQDService removeObjectForKey:[cls description]];
         obj.m_isServiceRemoved = YES;
         obj = nil;
     });
@@ -127,8 +127,8 @@ static CServiceCenter* g_ServiceCenter;
 
 -(void) callEnterForeground
 {
-    cs_dispatch_main_async_safe(^{
-        NSArray *aryCopy = [_diCService allValues];
+    qd_dispatch_main_async_safe(^{
+        NSArray *aryCopy = [_diQDService allValues];
         for(id obj in aryCopy)
         {
             if ([obj respondsToSelector:@selector(onServiceEnterForeground)])
@@ -141,8 +141,8 @@ static CServiceCenter* g_ServiceCenter;
 
 -(void) callEnterBackground
 {
-    cs_dispatch_main_async_safe(^{
-        NSArray *aryCopy = [_diCService allValues];
+    qd_dispatch_main_async_safe(^{
+        NSArray *aryCopy = [_diQDService allValues];
         for(id obj in aryCopy)
         {
             if ([obj respondsToSelector:@selector(onServiceEnterBackground)])
@@ -155,8 +155,8 @@ static CServiceCenter* g_ServiceCenter;
 
 -(void) callTerminate
 {
-    cs_dispatch_main_async_safe(^{
-        NSArray *aryCopy = [_diCService allValues];
+    qd_dispatch_main_async_safe(^{
+        NSArray *aryCopy = [_diQDService allValues];
         for(id obj in aryCopy)
         {
             if ([obj respondsToSelector:@selector(onServiceTerminate)])
@@ -164,14 +164,14 @@ static CServiceCenter* g_ServiceCenter;
                 [obj onServiceTerminate];
             }
         }
-        [_diCService removeAllObjects];
+        [_diQDService removeAllObjects];
     });
 }
 
 -(void) callServiceMemoryWarning
 {
-    cs_dispatch_main_async_safe(^{
-        NSArray *aryCopy = [_diCService allValues];
+    qd_dispatch_main_async_safe(^{
+        NSArray *aryCopy = [_diQDService allValues];
         for(id obj in aryCopy)
         {
             if ([obj respondsToSelector:@selector(onServiceMemoryWarning)])
@@ -184,8 +184,8 @@ static CServiceCenter* g_ServiceCenter;
 
 -(void) callReloadData
 {
-    cs_dispatch_main_async_safe(^{
-        NSArray *aryCopy = [_diCService allValues];
+    qd_dispatch_main_async_safe(^{
+        NSArray *aryCopy = [_diQDService allValues];
         for(id obj in aryCopy)
         {
             if ([obj respondsToSelector:@selector(onServiceReloadData)])
@@ -198,10 +198,10 @@ static CServiceCenter* g_ServiceCenter;
 
 -(void) callClearData
 {
-    cs_dispatch_main_async_safe(^{
-        NSArray *aryCopy = [_diCService allValues];
+    qd_dispatch_main_async_safe(^{
+        NSArray *aryCopy = [_diQDService allValues];
         
-        for(CService<CService>* obj in aryCopy)
+        for(QDService<QDService>* obj in aryCopy)
         {
             if ([obj respondsToSelector:@selector(onServiceClearData)])
             {

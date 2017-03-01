@@ -1,16 +1,16 @@
 //
-//  CSBusListener.m
+//  QDBusListener.m
 //  CSKit
 //
 //  Created by song on 2016/9/28.
 //  Copyright © 2017年 Personal. All rights reserved.
 //
 
-#import "CSBusListener.h"
+#import "QDBusListener.h"
 
-@implementation CSBusMethod
+@implementation QDBusMethod
 
-- (instancetype)initWithClass:(Class)cls sel:(SEL)selector type:(NSString *)type thread:(CSBusThread)thread {
+- (instancetype)initWithClass:(Class)cls sel:(SEL)selector type:(NSString *)type thread:(QDBusThread)thread {
     if (self = [super init]) {
         _cls = cls;
         _selector = selector;
@@ -26,12 +26,12 @@
 
 @end
 
-@implementation CSBusListener {
+@implementation QDBusListener {
     NSUInteger _hashCode;
     BOOL _valid;
 }
 
-- (instancetype)initWithTarget:(id)target method:(CSBusMethod *)method{
+- (instancetype)initWithTarget:(id)target method:(QDBusMethod *)method{
     if (self = [super init]) {
         _targetObj = target;
         _method = method;
@@ -53,8 +53,8 @@
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 
     if ([_targetObj respondsToSelector:_method.selector]) {
-        if (_method.thread == CSBusThreadMain) {
-            cs_dispatch_main_sync_safe(^(){
+        if (_method.thread == QDBusThreadMain) {
+            qd_dispatch_main_sync_safe(^(){
                 if (_valid) {
                     [_targetObj performSelector:_method.selector withObject:obj];
                 }
@@ -78,7 +78,7 @@
     return _hashCode;
 }
 
-- (BOOL)isEqual:(CSBusListener *)object {
+- (BOOL)isEqual:(QDBusListener *)object {
     if (self == object) return YES;
     if (![object isMemberOfClass:[self class]]) return NO;
     

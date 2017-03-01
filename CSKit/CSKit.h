@@ -10,10 +10,10 @@
 #define _CSKit_
 
     #import "CSKitMacro.h"
-    #import "CServiceCenter.h"
-    #import "CSNetworkReachabilityManager.h"
-    #import "CSRouter.h"
-    #import "CSBus.h"
-    #import "CSDownloadManager.h"
+    #import "QDServiceCenter.h"
+    #import "QDNetworkReachabilityManager.h"
+    #import "QDRouter.h"
+    #import "QDBus.h"
+    #import "QDDownloadManager.h"
 
 #endif /* _CSKit_ */

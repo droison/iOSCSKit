@@ -1,28 +1,28 @@
 //
-//  CSDownloadCache.m
+//  QDDownloadCache.m
 //  CSKitDemo
 //
 //  Created by song on 2017/2/15.
 //  Copyright © 2017年 Personal. All rights reserved.
 //
 
-#import "CSDownloadCache.h"
+#import "QDDownloadCache.h"
 #import "CSYYCache/YYDiskFileCache.h"
 #import <CommonCrypto/CommonDigest.h>
 
-@implementation CSDownloadCache {
+@implementation QDDownloadCache {
     YYDiskFileCache* _cache;
 }
 @synthesize maxFileSize = _maxFileSize;
 @synthesize maxFileCount = _maxFileCount;
 
-+(CSDownloadCache *)defaultCache {
-    return GET_SERVICE(CSDownloadCache);
++(QDDownloadCache *)defaultCache {
+    return GET_SERVICE(QDDownloadCache);
 }
 
 -(void)onServiceInit {
     NSString *cacheFolder = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *path = [cacheFolder stringByAppendingPathComponent:@"CSDownloadCache"];
+    NSString *path = [cacheFolder stringByAppendingPathComponent:@"QDDownloadCache"];
     self->_cache = [[YYDiskFileCache alloc] initWithPath:path]; //以20K为分界  20k以下用sql 20k以上为文件
     self.maxFileSize = 200*1024*1024;
     self.maxFileCount = 1000;

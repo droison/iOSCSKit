@@ -1,14 +1,14 @@
 //
-//  CSBusParserUtils.m
+//  QDBusParserUtils.m
 //  CSKit
 //
 //  Created by song on 16/11/28.
 //  Copyright © 2017年 Personal. All rights reserved.
 //
 
-#import "CSBusParserUtils.h"
+#import "QDBusParserUtils.h"
 
-@implementation CSBusParserUtils
+@implementation QDBusParserUtils
 
 BOOL CSReadChar(const char **input, char c)
 {
@@ -90,7 +90,7 @@ NSString *QParseType(const char **input)
                 // Dictionaries have both a key *and* value type, but the key type has
                 // to be a string for JSON, so we only care about the value type
                 if (![subtype isEqualToString:@"NSString"]) {
-                    CSLog(@"CSBusParserUtils -- %@ is not a valid key type for a JSON dictionary", subtype);
+                    CSLog(@"QDBusParserUtils -- %@ is not a valid key type for a JSON dictionary", subtype);
                 }
                 CSkipWhitespace(input);
                 CSReadChar(input, ',');
