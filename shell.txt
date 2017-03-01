@@ -3,4 +3,4 @@
 Total 0 (delta 0), reused 0 (delta 0)
 To https://github.com/droison/iOSCSKit.git
  * [new tag]         0.0.4 -> 0.0.4
-➜  CSKit git:(master) pod trunk push iOSCSKit.podspec --allow-warnings
+➜  CSKit git:(master) pod trunk push QDKit.podspec --allow-warnings
