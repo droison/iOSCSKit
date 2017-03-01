@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		185AA321FA33988C1CBBB677 /* libPods-QDKitDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74F06B1586C3E1AE3AA49CFB /* libPods-QDKitDemo.a */; };
+		E49393791E668F4300188D6B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393781E668F4300188D6B /* main.m */; };
+		E493937C1E668F4300188D6B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E493937B1E668F4300188D6B /* AppDelegate.m */; };
+		E493937F1E668F4300188D6B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E493937E1E668F4300188D6B /* ViewController.m */; };
+		E49393821E668F4300188D6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E49393801E668F4300188D6B /* Main.storyboard */; };
+		E49393841E668F4300188D6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E49393831E668F4300188D6B /* Assets.xcassets */; };
+		E49393871E668F4300188D6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E49393851E668F4300188D6B /* LaunchScreen.storyboard */; };
+		E49393B41E668F5100188D6B /* QDBus.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393911E668F5100188D6B /* QDBus.m */; };
+		E49393B51E668F5100188D6B /* QDBusListener.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393931E668F5100188D6B /* QDBusListener.m */; };
+		E49393B61E668F5100188D6B /* QDBusMethodFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393951E668F5100188D6B /* QDBusMethodFinder.m */; };
+		E49393B71E668F5100188D6B /* QDBusParserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393971E668F5100188D6B /* QDBusParserUtils.m */; };
+		E49393B81E668F5100188D6B /* QDEventProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393991E668F5100188D6B /* QDEventProxy.m */; };
+		E49393B91E668F5100188D6B /* QDDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E493939D1E668F5100188D6B /* QDDownloadCache.m */; };
+		E49393BA1E668F5100188D6B /* QDDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E493939F1E668F5100188D6B /* QDDownloader.m */; };
+		E49393BB1E668F5100188D6B /* QDDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393A11E668F5100188D6B /* QDDownloadManager.m */; };
+		E49393BC1E668F5100188D6B /* QDDownloadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393A31E668F5100188D6B /* QDDownloadModel.m */; };
+		E49393BD1E668F5100188D6B /* QDDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393A51E668F5100188D6B /* QDDownloadOperation.m */; };
+		E49393BE1E668F5100188D6B /* QDNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393A71E668F5100188D6B /* QDNetworkReachabilityManager.m */; };
+		E49393BF1E668F5100188D6B /* NSString+QDURLParams.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393AC1E668F5100188D6B /* NSString+QDURLParams.m */; };
+		E49393C01E668F5100188D6B /* NSURL+QDParams.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393AE1E668F5100188D6B /* NSURL+QDParams.m */; };
+		E49393C11E668F5100188D6B /* QDRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393B01E668F5100188D6B /* QDRouter.m */; };
+		E49393C21E668F5100188D6B /* QDServiceCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393B31E668F5100188D6B /* QDServiceCenter.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2D88C87774D0AEA1AC70AE56 /* Pods-QDKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QDKitDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QDKitDemo/Pods-QDKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		2F5C1D7D4105A39DBE87BEBB /* Pods-QDKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QDKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-QDKitDemo/Pods-QDKitDemo.release.xcconfig"; sourceTree = "<group>"; };
+		74F06B1586C3E1AE3AA49CFB /* libPods-QDKitDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QDKitDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E49393741E668F4300188D6B /* QDKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QDKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E49393781E668F4300188D6B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E493937A1E668F4300188D6B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E493937B1E668F4300188D6B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E493937D1E668F4300188D6B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E493937E1E668F4300188D6B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E49393811E668F4300188D6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E49393831E668F4300188D6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E49393861E668F4300188D6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E49393881E668F4300188D6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E49393901E668F5100188D6B /* QDBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDBus.h; sourceTree = "<group>"; };
+		E49393911E668F5100188D6B /* QDBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDBus.m; sourceTree = "<group>"; };
+		E49393921E668F5100188D6B /* QDBusListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDBusListener.h; sourceTree = "<group>"; };
+		E49393931E668F5100188D6B /* QDBusListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDBusListener.m; sourceTree = "<group>"; };
+		E49393941E668F5100188D6B /* QDBusMethodFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDBusMethodFinder.h; sourceTree = "<group>"; };
+		E49393951E668F5100188D6B /* QDBusMethodFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDBusMethodFinder.m; sourceTree = "<group>"; };
+		E49393961E668F5100188D6B /* QDBusParserUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDBusParserUtils.h; sourceTree = "<group>"; };
+		E49393971E668F5100188D6B /* QDBusParserUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDBusParserUtils.m; sourceTree = "<group>"; };
+		E49393981E668F5100188D6B /* QDEventProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDEventProxy.h; sourceTree = "<group>"; };
+		E49393991E668F5100188D6B /* QDEventProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDEventProxy.m; sourceTree = "<group>"; };
+		E493939C1E668F5100188D6B /* QDDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDDownloadCache.h; sourceTree = "<group>"; };
+		E493939D1E668F5100188D6B /* QDDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDDownloadCache.m; sourceTree = "<group>"; };
+		E493939E1E668F5100188D6B /* QDDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDDownloader.h; sourceTree = "<group>"; };
+		E493939F1E668F5100188D6B /* QDDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDDownloader.m; sourceTree = "<group>"; };
+		E49393A01E668F5100188D6B /* QDDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDDownloadManager.h; sourceTree = "<group>"; };
+		E49393A11E668F5100188D6B /* QDDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDDownloadManager.m; sourceTree = "<group>"; };
+		E49393A21E668F5100188D6B /* QDDownloadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDDownloadModel.h; sourceTree = "<group>"; };
+		E49393A31E668F5100188D6B /* QDDownloadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDDownloadModel.m; sourceTree = "<group>"; };
+		E49393A41E668F5100188D6B /* QDDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDDownloadOperation.h; sourceTree = "<group>"; };
+		E49393A51E668F5100188D6B /* QDDownloadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDDownloadOperation.m; sourceTree = "<group>"; };
+		E49393A61E668F5100188D6B /* QDNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		E49393A71E668F5100188D6B /* QDNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		E49393A81E668F5100188D6B /* QDKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDKit.h; sourceTree = "<group>"; };
+		E49393A91E668F5100188D6B /* QDKitMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDKitMacro.h; sourceTree = "<group>"; };
+		E49393AB1E668F5100188D6B /* NSString+QDURLParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QDURLParams.h"; sourceTree = "<group>"; };
+		E49393AC1E668F5100188D6B /* NSString+QDURLParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QDURLParams.m"; sourceTree = "<group>"; };
+		E49393AD1E668F5100188D6B /* NSURL+QDParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+QDParams.h"; sourceTree = "<group>"; };
+		E49393AE1E668F5100188D6B /* NSURL+QDParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+QDParams.m"; sourceTree = "<group>"; };
+		E49393AF1E668F5100188D6B /* QDRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDRouter.h; sourceTree = "<group>"; };
+		E49393B01E668F5100188D6B /* QDRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDRouter.m; sourceTree = "<group>"; };
+		E49393B21E668F5100188D6B /* QDServiceCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDServiceCenter.h; sourceTree = "<group>"; };
+		E49393B31E668F5100188D6B /* QDServiceCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDServiceCenter.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E49393711E668F4300188D6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				185AA321FA33988C1CBBB677 /* libPods-QDKitDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		834342833C3A5BF6738A8930 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2D88C87774D0AEA1AC70AE56 /* Pods-QDKitDemo.debug.xcconfig */,
+				2F5C1D7D4105A39DBE87BEBB /* Pods-QDKitDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B3797716601EED74B251824B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74F06B1586C3E1AE3AA49CFB /* libPods-QDKitDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E493936B1E668F4300188D6B = {
+			isa = PBXGroup;
+			children = (
+				E493938E1E668F5100188D6B /* QDKit */,
+				E49393761E668F4300188D6B /* QDKitDemo */,
+				E49393751E668F4300188D6B /* Products */,
+				834342833C3A5BF6738A8930 /* Pods */,
+				B3797716601EED74B251824B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E49393751E668F4300188D6B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E49393741E668F4300188D6B /* QDKitDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E49393761E668F4300188D6B /* QDKitDemo */ = {
+			isa = PBXGroup;
+			children = (
+				E493937A1E668F4300188D6B /* AppDelegate.h */,
+				E493937B1E668F4300188D6B /* AppDelegate.m */,
+				E493937D1E668F4300188D6B /* ViewController.h */,
+				E493937E1E668F4300188D6B /* ViewController.m */,
+				E49393801E668F4300188D6B /* Main.storyboard */,
+				E49393831E668F4300188D6B /* Assets.xcassets */,
+				E49393851E668F4300188D6B /* LaunchScreen.storyboard */,
+				E49393881E668F4300188D6B /* Info.plist */,
+				E49393771E668F4300188D6B /* Supporting Files */,
+			);
+			path = QDKitDemo;
+			sourceTree = "<group>";
+		};
+		E49393771E668F4300188D6B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E49393781E668F4300188D6B /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E493938E1E668F5100188D6B /* QDKit */ = {
+			isa = PBXGroup;
+			children = (
+				E493938F1E668F5100188D6B /* Bus */,
+				E493939A1E668F5100188D6B /* Cache */,
+				E493939B1E668F5100188D6B /* Download */,
+				E49393A81E668F5100188D6B /* QDKit.h */,
+				E49393A91E668F5100188D6B /* QDKitMacro.h */,
+				E49393AA1E668F5100188D6B /* Router */,
+				E49393B11E668F5100188D6B /* ServiceCenter */,
+			);
+			name = QDKit;
+			path = ../QDKit;
+			sourceTree = "<group>";
+		};
+		E493938F1E668F5100188D6B /* Bus */ = {
+			isa = PBXGroup;
+			children = (
+				E49393901E668F5100188D6B /* QDBus.h */,
+				E49393911E668F5100188D6B /* QDBus.m */,
+				E49393921E668F5100188D6B /* QDBusListener.h */,
+				E49393931E668F5100188D6B /* QDBusListener.m */,
+				E49393941E668F5100188D6B /* QDBusMethodFinder.h */,
+				E49393951E668F5100188D6B /* QDBusMethodFinder.m */,
+				E49393961E668F5100188D6B /* QDBusParserUtils.h */,
+				E49393971E668F5100188D6B /* QDBusParserUtils.m */,
+				E49393981E668F5100188D6B /* QDEventProxy.h */,
+				E49393991E668F5100188D6B /* QDEventProxy.m */,
+			);
+			path = Bus;
+			sourceTree = "<group>";
+		};
+		E493939A1E668F5100188D6B /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		E493939B1E668F5100188D6B /* Download */ = {
+			isa = PBXGroup;
+			children = (
+				E493939C1E668F5100188D6B /* QDDownloadCache.h */,
+				E493939D1E668F5100188D6B /* QDDownloadCache.m */,
+				E493939E1E668F5100188D6B /* QDDownloader.h */,
+				E493939F1E668F5100188D6B /* QDDownloader.m */,
+				E49393A01E668F5100188D6B /* QDDownloadManager.h */,
+				E49393A11E668F5100188D6B /* QDDownloadManager.m */,
+				E49393A21E668F5100188D6B /* QDDownloadModel.h */,
+				E49393A31E668F5100188D6B /* QDDownloadModel.m */,
+				E49393A41E668F5100188D6B /* QDDownloadOperation.h */,
+				E49393A51E668F5100188D6B /* QDDownloadOperation.m */,
+				E49393A61E668F5100188D6B /* QDNetworkReachabilityManager.h */,
+				E49393A71E668F5100188D6B /* QDNetworkReachabilityManager.m */,
+			);
+			path = Download;
+			sourceTree = "<group>";
+		};
+		E49393AA1E668F5100188D6B /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				E49393AB1E668F5100188D6B /* NSString+QDURLParams.h */,
+				E49393AC1E668F5100188D6B /* NSString+QDURLParams.m */,
+				E49393AD1E668F5100188D6B /* NSURL+QDParams.h */,
+				E49393AE1E668F5100188D6B /* NSURL+QDParams.m */,
+				E49393AF1E668F5100188D6B /* QDRouter.h */,
+				E49393B01E668F5100188D6B /* QDRouter.m */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		E49393B11E668F5100188D6B /* ServiceCenter */ = {
+			isa = PBXGroup;
+			children = (
+				E49393B21E668F5100188D6B /* QDServiceCenter.h */,
+				E49393B31E668F5100188D6B /* QDServiceCenter.m */,
+			);
+			path = ServiceCenter;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E49393731E668F4300188D6B /* QDKitDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E493938B1E668F4300188D6B /* Build configuration list for PBXNativeTarget "QDKitDemo" */;
+			buildPhases = (
+				6736B71BE188B3B0239B7C03 /* [CP] Check Pods Manifest.lock */,
+				E49393701E668F4300188D6B /* Sources */,
+				E49393711E668F4300188D6B /* Frameworks */,
+				E49393721E668F4300188D6B /* Resources */,
+				AA64EC6532817D30612F8CBA /* [CP] Embed Pods Frameworks */,
+				EC87D43CBF9DDFBBB24E6F8C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QDKitDemo;
+			productName = QDKitDemo;
+			productReference = E49393741E668F4300188D6B /* QDKitDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E493936C1E668F4300188D6B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Personal;
+				TargetAttributes = {
+					E49393731E668F4300188D6B = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 62CX57WQN3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = E493936F1E668F4300188D6B /* Build configuration list for PBXProject "QDKitDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E493936B1E668F4300188D6B;
+			productRefGroup = E49393751E668F4300188D6B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E49393731E668F4300188D6B /* QDKitDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E49393721E668F4300188D6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E49393871E668F4300188D6B /* LaunchScreen.storyboard in Resources */,
+				E49393841E668F4300188D6B /* Assets.xcassets in Resources */,
+				E49393821E668F4300188D6B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6736B71BE188B3B0239B7C03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AA64EC6532817D30612F8CBA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QDKitDemo/Pods-QDKitDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC87D43CBF9DDFBBB24E6F8C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QDKitDemo/Pods-QDKitDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E49393701E668F4300188D6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E49393BD1E668F5100188D6B /* QDDownloadOperation.m in Sources */,
+				E49393BB1E668F5100188D6B /* QDDownloadManager.m in Sources */,
+				E49393B61E668F5100188D6B /* QDBusMethodFinder.m in Sources */,
+				E49393C01E668F5100188D6B /* NSURL+QDParams.m in Sources */,
+				E49393B51E668F5100188D6B /* QDBusListener.m in Sources */,
+				E49393BE1E668F5100188D6B /* QDNetworkReachabilityManager.m in Sources */,
+				E49393B81E668F5100188D6B /* QDEventProxy.m in Sources */,
+				E49393C21E668F5100188D6B /* QDServiceCenter.m in Sources */,
+				E49393BA1E668F5100188D6B /* QDDownloader.m in Sources */,
+				E493937F1E668F4300188D6B /* ViewController.m in Sources */,
+				E49393C11E668F5100188D6B /* QDRouter.m in Sources */,
+				E49393B41E668F5100188D6B /* QDBus.m in Sources */,
+				E49393BF1E668F5100188D6B /* NSString+QDURLParams.m in Sources */,
+				E493937C1E668F4300188D6B /* AppDelegate.m in Sources */,
+				E49393B71E668F5100188D6B /* QDBusParserUtils.m in Sources */,
+				E49393B91E668F5100188D6B /* QDDownloadCache.m in Sources */,
+				E49393BC1E668F5100188D6B /* QDDownloadModel.m in Sources */,
+				E49393791E668F4300188D6B /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E49393801E668F4300188D6B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E49393811E668F4300188D6B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E49393851E668F4300188D6B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E49393861E668F4300188D6B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E49393891E668F4300188D6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E493938A1E668F4300188D6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E493938C1E668F4300188D6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D88C87774D0AEA1AC70AE56 /* Pods-QDKitDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 62CX57WQN3;
+				INFOPLIST_FILE = QDKitDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.chaisong.QDKitDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E493938D1E668F4300188D6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F5C1D7D4105A39DBE87BEBB /* Pods-QDKitDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 62CX57WQN3;
+				INFOPLIST_FILE = QDKitDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.chaisong.QDKitDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E493936F1E668F4300188D6B /* Build configuration list for PBXProject "QDKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E49393891E668F4300188D6B /* Debug */,
+				E493938A1E668F4300188D6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E493938B1E668F4300188D6B /* Build configuration list for PBXNativeTarget "QDKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E493938C1E668F4300188D6B /* Debug */,
+				E493938D1E668F4300188D6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E493936C1E668F4300188D6B /* Project object */;
+}
