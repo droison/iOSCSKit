@@ -70,12 +70,12 @@ void RouterRegister(Class class, NSString* params, ...)
 
 -(QDRouter *)addScheme:(NSString *)scheme, ... {
     if (scheme) {
-        [_schemes addObject:scheme];
+        [_schemes addObject:[scheme lowercaseString]];
         va_list args;
         va_start(args, scheme);
         NSString *eachScheme;
         while ((eachScheme = va_arg(args, NSString *))) {
-            [_schemes addObject:eachScheme];
+            [_schemes addObject:[eachScheme lowercaseString]];
         }
         va_end(args);
     }
@@ -84,12 +84,12 @@ void RouterRegister(Class class, NSString* params, ...)
 
 -(QDRouter *)addHost:(NSString *)host, ... {
     if (host) {
-        [_hosts addObject:host];
+        [_hosts addObject:[host lowercaseString]];
         va_list args;
         va_start(args, host);
         NSString *eachHost;
         while ((eachHost = va_arg(args, NSString *))) {
-            [_hosts addObject:eachHost];
+            [_hosts addObject:[eachHost lowercaseString]];
         }
         va_end(args);
     }
@@ -125,11 +125,11 @@ void RouterRegister(Class class, NSString* params, ...)
         NSString* routeName = url.qd_firstPath;
         
         BOOL result = NO;
-        if ([self->_schemes containsObject:scheme] && [self->_hosts containsObject:host]) {
+        if ([self->_schemes containsObject:[scheme lowercaseString]] && [self->_hosts containsObject:[host lowercaseString]]) {
             result = [self push:routeName params:url.qd_parameters navigationController:viewController];
         }
         if (!result && _routeFailBlock) {
-            _routeFailBlock(url, viewController, NO);
+            result = _routeFailBlock(url, viewController, NO);
         }
         return result;
     }
@@ -146,12 +146,13 @@ void RouterRegister(Class class, NSString* params, ...)
         NSString* routeName = url.qd_firstPath;
         
         BOOL result;
-        if ([self->_schemes containsObject:scheme] && [self->_hosts containsObject:host]) {
+        if ([self->_schemes containsObject:[scheme lowercaseString]] && [self->_hosts containsObject:[host lowercaseString]]) {
             result = [self present:routeName params:url.qd_parameters viewcontroller:viewController];
         }
         if (!result && _routeFailBlock) {
-            _routeFailBlock(url, viewController, YES);
+            result = _routeFailBlock(url, viewController, YES);
         }
+        return result;
     }
     return NO;
 }
@@ -161,7 +162,7 @@ void RouterRegister(Class class, NSString* params, ...)
         viewController = _defaultNavigator;
     }
     UIViewController* newVC = [self matchViewController:routerName params:params];
-    if (newVC) {
+    if (newVC && viewController && [viewController isKindOfClass:[UINavigationController class]]) {
         [viewController pushViewController:newVC animated:YES];
         return YES;
     }
@@ -174,7 +175,7 @@ void RouterRegister(Class class, NSString* params, ...)
         viewController = _defaultNavigator;
     }
     UIViewController* newVC = [self matchViewController:routerName params:params];
-    if (newVC) {
+    if (newVC && viewController) {
         [viewController presentViewController:newVC animated:YES completion:nil];
         return YES;
     }
@@ -191,7 +192,7 @@ void RouterRegister(Class class, NSString* params, ...)
         NSString* scheme = url.scheme;
         NSString* host = url.host;
         NSString* routeName = url.qd_firstPath;
-        if ([self->_schemes containsObject:scheme] && [self->_hosts containsObject:host]) {
+        if ([self->_schemes containsObject:[scheme lowercaseString]] && [self->_hosts containsObject:[host lowercaseString]]) {
             return [self matchViewController:routeName params:url.qd_parameters];
         }
     }
@@ -203,7 +204,7 @@ void RouterRegister(Class class, NSString* params, ...)
         Router* router = GetRouterMap()[routerName];
         if (router != nil) {
             for (NSString* key in router.params) {
-                if (params[key] == nil) {
+                if (params[key] == nil || (![params[key] isKindOfClass:[NSNumber class]] && ![params[key] isKindOfClass:[NSString class]])) {
                     return nil;
                 }
             }

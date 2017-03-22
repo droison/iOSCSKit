@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (QDURLParams)
+
 - (NSURL*) qd_toURL;
 - (NSString *) qd_parameterForKey:(NSString *)key;
-- (NSDictionary *) qd_parameters;
-- (NSString *) qd_url;
+- (NSDictionary *)qd_parameters;
+- (NSString *)qd_url;
 @end

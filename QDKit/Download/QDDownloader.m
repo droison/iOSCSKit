@@ -295,15 +295,21 @@ didFinishDownloadingToURL:(NSURL *)location {
     QDDownloadModel* model = _executings[downloadTask.originalRequest.URL];
     [self.lock unlock];
     
-    if (model && !model.localPath) {
+    if (model) {
         NSString* hashCode = model.sha256HashCode;
         
         if (!CSEmptyString(hashCode) && ![hashCode isEqualToString:[QDDownloader SHA256HashCodeWithURL:model.URL]]) {
             model.hashCodeVerifyFail = YES;
             return;
         }
-        [[QDDownloadCache defaultCache] addFile:location.path forURL:model.URL];
-        model.localPath = [[QDDownloadCache defaultCache] filePathForURL:model.URL];
+        if (!model.localPath) {
+            [[QDDownloadCache defaultCache] addFile:location.path forURL:model.URL];
+            model.localPath = [[QDDownloadCache defaultCache] filePathForURL:model.URL];
+        } else {
+            NSURL *toURL = [NSURL fileURLWithPath:model.localPath];
+            NSFileManager *manager = [NSFileManager defaultManager];
+            [manager moveItemAtURL:location toURL:toURL error:nil];
+        }
     }
 }
 

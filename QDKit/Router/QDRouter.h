@@ -13,6 +13,9 @@
 
 @protocol QDeepLinkProtocol <NSObject>
 - (instancetype)initWithURLParams:(NSDictionary*)params;
+
+@optional
++ (NSArray*) optionParams;
 @end
 
 typedef BOOL(^QDRouterFail)(NSURL *url, UIViewController* viewController, BOOL isPresent);
@@ -29,7 +32,6 @@ typedef BOOL(^QDRouterFail)(NSURL *url, UIViewController* viewController, BOOL i
 
 - (BOOL) pushURL:(NSURL*)url navigationController:(UINavigationController*) viewController;
 - (BOOL) presentURL:(NSURL*)url viewcontroller:(UIViewController*) viewController;
-
 
 //以下两个无视scheme host
 - (BOOL) push:(NSString*)routerName params:(NSDictionary*)params navigationController:(UINavigationController*) viewController;

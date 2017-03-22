@@ -9,21 +9,21 @@
 #import <Foundation/Foundation.h>
 #import "QDKitMacro.h"
 
+#define QDService_REGISTER() \
+QD_EXTERN void CSRegisterInit(Class); \
++ (void)load { CSRegisterInit(self); }
+
 @interface QDService : NSObject {
     BOOL m_isServiceRemoved;
     BOOL m_isServiceUnPersistent;		// 注销或者退出时, 是否还需要清掉，默认不清掉
 }
-
-#define QDService_REGISTER() \
-QD_EXTERN void CSRegisterInit(Class); \
-+ (void)load { CSRegisterInit(self); }
 
 @property (assign) BOOL m_isServiceRemoved;
 @property (assign) BOOL m_isServiceUnPersistent;
 
 @end
 
-/// MMService协议
+/// QDService协议
 @protocol QDService<NSObject>
 
 @optional
@@ -61,7 +61,7 @@ QD_EXTERN void CSRegisterInit(Class); \
 +(QDServiceCenter *) defaultCenter;
 
 // 获取服务对象。
-// 如果对象不存在， 会自动创建。 但只能创建继承于MMService基类的对象.
+// 如果对象不存在， 会自动创建。 但只能创建继承于QDService基类的对象.
 - (id) getService:(Class) cls;
 
 // 从core中移除， 但如果引用计数>1。。。凉拌吧。

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'QDKit'
-  s.version      = '0.0.8'
+  s.version      = '0.0.9'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.summary      = '包含总线管理、router、单例管理、网络下载的小工具箱'
   s.homepage     = 'https://github.com/droison/iOSCSKit'

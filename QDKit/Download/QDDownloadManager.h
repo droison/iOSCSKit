@@ -35,7 +35,9 @@ typedef NS_OPTIONS(NSUInteger,  QDDownloadMgrOptions) {
  *  download method with progress
  *
  *  @param url             文件的URL
- *  @param destinationPath 目标存储路径，传递绝对路径，默认采用YYCache进行缓存，仅存文件不存内存，默认大小200m，1000个文件，可以在QDDownloadCache设置
+ *  @param destinationPath 目标存储路径，传递绝对路径。
+                            默认采用YYCache进行缓存，仅存文件不存内存，默认大小200m，1000个文件，可以在QDDownloadCache设置。
+                            如果传入路径，则不采用YYCache进行缓存管理，用户自行管理其中的删除和更新。
  *  @param options         网络下载的设定
  *  @param hashCode        64位的sha1验证
  *  @param progress        下载进度的百分比

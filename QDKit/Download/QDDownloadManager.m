@@ -70,18 +70,25 @@
                complete:(QDDownloaderCompletedBlock)completeBlock {
     
     NSString *filePath = nil;
+    BOOL exist = NO;
     if (!CSEmptyString(destinationPath)) {
         filePath = destinationPath;
+        exist = [[NSFileManager defaultManager]fileExistsAtPath:filePath];
     } else {
         filePath =  [self.downloadFileCache filePathForURL:url];
+        exist = filePath != nil;
     }
     
-    if (!(options & QDDownloadMgrRefreshCached) && filePath) {
+    if (!(options & QDDownloadMgrRefreshCached) && exist) {
         BOOL complete = YES;
         if (!CSEmptyString(hashCode)) {
             if (![hashCode isEqualToString:[QDDownloader SHA256HashCodeWithFilePath:filePath]]) {
                 complete = NO;
-                [self.downloadFileCache deleteFileForURL:url]; //hashcode验证不通过，直接删掉
+                if (!CSEmptyString(destinationPath)) {
+                    [[NSFileManager defaultManager]removeItemAtPath:destinationPath error:nil];
+                } else {
+                    [self.downloadFileCache deleteFileForURL:url]; //hashcode验证不通过，直接删掉
+                }
             }
             
         }
@@ -113,7 +120,7 @@
     
     //网络状况,由downloader自己去处理
     QDDownloadOperation* operation = [_downloader downloadWithURL:url options:(options & QDDownloadMgrAnyNetwork)? QDDownloaderAnyNetwork: 0 progress:progress complete:completeBlock];
-    
+    operation.model.localPath = filePath;
     if (!CSEmptyString(hashCode)) {
         operation.model.sha256HashCode = hashCode;
     }
