@@ -18,8 +18,9 @@ QD_EXTERN void CSRegisterInit(Class); \
     BOOL m_isServiceUnPersistent;		// 注销或者退出时, 是否还需要清掉，默认不清掉
 }
 
-@property (assign) BOOL m_isServiceRemoved;
-@property (assign) BOOL m_isServiceUnPersistent;
+@property (nonatomic, assign) BOOL m_isServiceRemoved;
+@property (nonatomic, assign) BOOL m_isServiceUnPersistent;
+@property (nonatomic, assign) uint16_t level; //default为0 越高优先级越高
 
 @end
 

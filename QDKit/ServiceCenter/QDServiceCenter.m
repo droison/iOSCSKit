@@ -7,6 +7,7 @@
 //
 
 #import "QDServiceCenter.h"
+#import "QDServiceHashMap.h"
 
 static NSMutableArray<Class> *CSInitClasses;
 NSArray<Class> *CSGetInitClasses(void);
@@ -42,7 +43,7 @@ void CSRegisterInit(Class moduleClass)
 @end
 
 @implementation QDServiceCenter {
-    NSMutableDictionary *_diQDService;
+    QDServiceHashMap *_diQDService;
 }
 
 - (instancetype) init
@@ -50,7 +51,7 @@ void CSRegisterInit(Class moduleClass)
     if(self = [super init])
     {
         CSLog(@"QDServiceCenter -- Create service center");
-        _diQDService = [[NSMutableDictionary alloc] init];
+        _diQDService = [[QDServiceHashMap alloc] init];
     }
     return self;
 }
@@ -86,20 +87,19 @@ static QDServiceCenter* g_ServiceCenter;
     NSAssert([cls conformsToProtocol:@protocol(QDService)], @"%@ does not conform to the QDService protocol", cls);
     NSAssert([cls isSubclassOfClass:[QDService class]], @"%@ is not a QDService", cls);
 
-    __block id obj = [_diQDService objectForKey:[cls description]];
+    __block id obj = [_diQDService objectForKey:cls];
     if (obj == nil)
     {
         qd_dispatch_main_sync_safe(^{
             obj = [[cls alloc] init];
-            [_diQDService setObject:obj forKey:[cls description]];
-            
-            CSLog(@"QDServiceCenter -- Create service object: %@", obj);
-            
             // call init
             if ([obj respondsToSelector:@selector(onServiceInit)])
             {
-                [obj onServiceInit];
+                [obj onServiceInit]; //先调用service init 以初始化优先级
             }
+            [_diQDService setObject:obj forKey:cls];
+            
+            CSLog(@"QDServiceCenter -- Create service object: %@", obj);
         });
     }
     
@@ -110,7 +110,7 @@ static QDServiceCenter* g_ServiceCenter;
 -(void) removeService:(Class) cls
 {
     qd_dispatch_main_async_safe(^{
-        QDService<QDService>* obj = [_diQDService objectForKey:[cls description]];
+        QDService<QDService>* obj = [_diQDService objectForKey:cls];
         if (obj == nil)
         {
             return ;
@@ -119,7 +119,7 @@ static QDServiceCenter* g_ServiceCenter;
         {
             [obj onServiceTerminate];
         }
-        [_diQDService removeObjectForKey:[cls description]];
+        [_diQDService removeObjectForKey:cls];
         obj.m_isServiceRemoved = YES;
         obj = nil;
     });

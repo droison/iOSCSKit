@@ -29,6 +29,7 @@
 		E49393C01E668F5100188D6B /* NSURL+QDParams.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393AE1E668F5100188D6B /* NSURL+QDParams.m */; };
 		E49393C11E668F5100188D6B /* QDRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393B01E668F5100188D6B /* QDRouter.m */; };
 		E49393C21E668F5100188D6B /* QDServiceCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393B31E668F5100188D6B /* QDServiceCenter.m */; };
+		E4F42F301E8CA93B00F80D3F /* QDServiceHashMap.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F2F1E8CA93B00F80D3F /* QDServiceHashMap.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,8 @@
 		E49393B01E668F5100188D6B /* QDRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDRouter.m; sourceTree = "<group>"; };
 		E49393B21E668F5100188D6B /* QDServiceCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDServiceCenter.h; sourceTree = "<group>"; };
 		E49393B31E668F5100188D6B /* QDServiceCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDServiceCenter.m; sourceTree = "<group>"; };
+		E4F42F2E1E8CA93B00F80D3F /* QDServiceHashMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDServiceHashMap.h; sourceTree = "<group>"; };
+		E4F42F2F1E8CA93B00F80D3F /* QDServiceHashMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDServiceHashMap.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +230,8 @@
 			children = (
 				E49393B21E668F5100188D6B /* QDServiceCenter.h */,
 				E49393B31E668F5100188D6B /* QDServiceCenter.m */,
+				E4F42F2E1E8CA93B00F80D3F /* QDServiceHashMap.h */,
+				E4F42F2F1E8CA93B00F80D3F /* QDServiceHashMap.m */,
 			);
 			path = ServiceCenter;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4F42F301E8CA93B00F80D3F /* QDServiceHashMap.m in Sources */,
 				E49393BD1E668F5100188D6B /* QDDownloadOperation.m in Sources */,
 				E49393BB1E668F5100188D6B /* QDDownloadManager.m in Sources */,
 				E49393B61E668F5100188D6B /* QDBusMethodFinder.m in Sources */,
@@ -530,6 +536,7 @@
 				E493938D1E668F4300188D6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
