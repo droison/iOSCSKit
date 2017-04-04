@@ -11,5 +11,5 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
   s.dependency 'AFNetworking', '~> 3.1.0'
   s.dependency 'CSYYCache', '~> 11.0.1'
-  s.source_files = 'QDKit/*.h', 'QDKit/Download/*.{h,m}', 'QDKit/Bus/*.{h,m}', 'QDKit/ServiceCenter/*.{h,m}' , 'QDKit/Router/*.{h,m}'
+  s.source_files = 'QDKit/*.h', 'QDKit/Download/*.{h,m}', 'QDKit/Bus/*.{h,m}', 'QDKit/ServiceCenter/*.{h,m}' , 'QDKit/Router/*.{h,m}', 'QDKit/Utils/*.{h,m}', 'QDKit/Themes/*.{h,m,mm}', 'QDKit/Themes/CSSParser/*.{h,m}', 'QDKit/Themes/ViewTheme/*.{h,m}', 'QDKit/Themes/ViewTheme/Private/*.{h,m}'
 end
