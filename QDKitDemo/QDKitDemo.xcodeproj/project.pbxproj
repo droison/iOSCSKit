@@ -30,6 +30,22 @@
 		E49393C11E668F5100188D6B /* QDRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393B01E668F5100188D6B /* QDRouter.m */; };
 		E49393C21E668F5100188D6B /* QDServiceCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E49393B31E668F5100188D6B /* QDServiceCenter.m */; };
 		E4F42F301E8CA93B00F80D3F /* QDServiceHashMap.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F2F1E8CA93B00F80D3F /* QDServiceHashMap.m */; };
+		E4F42F9E1E9339F500F80D3F /* CSSTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F791E9339F500F80D3F /* CSSTokenizer.m */; };
+		E4F42F9F1E9339F500F80D3F /* CSSTokens.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F7B1E9339F500F80D3F /* CSSTokens.m */; };
+		E4F42FA01E9339F500F80D3F /* NICSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F7D1E9339F500F80D3F /* NICSSParser.m */; };
+		E4F42FA51E9339F500F80D3F /* QDKeyCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F851E9339F500F80D3F /* QDKeyCommands.m */; };
+		E4F42FA61E9339F500F80D3F /* QDThemeMgr.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F871E9339F500F80D3F /* QDThemeMgr.mm */; };
+		E4F42FA71E9339F500F80D3F /* QDThemeUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F891E9339F500F80D3F /* QDThemeUtil.mm */; };
+		E4F42FA91E9339F500F80D3F /* UIImage+QDColor.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F8C1E9339F500F80D3F /* UIImage+QDColor.m */; };
+		E4F42FAB1E9339F500F80D3F /* QDViewTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F921E9339F500F80D3F /* QDViewTheme.m */; };
+		E4F42FAC1E9339F500F80D3F /* UIBarButtonItem+QTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F941E9339F500F80D3F /* UIBarButtonItem+QTheme.m */; };
+		E4F42FAD1E9339F500F80D3F /* UIButton+QTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F961E9339F500F80D3F /* UIButton+QTheme.m */; };
+		E4F42FAE1E9339F500F80D3F /* UIImageView+QTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F981E9339F500F80D3F /* UIImageView+QTheme.m */; };
+		E4F42FAF1E9339F500F80D3F /* UILabel+QTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F9A1E9339F500F80D3F /* UILabel+QTheme.m */; };
+		E4F42FB01E9339F500F80D3F /* UIView+QTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F9C1E9339F500F80D3F /* UIView+QTheme.m */; };
+		E4F42FB41E933C1300F80D3F /* QDDeviceInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4F42FB31E933C1300F80D3F /* QDDeviceInfo.mm */; };
+		E4F42FB71E9342B200F80D3F /* QDUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42FB61E9342B200F80D3F /* QDUtils.m */; };
+		E4F42FBA1E9347DD00F80D3F /* NSString+QDTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42FB91E9347DD00F80D3F /* NSString+QDTheme.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,7 +85,6 @@
 		E49393A61E668F5100188D6B /* QDNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDNetworkReachabilityManager.h; sourceTree = "<group>"; };
 		E49393A71E668F5100188D6B /* QDNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		E49393A81E668F5100188D6B /* QDKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDKit.h; sourceTree = "<group>"; };
-		E49393A91E668F5100188D6B /* QDKitMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDKitMacro.h; sourceTree = "<group>"; };
 		E49393AB1E668F5100188D6B /* NSString+QDURLParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QDURLParams.h"; sourceTree = "<group>"; };
 		E49393AC1E668F5100188D6B /* NSString+QDURLParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QDURLParams.m"; sourceTree = "<group>"; };
 		E49393AD1E668F5100188D6B /* NSURL+QDParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+QDParams.h"; sourceTree = "<group>"; };
@@ -80,6 +95,38 @@
 		E49393B31E668F5100188D6B /* QDServiceCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDServiceCenter.m; sourceTree = "<group>"; };
 		E4F42F2E1E8CA93B00F80D3F /* QDServiceHashMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDServiceHashMap.h; sourceTree = "<group>"; };
 		E4F42F2F1E8CA93B00F80D3F /* QDServiceHashMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDServiceHashMap.m; sourceTree = "<group>"; };
+		E4F42F791E9339F500F80D3F /* CSSTokenizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSSTokenizer.m; sourceTree = "<group>"; };
+		E4F42F7A1E9339F500F80D3F /* CSSTokens.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSTokens.h; sourceTree = "<group>"; };
+		E4F42F7B1E9339F500F80D3F /* CSSTokens.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSSTokens.m; sourceTree = "<group>"; };
+		E4F42F7C1E9339F500F80D3F /* NICSSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NICSSParser.h; sourceTree = "<group>"; };
+		E4F42F7D1E9339F500F80D3F /* NICSSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NICSSParser.m; sourceTree = "<group>"; };
+		E4F42F841E9339F500F80D3F /* QDKeyCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDKeyCommands.h; sourceTree = "<group>"; };
+		E4F42F851E9339F500F80D3F /* QDKeyCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDKeyCommands.m; sourceTree = "<group>"; };
+		E4F42F861E9339F500F80D3F /* QDThemeMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDThemeMgr.h; sourceTree = "<group>"; };
+		E4F42F871E9339F500F80D3F /* QDThemeMgr.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QDThemeMgr.mm; sourceTree = "<group>"; };
+		E4F42F881E9339F500F80D3F /* QDThemeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDThemeUtil.h; sourceTree = "<group>"; };
+		E4F42F891E9339F500F80D3F /* QDThemeUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QDThemeUtil.mm; sourceTree = "<group>"; };
+		E4F42F8B1E9339F500F80D3F /* UIImage+QDColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+QDColor.h"; sourceTree = "<group>"; };
+		E4F42F8C1E9339F500F80D3F /* UIImage+QDColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+QDColor.m"; sourceTree = "<group>"; };
+		E4F42F911E9339F500F80D3F /* QDViewTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDViewTheme.h; sourceTree = "<group>"; };
+		E4F42F921E9339F500F80D3F /* QDViewTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDViewTheme.m; sourceTree = "<group>"; };
+		E4F42F931E9339F500F80D3F /* UIBarButtonItem+QTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+QTheme.h"; sourceTree = "<group>"; };
+		E4F42F941E9339F500F80D3F /* UIBarButtonItem+QTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+QTheme.m"; sourceTree = "<group>"; };
+		E4F42F951E9339F500F80D3F /* UIButton+QTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+QTheme.h"; sourceTree = "<group>"; };
+		E4F42F961E9339F500F80D3F /* UIButton+QTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+QTheme.m"; sourceTree = "<group>"; };
+		E4F42F971E9339F500F80D3F /* UIImageView+QTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+QTheme.h"; sourceTree = "<group>"; };
+		E4F42F981E9339F500F80D3F /* UIImageView+QTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+QTheme.m"; sourceTree = "<group>"; };
+		E4F42F991E9339F500F80D3F /* UILabel+QTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+QTheme.h"; sourceTree = "<group>"; };
+		E4F42F9A1E9339F500F80D3F /* UILabel+QTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+QTheme.m"; sourceTree = "<group>"; };
+		E4F42F9B1E9339F500F80D3F /* UIView+QTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+QTheme.h"; sourceTree = "<group>"; };
+		E4F42F9C1E9339F500F80D3F /* UIView+QTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+QTheme.m"; sourceTree = "<group>"; };
+		E4F42FB21E933C1300F80D3F /* QDDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDDeviceInfo.h; sourceTree = "<group>"; };
+		E4F42FB31E933C1300F80D3F /* QDDeviceInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QDDeviceInfo.mm; sourceTree = "<group>"; };
+		E4F42FB51E9342B200F80D3F /* QDUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDUtils.h; sourceTree = "<group>"; };
+		E4F42FB61E9342B200F80D3F /* QDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDUtils.m; sourceTree = "<group>"; };
+		E4F42FB81E9347DD00F80D3F /* NSString+QDTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QDTheme.h"; sourceTree = "<group>"; };
+		E4F42FB91E9347DD00F80D3F /* NSString+QDTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QDTheme.m"; sourceTree = "<group>"; };
+		E4F42FBB1E9348D200F80D3F /* QDKitMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDKitMacro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,11 +204,12 @@
 		E493938E1E668F5100188D6B /* QDKit */ = {
 			isa = PBXGroup;
 			children = (
+				E4F42FB11E933C1300F80D3F /* Utils */,
+				E4F42F761E9339F400F80D3F /* Themes */,
 				E493938F1E668F5100188D6B /* Bus */,
 				E493939A1E668F5100188D6B /* Cache */,
 				E493939B1E668F5100188D6B /* Download */,
 				E49393A81E668F5100188D6B /* QDKit.h */,
-				E49393A91E668F5100188D6B /* QDKitMacro.h */,
 				E49393AA1E668F5100188D6B /* Router */,
 				E49393B11E668F5100188D6B /* ServiceCenter */,
 			);
@@ -234,6 +282,76 @@
 				E4F42F2F1E8CA93B00F80D3F /* QDServiceHashMap.m */,
 			);
 			path = ServiceCenter;
+			sourceTree = "<group>";
+		};
+		E4F42F761E9339F400F80D3F /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				E4F42F781E9339F500F80D3F /* CSSParser */,
+				E4F42F841E9339F500F80D3F /* QDKeyCommands.h */,
+				E4F42F851E9339F500F80D3F /* QDKeyCommands.m */,
+				E4F42F861E9339F500F80D3F /* QDThemeMgr.h */,
+				E4F42F871E9339F500F80D3F /* QDThemeMgr.mm */,
+				E4F42F881E9339F500F80D3F /* QDThemeUtil.h */,
+				E4F42F891E9339F500F80D3F /* QDThemeUtil.mm */,
+				E4F42F8B1E9339F500F80D3F /* UIImage+QDColor.h */,
+				E4F42F8C1E9339F500F80D3F /* UIImage+QDColor.m */,
+				E4F42F8D1E9339F500F80D3F /* ViewTheme */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
+		E4F42F781E9339F500F80D3F /* CSSParser */ = {
+			isa = PBXGroup;
+			children = (
+				E4F42F791E9339F500F80D3F /* CSSTokenizer.m */,
+				E4F42F7A1E9339F500F80D3F /* CSSTokens.h */,
+				E4F42F7B1E9339F500F80D3F /* CSSTokens.m */,
+				E4F42F7C1E9339F500F80D3F /* NICSSParser.h */,
+				E4F42F7D1E9339F500F80D3F /* NICSSParser.m */,
+			);
+			path = CSSParser;
+			sourceTree = "<group>";
+		};
+		E4F42F8D1E9339F500F80D3F /* ViewTheme */ = {
+			isa = PBXGroup;
+			children = (
+				E4F42FB81E9347DD00F80D3F /* NSString+QDTheme.h */,
+				E4F42FB91E9347DD00F80D3F /* NSString+QDTheme.m */,
+				E4F42F901E9339F500F80D3F /* Private */,
+				E4F42F931E9339F500F80D3F /* UIBarButtonItem+QTheme.h */,
+				E4F42F941E9339F500F80D3F /* UIBarButtonItem+QTheme.m */,
+				E4F42F951E9339F500F80D3F /* UIButton+QTheme.h */,
+				E4F42F961E9339F500F80D3F /* UIButton+QTheme.m */,
+				E4F42F971E9339F500F80D3F /* UIImageView+QTheme.h */,
+				E4F42F981E9339F500F80D3F /* UIImageView+QTheme.m */,
+				E4F42F991E9339F500F80D3F /* UILabel+QTheme.h */,
+				E4F42F9A1E9339F500F80D3F /* UILabel+QTheme.m */,
+				E4F42F9B1E9339F500F80D3F /* UIView+QTheme.h */,
+				E4F42F9C1E9339F500F80D3F /* UIView+QTheme.m */,
+			);
+			path = ViewTheme;
+			sourceTree = "<group>";
+		};
+		E4F42F901E9339F500F80D3F /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				E4F42F911E9339F500F80D3F /* QDViewTheme.h */,
+				E4F42F921E9339F500F80D3F /* QDViewTheme.m */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		E4F42FB11E933C1300F80D3F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E4F42FBB1E9348D200F80D3F /* QDKitMacro.h */,
+				E4F42FB21E933C1300F80D3F /* QDDeviceInfo.h */,
+				E4F42FB31E933C1300F80D3F /* QDDeviceInfo.mm */,
+				E4F42FB51E9342B200F80D3F /* QDUtils.h */,
+				E4F42FB61E9342B200F80D3F /* QDUtils.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,20 +479,36 @@
 			files = (
 				E4F42F301E8CA93B00F80D3F /* QDServiceHashMap.m in Sources */,
 				E49393BD1E668F5100188D6B /* QDDownloadOperation.m in Sources */,
+				E4F42FA51E9339F500F80D3F /* QDKeyCommands.m in Sources */,
 				E49393BB1E668F5100188D6B /* QDDownloadManager.m in Sources */,
+				E4F42FBA1E9347DD00F80D3F /* NSString+QDTheme.m in Sources */,
+				E4F42FA01E9339F500F80D3F /* NICSSParser.m in Sources */,
 				E49393B61E668F5100188D6B /* QDBusMethodFinder.m in Sources */,
 				E49393C01E668F5100188D6B /* NSURL+QDParams.m in Sources */,
 				E49393B51E668F5100188D6B /* QDBusListener.m in Sources */,
+				E4F42FAB1E9339F500F80D3F /* QDViewTheme.m in Sources */,
 				E49393BE1E668F5100188D6B /* QDNetworkReachabilityManager.m in Sources */,
 				E49393B81E668F5100188D6B /* QDEventProxy.m in Sources */,
 				E49393C21E668F5100188D6B /* QDServiceCenter.m in Sources */,
+				E4F42FAF1E9339F500F80D3F /* UILabel+QTheme.m in Sources */,
 				E49393BA1E668F5100188D6B /* QDDownloader.m in Sources */,
 				E493937F1E668F4300188D6B /* ViewController.m in Sources */,
 				E49393C11E668F5100188D6B /* QDRouter.m in Sources */,
+				E4F42FA91E9339F500F80D3F /* UIImage+QDColor.m in Sources */,
+				E4F42FA61E9339F500F80D3F /* QDThemeMgr.mm in Sources */,
 				E49393B41E668F5100188D6B /* QDBus.m in Sources */,
+				E4F42F9E1E9339F500F80D3F /* CSSTokenizer.m in Sources */,
+				E4F42F9F1E9339F500F80D3F /* CSSTokens.m in Sources */,
 				E49393BF1E668F5100188D6B /* NSString+QDURLParams.m in Sources */,
+				E4F42FA71E9339F500F80D3F /* QDThemeUtil.mm in Sources */,
+				E4F42FB41E933C1300F80D3F /* QDDeviceInfo.mm in Sources */,
 				E493937C1E668F4300188D6B /* AppDelegate.m in Sources */,
+				E4F42FB71E9342B200F80D3F /* QDUtils.m in Sources */,
 				E49393B71E668F5100188D6B /* QDBusParserUtils.m in Sources */,
+				E4F42FAE1E9339F500F80D3F /* UIImageView+QTheme.m in Sources */,
+				E4F42FAC1E9339F500F80D3F /* UIBarButtonItem+QTheme.m in Sources */,
+				E4F42FAD1E9339F500F80D3F /* UIButton+QTheme.m in Sources */,
+				E4F42FB01E9339F500F80D3F /* UIView+QTheme.m in Sources */,
 				E49393B91E668F5100188D6B /* QDDownloadCache.m in Sources */,
 				E49393BC1E668F5100188D6B /* QDDownloadModel.m in Sources */,
 				E49393791E668F4300188D6B /* main.m in Sources */,

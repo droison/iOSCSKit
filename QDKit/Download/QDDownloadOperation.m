@@ -8,6 +8,7 @@
 
 #import "QDDownloadOperation.h"
 #import "QDDownloadModel.h"
+#import "QDKitMacro.h"
 #import <objc/runtime.h>
 
 #define kKVOBlock(KEYPATH, BLOCK) \
@@ -59,9 +60,10 @@ static NSTimeInterval kTimeoutInterval = 8.0;
 
 - (void)suspend {
     if (self.task) {
-        __weak __typeof(self) weakSelf = self;
+        WeakSelf;
         [self.task cancelByProducingResumeData:^(NSData * _Nullable resumeData) {
-            weakSelf.model.resumeData = resumeData;
+            StrongSelf;
+            self.model.resumeData = resumeData;
         }];
         [self.task suspend];
     }

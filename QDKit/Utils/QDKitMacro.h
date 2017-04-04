@@ -15,6 +15,7 @@
 #endif
 
 #define CSEmptyString(str) ([str isKindOfClass:[NSNull class]] || str == nil || str.length == 0)
+
 #if defined(__cplusplus)
 #define QD_EXTERN extern "C" __attribute__((visibility("default")))
 #else
@@ -34,3 +35,6 @@ block();\
 } else {\
 dispatch_async(dispatch_get_main_queue(), block);\
 }
+
+#define WeakSelf __weak typeof(self) wself = self
+#define StrongSelf __strong typeof(wself) self = wself

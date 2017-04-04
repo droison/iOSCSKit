@@ -67,16 +67,18 @@ static NSString * const kQDDownloaderLockName = @"xyz.chaisong.downloader.lock";
                                     progress:(QDDownloaderProgressBlock)progressBlock
                                     complete:(QDDownloaderCompletedBlock)completedBlock {
     __block QDDownloadOperation *operation;
-    __weak __typeof(self)wself = self;
+    
+    WeakSelf;
     
     [self addProgressCallback:progressBlock completedBlock:completedBlock forURL:url createCallback:^(QDDownloadModel *model, BOOL added) {
+        StrongSelf;
         if (options & QDDownloaderAnyNetwork) {
             model.requestOnAnyNetWork = YES; //有一个请求无视网络，那就无视网络环境
         }
         if (added) {
             model.operation = [[QDDownloadOperation alloc] initWithModel:model session:wself.session];
         }
-        [wself flushWaitingQueue];
+        [self flushWaitingQueue];
         operation = model.operation;
     }];
     return operation;
