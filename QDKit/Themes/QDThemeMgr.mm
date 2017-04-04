@@ -9,7 +9,7 @@
 #import "QDThemeMgr.h"
 #import "UIImage+QDColor.h"
 #import "NICSSParser.h"
-#import <AFNetworking.h>
+#import <AFNetWorking/AFHTTPSessionManager.h>
 #import "QDDeviceInfo.h"
 #import "QDKitMacro.h"
 #import "QDUtils.h"
