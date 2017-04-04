@@ -390,11 +390,7 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
 }
 
 -(UIImage*) imageFromSystemFileContent:(NSString *)imgName{
-    
-    if(![QDDeviceInfo isiOS6plus]){
-        return nil;
-    }
-    
+   
     NSString* ext = [imgName pathExtension];
     
     NSString* name = [imgName stringByDeletingPathExtension];
