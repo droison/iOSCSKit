@@ -43,7 +43,7 @@
 		E4F42FAE1E9339F500F80D3F /* UIImageView+QTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F981E9339F500F80D3F /* UIImageView+QTheme.m */; };
 		E4F42FAF1E9339F500F80D3F /* UILabel+QTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F9A1E9339F500F80D3F /* UILabel+QTheme.m */; };
 		E4F42FB01E9339F500F80D3F /* UIView+QTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F9C1E9339F500F80D3F /* UIView+QTheme.m */; };
-		E4F42FB41E933C1300F80D3F /* QDDeviceInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4F42FB31E933C1300F80D3F /* QDDeviceInfo.mm */; };
+		E4F42FB41E933C1300F80D3F /* QDDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42FB31E933C1300F80D3F /* QDDeviceInfo.m */; };
 		E4F42FB71E9342B200F80D3F /* QDUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42FB61E9342B200F80D3F /* QDUtils.m */; };
 		E4F42FBA1E9347DD00F80D3F /* NSString+QDTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42FB91E9347DD00F80D3F /* NSString+QDTheme.m */; };
 /* End PBXBuildFile section */
@@ -121,7 +121,7 @@
 		E4F42F9B1E9339F500F80D3F /* UIView+QTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+QTheme.h"; sourceTree = "<group>"; };
 		E4F42F9C1E9339F500F80D3F /* UIView+QTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+QTheme.m"; sourceTree = "<group>"; };
 		E4F42FB21E933C1300F80D3F /* QDDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDDeviceInfo.h; sourceTree = "<group>"; };
-		E4F42FB31E933C1300F80D3F /* QDDeviceInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QDDeviceInfo.mm; sourceTree = "<group>"; };
+		E4F42FB31E933C1300F80D3F /* QDDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDDeviceInfo.m; sourceTree = "<group>"; };
 		E4F42FB51E9342B200F80D3F /* QDUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDUtils.h; sourceTree = "<group>"; };
 		E4F42FB61E9342B200F80D3F /* QDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDUtils.m; sourceTree = "<group>"; };
 		E4F42FB81E9347DD00F80D3F /* NSString+QDTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QDTheme.h"; sourceTree = "<group>"; };
@@ -347,7 +347,7 @@
 			children = (
 				E4F42FBB1E9348D200F80D3F /* QDKitMacro.h */,
 				E4F42FB21E933C1300F80D3F /* QDDeviceInfo.h */,
-				E4F42FB31E933C1300F80D3F /* QDDeviceInfo.mm */,
+				E4F42FB31E933C1300F80D3F /* QDDeviceInfo.m */,
 				E4F42FB51E9342B200F80D3F /* QDUtils.h */,
 				E4F42FB61E9342B200F80D3F /* QDUtils.m */,
 			);
@@ -501,7 +501,7 @@
 				E4F42F9F1E9339F500F80D3F /* CSSTokens.m in Sources */,
 				E49393BF1E668F5100188D6B /* NSString+QDURLParams.m in Sources */,
 				E4F42FA71E9339F500F80D3F /* QDThemeUtil.mm in Sources */,
-				E4F42FB41E933C1300F80D3F /* QDDeviceInfo.mm in Sources */,
+				E4F42FB41E933C1300F80D3F /* QDDeviceInfo.m in Sources */,
 				E493937C1E668F4300188D6B /* AppDelegate.m in Sources */,
 				E4F42FB71E9342B200F80D3F /* QDUtils.m in Sources */,
 				E49393B71E668F5100188D6B /* QDBusParserUtils.m in Sources */,
