@@ -176,6 +176,7 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
             ThemeLock();
             WeakSelf;
             NSURLSessionDownloadTask* task = [self.sessionManager downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:contantsPath]] progress:nil destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+                StrongSelf;
                 return [self cacheURLPath:targetPath];
             } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
                 StrongSelf;
@@ -540,6 +541,7 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
                 ThemeLock();
                 WeakSelf;
                 NSURLSessionDownloadTask* task = [self.sessionManager downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:path]] progress:nil destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+                    StrongSelf;
                     return [self cacheURLPath:targetPath];
                 } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
                     StrongSelf;
