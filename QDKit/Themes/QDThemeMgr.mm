@@ -472,7 +472,7 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
 +(UIImage*) hdImageWithContentsOfFile:(NSString *)path
 {
     UIImage * oOriginImage = nil ;
-    CGFloat fScale = [UIScreen mainScreen].scale ;
+    CGFloat fScale = [QDDeviceInfo screenScale];
     if( fScale <= 1.0f)
     {
         oOriginImage = [ UIImage imageWithContentsOfFile:path ] ;

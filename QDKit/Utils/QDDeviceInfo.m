@@ -11,7 +11,7 @@
 @implementation QDDeviceInfo
 
 + (int)screenScale {
-    static BOOL s_screenScale = 2;
+    static int s_screenScale = 2;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -24,7 +24,7 @@
 }
 
 + (int)screenWidth {
-    static BOOL s_screenWidth = 375;
+    static int s_screenWidth = 375;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -35,7 +35,7 @@
 }
 
 + (int)screenHeight {
-    static BOOL s_screenHeight = 667;
+    static int s_screenHeight = 667;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
