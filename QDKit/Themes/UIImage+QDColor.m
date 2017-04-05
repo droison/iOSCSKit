@@ -13,11 +13,13 @@
 +(UIImage *) qd_imageWithColor:(UIColor *)color {
     CGRect rect = CGRectMake(0, 0, 1, 1);
     // Create a 1 by 1 pixel context
-    if( UIGraphicsBeginImageContextWithOptions != NULL )
-    {
+    if( &UIGraphicsBeginImageContextWithOptions != NULL ) {
         UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
     }else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
         UIGraphicsBeginImageContext( rect.size ) ;
+#pragma clang diagnostic pop
     }
     [color setFill];
     UIRectFill(rect);   // Fill it with your color
