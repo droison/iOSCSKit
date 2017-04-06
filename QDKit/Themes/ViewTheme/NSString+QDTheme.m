@@ -1,6 +1,6 @@
 //
 //  NSString+QDTheme.m
-//  BusTrack
+//  QDKit
 //
 //  Created by song on 12/1/15.
 //  Copyright (c) 2017 Personal. All rights reserved.
@@ -14,7 +14,7 @@
 
 - (CGFloat) qd_widthWithTheme:(NSString *)themePath {
     
-    UIFont *font = MFONT(themePath, QDThemeKeywordPathTextFont);
+    UIFont *font = QDFont(themePath, QDThemeKeywordPathTextFont);
     NSDictionary *attributeDict = @{NSFontAttributeName:font};
     
     return ceilf([self sizeWithAttributes:attributeDict].width);
@@ -26,9 +26,9 @@
 
 - (CGSize) qd_sizeWithTheme:(NSString *)themePath constrainedWidth:(CGFloat)width {
     
-    UIFont *font = MFONT(themePath, QDThemeKeywordPathTextFont);
+    UIFont *font = QDFont(themePath, QDThemeKeywordPathTextFont);
     CGFloat lineHeight = font.lineHeight;
-    NSUInteger lineNumber = MFLOAT(themePath, QDThemeKeywordAttributeTextLineNumber);
+    NSUInteger lineNumber = QDFloat(themePath, QDThemeKeywordAttributeTextLineNumber);
     
     NSDictionary *attributeDict = @{NSFontAttributeName : font,
                                     };
@@ -43,7 +43,7 @@
 
 - (int) qd_lineWithTheme:(NSString *)themePath constrainedWidth:(CGFloat)width {
     CGFloat height = [self qd_heightWithTheme:themePath constrainedWidth:width];
-    UIFont *font = MFONT(themePath, QDThemeKeywordPathTextFont);
+    UIFont *font = QDFont(themePath, QDThemeKeywordPathTextFont);
     CGFloat lineHeight = font.lineHeight;
     return height/lineHeight;
 }

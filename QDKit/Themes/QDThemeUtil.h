@@ -1,9 +1,9 @@
 //
 //  QDThemeUtil.h
-//  BusTrack
+//  QDKit
 //
 //  Created by song on 14/10/19.
-//  Copyright (c) 2014年 droison. All rights reserved.
+//  Copyright (c) 2014年 Personal. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -20,46 +20,47 @@ UIColor* getColorOrClearColor(UIColor* color)
     return color;
 }
 
-#define MCOLOR( colorName )  getColorOrClearColor([QDThemeUtil parseColorFromValues:[NSArray arrayWithObject:colorName]])
-#define MARRAY(selector,property) [THEME_MGR getValueOfProperty:property forSeletor:selector]
-#define MARRAYC(selector) [THEME_MGR constantsValueForKey:selector]
+#define QDColor( colorName )  getColorOrClearColor([QDThemeUtil parseColorFromValues:[NSArray arrayWithObject:colorName]])
+#define QDArray(selector,property) [THEME_MGR getValueOfProperty:property forSeletor:selector]
+#define QDArrayC(selector) [THEME_MGR constantsValueForKey:selector]
 
-#define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
-#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
-#define MIMAGE(image) [THEME_MGR imageNamed:image]
+#define RGBColor(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
+#define RGBAColor(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
+#define QDImage(image) [THEME_MGR imageNamed:image]
 
-#define MIMAGE_FROM_COLOR(color) [THEME_MGR imageFromColor:color]
+#define QDImageFromColor(color) [THEME_MGR imageFromColor:color]
 
 // with selector 即从css文件中取
-#define MCOLORX(selector,property) getColorOrClearColor([QDThemeUtil parseColorFromValues:MARRAY(selector,property)])
-#define MIMAGEX(selector,property) [QDThemeUtil parseStrechedImageFromValues:MARRAY(selector,property)]
-#define MFLOAT(selector,property) [QDThemeUtil parseFloatFromValues:MARRAY(selector,property)]
-#define MFONT(selector,property) [QDThemeUtil parseFontFromValues:MARRAY(selector,property)]
-#define MRECT(selector,property) [QDThemeUtil parseRectFromValues:MARRAY(selector,property)]
-#define MSIZEX(selector,property) [QDThemeUtil parseSizeFromValues:MARRAY(selector,property)]
-#define MTextAlignment(selector,property) [QDThemeUtil textAlignmentFromValues:MARRAY(selector,property)]
-#define MViewContentMode(selector,property) [QDThemeUtil viewContentModeFromValues:MARRAY(selector,property)]
-#define MEdgeInsets(selector,property) [QDThemeUtil edgeInsetsFromValues:MARRAY(selector,property)]
+#define QDColorX(selector,property) getColorOrClearColor([QDThemeUtil parseColorFromValues:QDArray(selector,property)])
+#define QDImageX(selector,property) [QDThemeUtil parseStrechedImageFromValues:QDArray(selector,property)]
+#define QDFloat(selector,property) [QDThemeUtil parseFloatFromValues:QDArray(selector,property)]
+#define QDFont(selector,property) [QDThemeUtil parseFontFromValues:QDArray(selector,property)]
+#define QDRect(selector,property) [QDThemeUtil parseRectFromValues:QDArray(selector,property)]
+#define QDSize(selector,property) [QDThemeUtil parseSizeFromValues:QDArray(selector,property)]
+#define QDTextAlignment(selector,property) [QDThemeUtil textAlignmentFromValues:QDArray(selector,property)]
+#define QDViewContentMode(selector,property) [QDThemeUtil viewContentModeFromValues:QDArray(selector,property)]
+#define QDEdgeInsets(selector,property) [QDThemeUtil edgeInsetsFromValues:QDArray(selector,property)]
 
-#define MCACHEIMAGE(image, url) [THEME_MGR cacheImage:image forKey:url]
+#define QDCacheImage(image, url) [THEME_MGR cacheImage:image forKey:url]
 
-#define MCOLORC(selector) getColorOrClearColor([QDThemeUtil parseColorFromValues:MARRAYC(selector)])
-#define MIMAGEC(selector) [QDThemeUtil parseStrechedImageFromValues:MARRAYC(selector)]
-#define MFLOATC(selector) [QDThemeUtil parseFloatFromValues:MARRAYC(selector)]
-#define MFONTC(selector) [QDThemeUtil parseFontFromValues:MARRAYC(selector)]
-#define MRECTC(selector) [QDThemeUtil parseRectFromValues:MARRAYC(selector)]
-#define MSIZEC(selector) [QDThemeUtil parseSizeFromValues:MARRAYC(selector)]
+// with constants
+#define QDColorC(selector) getColorOrClearColor([QDThemeUtil parseColorFromValues:QDArrayC(selector)])
+#define QDImageC(selector) [QDThemeUtil parseStrechedImageFromValues:QDArrayC(selector)]
+#define QDFloatC(selector) [QDThemeUtil parseFloatFromValues:QDArrayC(selector)]
+#define QDFontC(selector) [QDThemeUtil parseFontFromValues:QDArrayC(selector)]
+#define QDRectC(selector) [QDThemeUtil parseRectFromValues:QDArrayC(selector)]
+#define QDSizeC(selector) [QDThemeUtil parseSizeFromValues:QDArrayC(selector)]
 
 @interface QDThemeUtil : NSObject
 
-+(UIColor*) parseColorFromValues:(NSArray*)value;
-+(UIImage*) parseStrechedImageFromValues:(NSArray*)value;
-+(CGFloat) parseFloatFromValues:(NSArray*)value; //可能有dynamic值
-+(UIFont*) parseFontFromValues:(NSArray*)value; // 可能有dynamic值
-+(CGRect) parseRectFromValues:(NSArray*)value; //可能有dynamic值
-+(CGSize) parseSizeFromValues:(NSArray*)value; //可能有dynamic值
++ (UIColor *)parseColorFromValues:(NSArray*)value;
++ (UIImage *)parseStrechedImageFromValues:(NSArray*)value;
++ (CGFloat)parseFloatFromValues:(NSArray*)value; //可能有dynamic值
++ (UIFont *)parseFontFromValues:(NSArray*)value; // 可能有dynamic值
++ (CGRect)parseRectFromValues:(NSArray*)value; //可能有dynamic值
++ (CGSize)parseSizeFromValues:(NSArray*)value; //可能有dynamic值
 
-+ (NSTextAlignment) textAlignmentFromValues:(NSArray*)value;
++ (NSTextAlignment)textAlignmentFromValues:(NSArray*)value;
 + (UIViewContentMode)viewContentModeFromValues:(NSArray*) value;
 + (UIEdgeInsets)edgeInsetsFromValues:(NSArray*) value;
 @end

@@ -1,6 +1,6 @@
 //
 //  NSString+QDTheme.h
-//  BusTrack
+//  QDKit
 //
 //  Created by song on 12/1/15.
 //  Copyright (c) 2017 Personal. All rights reserved.

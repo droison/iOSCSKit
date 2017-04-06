@@ -1,6 +1,6 @@
 //
-//  UILabel+QTheme.h
-//  BusTrack
+//  UIImageView+QDTheme.h
+//  QDKit
 //
 //  Created by song on 15/12/1.
 //  Copyright © 2017年 Personal. All rights reserved.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UILabel (QTheme)
+@interface UIImageView (QDTheme)
 
-- (void)applyTheme:(NSString *)themePath;
+- (void)qd_applyTheme:(NSString *)themePath;
 
 @end

@@ -1,9 +1,9 @@
 //
 //  QDDeviceInfo.h
-//  BusTrack
+//  QDKit
 //
 //  Created by song on 14-10-16.
-//  Copyright (c) 2014年 droison. All rights reserved.
+//  Copyright (c) 2014年 Personal. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

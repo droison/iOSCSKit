@@ -11,6 +11,8 @@
 #import "QDNetworkReachabilityManager.h"
 #import "QDBus.h"
 #import "QDRouter.h"
+#import "QDThemeUtil.h"
+
 @interface ViewController ()<CSNetWorkChangeExt>
 
 @end

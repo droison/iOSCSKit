@@ -1,9 +1,9 @@
 //
 //  QDThemeMgr.m
-//  JSONTHEMETest
+//  QDKit
 //
 //  Created by song on 14-10-17.
-//  Copyright (c) 2014年 droison. All rights reserved.
+//  Copyright (c) 2014年 Personal. All rights reserved.
 //
 
 #import "QDThemeMgr.h"
@@ -61,13 +61,8 @@ void QDThemeMgrDefaultConfig() {
 @property(nonatomic, strong) dispatch_semaphore_t lock;
 @end
 
-@interface QDThemeMgr (iPhoneQDThemeMgr)
-- (void) loadiPhoneCSSStyle;
-- (NSArray*)getiPhoneValueOfProperty:(NSString*)property forSeletor:(NSString *)selector;
-@end
+@implementation QDThemeMgr
 
-@implementation QDThemeMgr {
-}
 #pragma mark - singleton
 @synthesize imageCache = _imageCache;
 
@@ -76,10 +71,6 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
 + (void)initialize {
     if (sharedInstance_MMThemeManager == nil)
         sharedInstance_MMThemeManager = [[self alloc] init];
-}
-
-+ (QDThemeMgr *)sharedThemeManager {
-    return sharedInstance_MMThemeManager;
 }
 
 + (id)allocWithZone:(NSZone *)zone {
@@ -101,12 +92,17 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
     return self;
 }
 
+#pragma mark - public method
+
++ (QDThemeMgr *)sharedThemeManager {
+    return sharedInstance_MMThemeManager;
+}
+
 - (void)reloadBasedHost:(NSString *)host complete:(void (^)())complete{
 #if TARGET_OS_SIMULATOR
+    
     NSString* url = [host stringByAppendingPathComponent:@"config.json"];
-    
     WeakSelf;
-    
     NSString* (^convertUrl)(NSString*) = ^(NSString* obj) {
         if ([obj hasPrefix:@"http"]) {
             return obj;
@@ -157,10 +153,89 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
 - (void)prepare {
     [_resourceThemeDic removeAllObjects];
     [_constantsThemeDic removeAllObjects];
-    [self loadConstantsCSSStyle];//要先load常量，resourc会直接覆盖常量，为了提高效率
-    [self loadiPhoneCSSStyle];
+    [self _loadConstantsCSSStyle];//要先load常量，resourc会直接覆盖常量，为了提高效率
+    [self _loadThemeCSSStyle];
 }
 
+- (NSArray *)getValueOfProperty:(NSString*)property forSeletor:(NSString *)selector{
+    ThemeLock();
+    NSArray* result = nil;
+    NSDictionary* childThemeDic = [_resourceThemeDic objectForKey:selector];
+    if (childThemeDic) {
+        result = [childThemeDic objectForKey:property];
+    }
+    result = [self constantsValueForArray:result];
+    ThemeUnlock();
+    return result;
+}
+
+- (NSArray *)constantsValueForKey:(NSString*)key{
+    if (CSEmptyString(key)) {
+        return @[key];
+    }
+    ThemeLock();
+    NSArray* result = [_constantsThemeDic objectForKey:key];
+    ThemeUnlock();
+    if (result) {
+        return result;
+    }
+    return @[key];
+}
+
+- (UIImage *)imageNamed:(NSString *)imgName {
+    if (_onlyUseAssetsImage)
+        return [UIImage imageNamed:imgName];
+    
+    return [self _privateImageNamed:imgName];
+}
+
+- (UIImage *)imageFromColor:(UIColor *)oColor {
+    if (oColor == nil) {
+        return nil;
+    }
+    
+    NSString *nsColorKey = oColor.description;
+    if ([nsColorKey length] <= 0) {
+        return nil;
+    }
+    
+    UIImage *image = [self _getImageCacheObjectForKey:nsColorKey];
+    if (image != nil) {
+        return image;
+    }
+    
+    image = [[UIImage qd_imageWithColor:oColor] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+    
+    if ([self _needToClearCache] == YES) {
+        // clear cache
+        [self clearImageCache];
+    }
+    [self _setImageCacheObject:image forKey:nsColorKey];
+    [self _addImageSizeToCachedSize:image];
+    
+    return image;
+}
+
+- (void)updateTheme:(NSString*) theme selector:(NSString*) selector content:(NSDictionary*) dataDic {
+    if (CSEmptyString(selector) || dataDic == nil || dataDic.count == 0) {
+        return;
+    }
+    
+    NSMutableDictionary* targetDic = _resourceThemeDic[selector];
+    if (targetDic == nil) {
+        [_resourceThemeDic setObject:[NSMutableDictionary dictionaryWithDictionary:dataDic] forKey:selector];
+    } else {
+        for (NSString *key in dataDic) {
+            [targetDic setObject:dataDic[key] forKey:key];
+        }
+    }
+}
+
+- (void)clearImageCache {
+    [_imageCache removeAllObjects];
+}
+
+#pragma -mark Setter & Getter
 - (AFHTTPSessionManager *)sessionManager {
     if (_sessionManager == nil) {
         _sessionManager = [[AFHTTPSessionManager alloc] init];
@@ -169,7 +244,8 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
     return _sessionManager;
 }
 
-- (void)loadConstantsCSSStyle{
+#pragma -mark private load resource
+- (void)_loadConstantsCSSStyle{
     if (_constantPathBlock) {
         NSString* contantsPath = _constantPathBlock();
         if ([contantsPath hasPrefix:@"http"]) {
@@ -177,22 +253,22 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
             WeakSelf;
             NSURLSessionDownloadTask* task = [self.sessionManager downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:contantsPath]] progress:nil destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
                 StrongSelf;
-                return [self cacheURLPath:targetPath];
+                return [self _cacheURLPath:targetPath];
             } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
                 StrongSelf;
                 NSDictionary* parentDic = [[[NICSSParser alloc] init] dictionaryForPath:[filePath path]];
-                [self rebuildConstantsDictionary:parentDic];
+                [self _rebuildConstantsDictionary:parentDic];
                 ThemeUnlock();
             }];
             [task resume];
         } else {
             NSDictionary* parentDic = [[[NICSSParser alloc] init] dictionaryForPath:contantsPath];
-            [self rebuildConstantsDictionary:parentDic];
+            [self _rebuildConstantsDictionary:parentDic];
         }
     }
 }
 
--(void) rebuildConstantsDictionary:(NSDictionary*) dic {
+- (void)_rebuildConstantsDictionary:(NSDictionary*) dic {
     if (dic && [dic isKindOfClass:[NSDictionary class]] && dic.count > 0) {
         [dic enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL *stop) {
             if (![key isKindOfClass:[NSString class]] || obj == nil || ![obj isKindOfClass:[NSDictionary class]]) {
@@ -215,7 +291,32 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
     }
 }
 
--(BOOL) rebuildThemeDictionary:(NSDictionary*)dic{
+- (void)_loadThemeCSSStyle{
+    if (_resourcePathsBlock) {
+        NSArray* paths = _resourcePathsBlock();
+        for (NSString* path in paths) {
+            if ([path hasPrefix:@"http"]) { //来自网络
+                ThemeLock();
+                WeakSelf;
+                NSURLSessionDownloadTask* task = [self.sessionManager downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:path]] progress:nil destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+                    StrongSelf;
+                    return [self _cacheURLPath:targetPath];
+                } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+                    StrongSelf;
+                    NSDictionary* parentDic = [[[NICSSParser alloc] init] dictionaryForPath:[filePath path]];
+                    [self _rebuildThemeDictionary:parentDic];
+                    ThemeUnlock();
+                }];
+                [task resume];
+            } else {
+                NSDictionary* parentDic = [[[NICSSParser alloc] init] dictionaryForPath:path];
+                [self _rebuildThemeDictionary:parentDic];
+            }
+        }
+    }
+}
+
+- (BOOL)_rebuildThemeDictionary:(NSDictionary*)dic{
     if (dic == nil || dic.count == 0) {
         return NO;
     }
@@ -249,28 +350,24 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
     return YES;
 }
 
-- (NSArray*)getValueOfProperty:(NSString*)property forSeletor:(NSString *)selector
-{
-    ThemeLock();
-    NSArray* result = [self getiPhoneValueOfProperty:property forSeletor:selector];
-    ThemeUnlock();
-    return result;
+- (NSURL *)_cacheURLPath:(NSURL*) url {
+    NSString* cacheDir = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"qdtheme"];
+    NSFileManager* defaultManager = [NSFileManager defaultManager];
+    BOOL isDir;
+    if ([defaultManager fileExistsAtPath:cacheDir isDirectory:&isDir]) {
+        if (!isDir) {
+            [defaultManager removeItemAtPath:cacheDir error:nil];
+            [defaultManager createDirectoryAtPath:cacheDir withIntermediateDirectories:NO attributes:nil error:nil];
+        }
+    } else {
+        [defaultManager createDirectoryAtPath:cacheDir withIntermediateDirectories:NO attributes:nil error:nil];
+    }
+    NSString* tmpPath = [cacheDir stringByAppendingPathComponent:[QDUtils md5Hash:url.absoluteString]];
+    return [NSURL fileURLWithPath:tmpPath];
 }
 
-- (NSArray* ) constantsValueForKey:(NSString*) key{
-    if (CSEmptyString(key)) {
-        return @[key];
-    }
-    ThemeLock();
-    NSArray* result = [_constantsThemeDic objectForKey:key];
-    ThemeUnlock();
-    if (result) {
-        return result;
-    }
-    return @[key];
-}
-
-- (NSArray* ) constantsValueForArray:(NSArray*) input{
+#pragma - mark private get constants
+- (NSArray *)constantsValueForArray:(NSArray*) input{
     if (input == nil || input.count != 1) {
         return input;
     }
@@ -282,65 +379,33 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
     }
 }
 
-- (UIImage*)getImageCacheObjectForKey:(NSString *)theKey {
+#pragma - mark private about image
+- (UIImage *)_getImageCacheObjectForKey:(NSString *)theKey {
     return [[self imageCache] objectForKey:theKey];
 }
 
-- (UIImage *)imageFromColor:(UIColor *)oColor {
-    if (oColor == nil) {
-        return nil;
-    }
-    
-    NSString *nsColorKey = oColor.description;
-    if ([nsColorKey length] <= 0) {
-        return nil;
-    }
-    
-    UIImage *image = [self getImageCacheObjectForKey:nsColorKey];
-    if (image != nil) {
-        return image;
-    }
-    
-    image = [[UIImage qd_imageWithColor:oColor] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
-    
-    if ([self needToClearCache] == YES) {
-        // clear cache
-        [self clearImageCache];
-    }
-    [self setImageCacheObject:image forKey:nsColorKey];
-    [self addImageSizeToCachedSize:image];
-    
-    return image;
-}
-
-- (UIImage *)imageNamed:(NSString *)imgName
-{
-    return [self privateImageNamed:imgName];
-}
-
-- (UIImage *)privateImageNamed:(NSString *)imgName
-{
-    UIImage *image = [self getImageCacheObjectForKey:imgName];
+- (UIImage *)_privateImageNamed:(NSString *)imgName {
+    UIImage *image = [self _getImageCacheObjectForKey:imgName];
     if (image != nil) {
         return image;
     }
     
     
     if(image == nil){
-        image = [self imageFromSystemFileContent:imgName];
+        image = [self _imageFromSystemFileContent:imgName];
     }
     
     // add to cache
     if (image != nil) {
-        if ([self needToClearCache] == YES) {
+        if ([self _needToClearCache] == YES) {
             // clear cache
             [self clearImageCache];
             if (_imageCache == nil) {
                 _imageCache = [NSMutableDictionary dictionary];
             }
         }
-        [self setImageCacheObject:image forKey:imgName];
-        [self addImageSizeToCachedSize:image];
+        [self _setImageCacheObject:image forKey:imgName];
+        [self _addImageSizeToCachedSize:image];
     } else {
         
     }
@@ -355,23 +420,22 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
     return image;
 }
 
--(void) cacheImage:(UIImage*)imageData forKey:(NSString*)url
-{
+- (void)_cacheImage:(UIImage*)imageData forKey:(NSString*)url{
     if (imageData == nil) {
         return;
     }
-    if ([self needToClearCache] == YES) {
+    if ([self _needToClearCache] == YES) {
         // clear cache
         [self clearImageCache];
         if (_imageCache == nil) {
             _imageCache = [NSMutableDictionary dictionary];
         }
     }
-    [self setImageCacheObject:imageData forKey:url];
-    [self addImageSizeToCachedSize:imageData];
+    [self _setImageCacheObject:imageData forKey:url];
+    [self _addImageSizeToCachedSize:imageData];
 }
 
-- (BOOL) needToClearCache {
+- (BOOL)_needToClearCache {
     static int s_maxCacehSize = -1;
     if (s_maxCacehSize <= 0) {
         s_maxCacehSize = [QDDeviceInfo screenWidth] * [QDDeviceInfo screenHeight] * 10;
@@ -382,15 +446,15 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
     return NO;
 }
 
-- (void)setImageCacheObject:(id)theImageCacheObject forKey:(NSString *)theKey {
+- (void)_setImageCacheObject:(id)theImageCacheObject forKey:(NSString *)theKey {
     [_imageCache setObject:theImageCacheObject forKey:theKey];
 }
 
-- (void)addImageSizeToCachedSize:(UIImage *)image {
+- (void)_addImageSizeToCachedSize:(UIImage *)image {
     m_cachedImageSize += (image.size.width * image.size.height);
 }
 
--(UIImage*) imageFromSystemFileContent:(NSString *)imgName{
+- (UIImage *)_imageFromSystemFileContent:(NSString *)imgName{
    
     NSString* ext = [imgName pathExtension];
     
@@ -400,8 +464,8 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
     //如果是iPad先尝试iPad
     if ([QDDeviceInfo isiPad]){
         NSString* filepath = [[NSBundle mainBundle] pathForResource:imgNameiPad ofType:ext];
-        if ([QDThemeMgr isFileExist:filepath]) {
-            return [QDThemeMgr hdImageWithContentsOfFile:filepath];
+        if ([QDThemeMgr _isFileExist:filepath]) {
+            return [QDThemeMgr _hdImageWithContentsOfFile:filepath];
         }
     }
     
@@ -412,20 +476,20 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
     //先找3x的
     if ([QDDeviceInfo is3xScreen]){
         NSString* filepath = [[NSBundle mainBundle] pathForResource:imgName3x ofType:ext];
-        if ([QDThemeMgr isFileExist:filepath]) {
-            return [QDThemeMgr hdImageWithContentsOfFile:filepath];
+        if ([QDThemeMgr _isFileExist:filepath]) {
+            return [QDThemeMgr _hdImageWithContentsOfFile:filepath];
         }
         
         //用2x的
         filepath = [[NSBundle mainBundle] pathForResource:imgName2x ofType:ext];
-        if ([QDThemeMgr isFileExist:filepath]) {
+        if ([QDThemeMgr _isFileExist:filepath]) {
             NSData * data = [NSData dataWithContentsOfFile:filepath];
             return [UIImage imageWithData:data scale:2.0];
         }
         
         //用1x的
         filepath = [[NSBundle mainBundle] pathForResource:imgName1x ofType:ext];
-        if ([QDThemeMgr isFileExist:filepath]) {
+        if ([QDThemeMgr _isFileExist:filepath]) {
             NSData * data = [NSData dataWithContentsOfFile:filepath];
             return [UIImage imageWithData:data];
         }
@@ -433,32 +497,32 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
     
     if ([QDDeviceInfo is2xScreen]) {
         NSString* filepath = [[NSBundle mainBundle] pathForResource:imgName2x ofType:ext];
-        if ([QDThemeMgr isFileExist:filepath]) {
-            return [QDThemeMgr hdImageWithContentsOfFile:filepath];
+        if ([QDThemeMgr _isFileExist:filepath]) {
+            return [QDThemeMgr _hdImageWithContentsOfFile:filepath];
         }
         
         filepath = [[NSBundle mainBundle] pathForResource:imgName3x ofType:ext];
-        if ([QDThemeMgr isFileExist:filepath]) {
+        if ([QDThemeMgr _isFileExist:filepath]) {
             NSData * data = [NSData dataWithContentsOfFile:filepath];
             return [UIImage imageWithData:data scale:3.0];
         }
         
         filepath = [[NSBundle mainBundle] pathForResource:imgName1x ofType:ext];
-        if ([QDThemeMgr isFileExist:filepath]) {
+        if ([QDThemeMgr _isFileExist:filepath]) {
             NSData * data = [NSData dataWithContentsOfFile:filepath];
             return [UIImage imageWithData:data];
         }
         
     } else {
         NSString* filepath = [[NSBundle mainBundle] pathForResource:imgName1x ofType:ext];
-        if ([QDThemeMgr isFileExist:filepath]) {
+        if ([QDThemeMgr _isFileExist:filepath]) {
             NSData * data = [NSData dataWithContentsOfFile:filepath];
             return [UIImage imageWithData:data];
         }
         
         filepath = [[NSBundle mainBundle] pathForResource:imgName2x ofType:ext];
-        if ([QDThemeMgr isFileExist:filepath]) {
-            return [QDThemeMgr hdImageWithContentsOfFile:filepath];
+        if ([QDThemeMgr _isFileExist:filepath]) {
+            return [QDThemeMgr _hdImageWithContentsOfFile:filepath];
         }
     }
     
@@ -466,12 +530,7 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
     return nil;
 }
 
-- (void)clearImageCache {
-    [_imageCache removeAllObjects];
-}
-
-+(UIImage*) hdImageWithContentsOfFile:(NSString *)path
-{
++ (UIImage *)_hdImageWithContentsOfFile:(NSString *)path{
     UIImage * oOriginImage = nil ;
     CGFloat fScale = [QDDeviceInfo screenScale];
     if( fScale <= 1.0f)
@@ -492,81 +551,10 @@ static QDThemeMgr *sharedInstance_MMThemeManager = nil;
     return oOriginImage ;
 }
 
-+ (BOOL) isFileExist:(NSString *)fileName
-{
++ (BOOL)_isFileExist:(NSString *)fileName{
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL result = [fileManager fileExistsAtPath:fileName];
     return result;
-}
-
-- (void) updateTheme:(NSString*) theme selector:(NSString*) selector content:(NSDictionary*) dataDic {
-    if (CSEmptyString(selector) || dataDic == nil || dataDic.count == 0) {
-        return;
-    }
-    
-    NSMutableDictionary* targetDic = _resourceThemeDic[selector];
-    if (targetDic == nil) {
-        [_resourceThemeDic setObject:[NSMutableDictionary dictionaryWithDictionary:dataDic] forKey:selector];
-    } else {
-        for (NSString *key in dataDic) {
-            [targetDic setObject:dataDic[key] forKey:key];
-        }
-    }
-}
-
-- (NSURL*) cacheURLPath:(NSURL*) url {
-    NSString* cacheDir = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"qdtheme"];
-    NSFileManager* defaultManager = [NSFileManager defaultManager];
-    BOOL isDir;
-    if ([defaultManager fileExistsAtPath:cacheDir isDirectory:&isDir]) {
-        if (!isDir) {
-            [defaultManager removeItemAtPath:cacheDir error:nil];
-            [defaultManager createDirectoryAtPath:cacheDir withIntermediateDirectories:NO attributes:nil error:nil];
-        }
-    } else {
-        [defaultManager createDirectoryAtPath:cacheDir withIntermediateDirectories:NO attributes:nil error:nil];
-    }
-    NSString* tmpPath = [cacheDir stringByAppendingPathComponent:[QDUtils md5Hash:url.absoluteString]];
-    return [NSURL fileURLWithPath:tmpPath];
-}
-
-@end
-
-@implementation QDThemeMgr (iPhoneQDThemeMgr)
-- (void)loadiPhoneCSSStyle{
-    if (_resourcePathsBlock) {
-        NSArray* paths = _resourcePathsBlock();
-        for (NSString* path in paths) {
-            if ([path hasPrefix:@"http"]) { //来自网络
-                ThemeLock();
-                WeakSelf;
-                NSURLSessionDownloadTask* task = [self.sessionManager downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:path]] progress:nil destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-                    StrongSelf;
-                    return [self cacheURLPath:targetPath];
-                } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-                    StrongSelf;
-                    NSDictionary* parentDic = [[[NICSSParser alloc] init] dictionaryForPath:[filePath path]];
-                    [self rebuildThemeDictionary:parentDic];
-                    ThemeUnlock();
-                }];
-                [task resume];
-            } else {
-                NSDictionary* parentDic = [[[NICSSParser alloc] init] dictionaryForPath:path];
-                [self rebuildThemeDictionary:parentDic];
-            }
-        }
-    }
-}
-
-- (NSArray*)getiPhoneValueOfProperty:(NSString*)property forSeletor:(NSString *)selector {
-    NSArray* result = nil;
-    
-    NSDictionary* childThemeDic = [_resourceThemeDic objectForKey:selector];
-    if (childThemeDic) {
-        result = [childThemeDic objectForKey:property];
-    }
-    
-    return [self constantsValueForArray:result];
 }
 
 @end

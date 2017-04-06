@@ -1,9 +1,9 @@
 //
 //  QDThemeUtil.m
-//  BusTrack
+//  QDKit
 //
 //  Created by song on 14/10/19.
-//  Copyright (c) 2014年 droison. All rights reserved.
+//  Copyright (c) 2014年 Personal. All rights reserved.
 //
 
 #import "QDThemeUtil.h"
@@ -45,7 +45,7 @@
                 colorValue = strtol([[cssString substringToIndex:7] UTF8String] + 1, nil, 16);
             }
             
-            anColor = RGBACOLOR(((colorValue & 0xFF0000) >> 16),
+            anColor = RGBAColor(((colorValue & 0xFF0000) >> 16),
                                 ((colorValue & 0xFF00) >> 8),
                                 (colorValue & 0xFF),
                                 alpha
@@ -56,13 +56,13 @@
         }
     } else if ([cssValues count] == 5 && [[cssValues firstObject] isEqualToString:@"rgb("]) {
         // rgb( x x x )
-        anColor = RGBCOLOR([[cssValues objectAtIndex:1] floatValue],
+        anColor = RGBColor([[cssValues objectAtIndex:1] floatValue],
                            [[cssValues objectAtIndex:2] floatValue],
                            [[cssValues objectAtIndex:3] floatValue]);
         
     } else if ([cssValues count] == 6 && [[cssValues firstObject] isEqualToString:@"rgba("]) {
         // rgba( x x x x )
-        anColor = RGBACOLOR([[cssValues objectAtIndex:1] floatValue],
+        anColor = RGBAColor([[cssValues objectAtIndex:1] floatValue],
                             [[cssValues objectAtIndex:2] floatValue],
                             [[cssValues objectAtIndex:3] floatValue],
                             [[cssValues objectAtIndex:4] floatValue]);
@@ -115,10 +115,10 @@
 +(UIImage*) parseStrechedImageFromValues:(NSArray*)value
 {
     if ([value count]==1) {
-        return MIMAGE([value firstObject]);
+        return QDImage([value firstObject]);
     }
     if ([value count]==3) {
-        UIImage* image = MIMAGE([value firstObject]);
+        UIImage* image = QDImage([value firstObject]);
         //		MMDebug(@"image:%@ %@ %@" , [value firstObject] , [value objectAtIndex:1] , [value objectAtIndex:2] ) ;
         return [image stretchableImageWithLeftCapWidth:[[value objectAtIndex:1] integerValue] topCapHeight:[[value objectAtIndex:2] integerValue]];
     }

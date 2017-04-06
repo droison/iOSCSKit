@@ -38,11 +38,10 @@
 		E4F42FA71E9339F500F80D3F /* QDThemeUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F891E9339F500F80D3F /* QDThemeUtil.mm */; };
 		E4F42FA91E9339F500F80D3F /* UIImage+QDColor.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F8C1E9339F500F80D3F /* UIImage+QDColor.m */; };
 		E4F42FAB1E9339F500F80D3F /* QDViewTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F921E9339F500F80D3F /* QDViewTheme.m */; };
-		E4F42FAC1E9339F500F80D3F /* UIBarButtonItem+QTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F941E9339F500F80D3F /* UIBarButtonItem+QTheme.m */; };
-		E4F42FAD1E9339F500F80D3F /* UIButton+QTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F961E9339F500F80D3F /* UIButton+QTheme.m */; };
-		E4F42FAE1E9339F500F80D3F /* UIImageView+QTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F981E9339F500F80D3F /* UIImageView+QTheme.m */; };
-		E4F42FAF1E9339F500F80D3F /* UILabel+QTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F9A1E9339F500F80D3F /* UILabel+QTheme.m */; };
-		E4F42FB01E9339F500F80D3F /* UIView+QTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F9C1E9339F500F80D3F /* UIView+QTheme.m */; };
+		E4F42FAD1E9339F500F80D3F /* UIButton+QDTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F961E9339F500F80D3F /* UIButton+QDTheme.m */; };
+		E4F42FAE1E9339F500F80D3F /* UIImageView+QDTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F981E9339F500F80D3F /* UIImageView+QDTheme.m */; };
+		E4F42FAF1E9339F500F80D3F /* UILabel+QDTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F9A1E9339F500F80D3F /* UILabel+QDTheme.m */; };
+		E4F42FB01E9339F500F80D3F /* UIView+QDTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42F9C1E9339F500F80D3F /* UIView+QDTheme.m */; };
 		E4F42FB41E933C1300F80D3F /* QDDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42FB31E933C1300F80D3F /* QDDeviceInfo.m */; };
 		E4F42FB71E9342B200F80D3F /* QDUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42FB61E9342B200F80D3F /* QDUtils.m */; };
 		E4F42FBA1E9347DD00F80D3F /* NSString+QDTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F42FB91E9347DD00F80D3F /* NSString+QDTheme.m */; };
@@ -110,16 +109,14 @@
 		E4F42F8C1E9339F500F80D3F /* UIImage+QDColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+QDColor.m"; sourceTree = "<group>"; };
 		E4F42F911E9339F500F80D3F /* QDViewTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDViewTheme.h; sourceTree = "<group>"; };
 		E4F42F921E9339F500F80D3F /* QDViewTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDViewTheme.m; sourceTree = "<group>"; };
-		E4F42F931E9339F500F80D3F /* UIBarButtonItem+QTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+QTheme.h"; sourceTree = "<group>"; };
-		E4F42F941E9339F500F80D3F /* UIBarButtonItem+QTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+QTheme.m"; sourceTree = "<group>"; };
-		E4F42F951E9339F500F80D3F /* UIButton+QTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+QTheme.h"; sourceTree = "<group>"; };
-		E4F42F961E9339F500F80D3F /* UIButton+QTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+QTheme.m"; sourceTree = "<group>"; };
-		E4F42F971E9339F500F80D3F /* UIImageView+QTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+QTheme.h"; sourceTree = "<group>"; };
-		E4F42F981E9339F500F80D3F /* UIImageView+QTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+QTheme.m"; sourceTree = "<group>"; };
-		E4F42F991E9339F500F80D3F /* UILabel+QTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+QTheme.h"; sourceTree = "<group>"; };
-		E4F42F9A1E9339F500F80D3F /* UILabel+QTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+QTheme.m"; sourceTree = "<group>"; };
-		E4F42F9B1E9339F500F80D3F /* UIView+QTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+QTheme.h"; sourceTree = "<group>"; };
-		E4F42F9C1E9339F500F80D3F /* UIView+QTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+QTheme.m"; sourceTree = "<group>"; };
+		E4F42F951E9339F500F80D3F /* UIButton+QDTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+QDTheme.h"; sourceTree = "<group>"; };
+		E4F42F961E9339F500F80D3F /* UIButton+QDTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+QDTheme.m"; sourceTree = "<group>"; };
+		E4F42F971E9339F500F80D3F /* UIImageView+QDTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+QDTheme.h"; sourceTree = "<group>"; };
+		E4F42F981E9339F500F80D3F /* UIImageView+QDTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+QDTheme.m"; sourceTree = "<group>"; };
+		E4F42F991E9339F500F80D3F /* UILabel+QDTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+QDTheme.h"; sourceTree = "<group>"; };
+		E4F42F9A1E9339F500F80D3F /* UILabel+QDTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+QDTheme.m"; sourceTree = "<group>"; };
+		E4F42F9B1E9339F500F80D3F /* UIView+QDTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+QDTheme.h"; sourceTree = "<group>"; };
+		E4F42F9C1E9339F500F80D3F /* UIView+QDTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+QDTheme.m"; sourceTree = "<group>"; };
 		E4F42FB21E933C1300F80D3F /* QDDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDDeviceInfo.h; sourceTree = "<group>"; };
 		E4F42FB31E933C1300F80D3F /* QDDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDDeviceInfo.m; sourceTree = "<group>"; };
 		E4F42FB51E9342B200F80D3F /* QDUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDUtils.h; sourceTree = "<group>"; };
@@ -319,16 +316,14 @@
 				E4F42FB81E9347DD00F80D3F /* NSString+QDTheme.h */,
 				E4F42FB91E9347DD00F80D3F /* NSString+QDTheme.m */,
 				E4F42F901E9339F500F80D3F /* Private */,
-				E4F42F931E9339F500F80D3F /* UIBarButtonItem+QTheme.h */,
-				E4F42F941E9339F500F80D3F /* UIBarButtonItem+QTheme.m */,
-				E4F42F951E9339F500F80D3F /* UIButton+QTheme.h */,
-				E4F42F961E9339F500F80D3F /* UIButton+QTheme.m */,
-				E4F42F971E9339F500F80D3F /* UIImageView+QTheme.h */,
-				E4F42F981E9339F500F80D3F /* UIImageView+QTheme.m */,
-				E4F42F991E9339F500F80D3F /* UILabel+QTheme.h */,
-				E4F42F9A1E9339F500F80D3F /* UILabel+QTheme.m */,
-				E4F42F9B1E9339F500F80D3F /* UIView+QTheme.h */,
-				E4F42F9C1E9339F500F80D3F /* UIView+QTheme.m */,
+				E4F42F951E9339F500F80D3F /* UIButton+QDTheme.h */,
+				E4F42F961E9339F500F80D3F /* UIButton+QDTheme.m */,
+				E4F42F971E9339F500F80D3F /* UIImageView+QDTheme.h */,
+				E4F42F981E9339F500F80D3F /* UIImageView+QDTheme.m */,
+				E4F42F991E9339F500F80D3F /* UILabel+QDTheme.h */,
+				E4F42F9A1E9339F500F80D3F /* UILabel+QDTheme.m */,
+				E4F42F9B1E9339F500F80D3F /* UIView+QDTheme.h */,
+				E4F42F9C1E9339F500F80D3F /* UIView+QDTheme.m */,
 			);
 			path = ViewTheme;
 			sourceTree = "<group>";
@@ -490,7 +485,7 @@
 				E49393BE1E668F5100188D6B /* QDNetworkReachabilityManager.m in Sources */,
 				E49393B81E668F5100188D6B /* QDEventProxy.m in Sources */,
 				E49393C21E668F5100188D6B /* QDServiceCenter.m in Sources */,
-				E4F42FAF1E9339F500F80D3F /* UILabel+QTheme.m in Sources */,
+				E4F42FAF1E9339F500F80D3F /* UILabel+QDTheme.m in Sources */,
 				E49393BA1E668F5100188D6B /* QDDownloader.m in Sources */,
 				E493937F1E668F4300188D6B /* ViewController.m in Sources */,
 				E49393C11E668F5100188D6B /* QDRouter.m in Sources */,
@@ -505,10 +500,9 @@
 				E493937C1E668F4300188D6B /* AppDelegate.m in Sources */,
 				E4F42FB71E9342B200F80D3F /* QDUtils.m in Sources */,
 				E49393B71E668F5100188D6B /* QDBusParserUtils.m in Sources */,
-				E4F42FAE1E9339F500F80D3F /* UIImageView+QTheme.m in Sources */,
-				E4F42FAC1E9339F500F80D3F /* UIBarButtonItem+QTheme.m in Sources */,
-				E4F42FAD1E9339F500F80D3F /* UIButton+QTheme.m in Sources */,
-				E4F42FB01E9339F500F80D3F /* UIView+QTheme.m in Sources */,
+				E4F42FAE1E9339F500F80D3F /* UIImageView+QDTheme.m in Sources */,
+				E4F42FAD1E9339F500F80D3F /* UIButton+QDTheme.m in Sources */,
+				E4F42FB01E9339F500F80D3F /* UIView+QDTheme.m in Sources */,
 				E49393B91E668F5100188D6B /* QDDownloadCache.m in Sources */,
 				E49393BC1E668F5100188D6B /* QDDownloadModel.m in Sources */,
 				E49393791E668F4300188D6B /* main.m in Sources */,
